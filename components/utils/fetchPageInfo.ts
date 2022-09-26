@@ -8,7 +8,7 @@ export const fetchPageInfo = async () => {
 
   const pageInfo: PaegInfo = data.pageInfo;
 
-  console.log("fetching", pageInfo);
+  // console.log("fetching", pageInfo);
 
   return pageInfo;
 };
