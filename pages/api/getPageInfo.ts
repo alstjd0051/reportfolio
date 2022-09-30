@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { groq } from "next-sanity";
-import { PaegInfo } from "../../components/lib/typings";
+import { PageInfo } from "../../components/lib/typings";
 import { sanityClient } from "../../sanity";
 
 const query = groq`
@@ -8,14 +8,14 @@ const query = groq`
 `;
 
 type Data = {
-  pageInfo: PaegInfo[];
+  pageInfo: PageInfo[];
 };
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const pageInfo: PaegInfo[] = await sanityClient.fetch(query);
+  const pageInfo: PageInfo[] = await sanityClient.fetch(query);
 
   res.status(200).json({ pageInfo });
 }
