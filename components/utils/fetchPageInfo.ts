@@ -1,12 +1,6 @@
-import { PaegInfo } from "../lib/typings";
+import axios from 'axios'
 
-export const fetchPageInfo = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/getPageInfo`);
-  const data = await res.json();
-
-  const pageInfo: PaegInfo = data.pageInfo;
-
-  // console.log("fetching", pageInfo);
-
-  return pageInfo;
-};
+export default async function fetchPageInfo() {
+  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getPageInfo`)
+  return data.pageInfo
+}
