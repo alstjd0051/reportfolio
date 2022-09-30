@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { ArrowUpIcon } from "@heroicons/react/24/solid";
-import type { GetStaticProps, NextPage } from "next";
+import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import About from "../components/commons/about/AboutUI";
 import ContactMe from "../components/commons/contact/Contact";
@@ -11,28 +11,28 @@ import Projects from "../components/commons/projects/Projects";
 import SkillUI from "../components/commons/skill/SkillUI";
 import {
   Experience,
-  PaegInfo,
+  PageInfo,
   Project,
   Skill,
   Social,
 } from "../components/lib/typings";
-import { fetchExperiences } from "../components/utils/fetchExperiences";
-import { fetchPageInfo } from "../components/utils/fetchPageInfo";
-import { fetchProjects } from "../components/utils/fetchProjects";
-import { fetchSkills } from "../components/utils/fetchSkills";
-import { fetchSocials } from "../components/utils/fetchSocials";
+import  {fetchExperiences}  from "../components/utils/fetchExperiences";
+import fetchPageInfo  from "../components/utils/fetchPageInfo";
+import  fetchProjects from "../components/utils/fetchProjects";
+import  fetchSkills  from "../components/utils/fetchSkills";
+import  fetchSocials  from "../components/utils/fetchSocials";
 
 type Props = {
-  pageInfo: PaegInfo;
-  experiences: Experience[];
+  pageInfo: PageInfo;
+  experience: Experience[];
   skills: Skill[];
   projects: Project[];
   socials: Social[];
 };
 
-const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
+const Home = ({ pageInfo, experience, projects, skills, socials }: Props) => {
   return (
-    <div className="bg-[#242424] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#6667ab] ">
+    <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll bg-[#242424] text-white scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#6667ab] ">
       <Head>
         <title key="title">{pageInfo.name} - PortFolio</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -52,7 +52,7 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
 
       {/* Experience */}
       <section id="experience" className="snap-center">
-        <WorkExperience experiences={experiences} />
+        <WorkExperience experiences={experience} />
       </section>
 
       {/* Skill */}
@@ -76,19 +76,21 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const pageInfo: PaegInfo = await fetchPageInfo();
-  const experiences: Experience[] = await fetchExperiences();
-  const skills: Skill[] = await fetchSkills();
-  const projects: Project[] = await fetchProjects();
-  const socials: Social[] = await fetchSocials();
+  const pageInfo = await fetchPageInfo();
+  const experience: Experience[]  = await fetchExperiences();
+  const skills = await fetchSkills();
+  const projects = await fetchProjects();
+  const socials = await fetchSocials();
 
   return {
     props: {
       pageInfo,
-      experiences,
+      experience,
       skills,
       projects,
       socials,
     },
+    revalidate: 100
   };
+  
 };
