@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Project } from "../../lib/typings";
 import { urlFor } from "../../../sanity";
 import { useRouter } from "next/dist/client/router";
-import {  GetStaticProps } from "next";
-import fetchProjects  from "../../utils/fetchProjects";
+import { GetStaticProps } from "next";
+import fetchProjects from "../../utils/fetchProjects";
 
 type Props = {
   projects: Project[];
@@ -34,13 +34,13 @@ const Projects = ({ projects }: Props) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               src={urlFor(project.image).url()}
-              className="w-[70%] "
+              className="w-[70%] h-[355px]   "
               onClick={() => router.push(project.linkToBuild)}
             />
             <div className="max-w-6xl space-y-10 px-0  md:px-10">
               <h4 className="text-center text-4xl font-semibold">
                 <span className="underline decoration-[#F5DF4D]/50 ">
-                  Cheese promotion {i + 1} page of {projects.length}{" "}
+                  {i + 1} page of {projects.length}{" "}
                 </span>
                 {project.title}
               </h4>
@@ -48,6 +48,17 @@ const Projects = ({ projects }: Props) => {
               <p className="text-center text-lg md:text-left">
                 {project.summary}
               </p>
+              <div className="flex flex-row">
+                {project.technologies.map((index) => (
+                  <div className="space-x-2 m-2 " key={index._id}>
+                    <img
+                      className="w-10 h-10 rounded-full"
+                      src={urlFor(index.image).url()}
+                      alt=""
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         ))}
