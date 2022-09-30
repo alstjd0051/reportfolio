@@ -2,11 +2,11 @@ import Link from "next/link";
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { urlFor } from "../../../sanity";
-import { PaegInfo } from "../../lib/typings";
+import { PageInfo } from "../../lib/typings";
 import BackGroundCircles from "../BackGroundCircles";
 
 type Props = {
-  pageInfo: PaegInfo;
+  pageInfo: PageInfo;
 };
 
 const HeroUI = ({ pageInfo }: Props) => {
