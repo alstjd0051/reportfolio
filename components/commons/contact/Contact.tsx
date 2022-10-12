@@ -18,12 +18,12 @@ const ContactMe = ({}: Props) => {
     (window.location.href = `mailto:wsc7202@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. ${formData.message} (${formData.email})`);
   return (
     <div className="h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly items-center mx-auto ">
-      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl ">
+      <h3 className="sm:hidden lg:absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl ">
         Contact
       </h3>
-      <div className="flex flex-col space-y-10">
-        <h4 className="text-4xl font-semibold text-center">
-          I have got just what you need.{" "}
+      <div className="flex flex-col  lg:space-y-10">
+        <h4 className=" text-4xl font-semibold text-center">
+          I want your coffee chat &nbsp;
           <span className="decoration-[#F5DF4D]/50 underline">
             Let&apos;s Talk
           </span>
