@@ -16,11 +16,11 @@ import {
   Skill,
   Social,
 } from "../components/lib/typings";
-import  {fetchExperiences}  from "../components/utils/fetchExperiences";
-import fetchPageInfo  from "../components/utils/fetchPageInfo";
-import  fetchProjects from "../components/utils/fetchProjects";
-import  fetchSkills  from "../components/utils/fetchSkills";
-import  fetchSocials  from "../components/utils/fetchSocials";
+import { fetchExperiences } from "../components/utils/fetchExperiences";
+import fetchPageInfo from "../components/utils/fetchPageInfo";
+import fetchProjects from "../components/utils/fetchProjects";
+import fetchSkills from "../components/utils/fetchSkills";
+import fetchSocials from "../components/utils/fetchSocials";
 
 type Props = {
   pageInfo: PageInfo;
@@ -77,7 +77,7 @@ export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo = await fetchPageInfo();
-  const experience: Experience[]  = await fetchExperiences();
+  const experience: Experience[] = await fetchExperiences();
   const skills = await fetchSkills();
   const projects = await fetchProjects();
   const socials = await fetchSocials();
@@ -90,7 +90,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       projects,
       socials,
     },
-    revalidate: 100
+    revalidate: 100,
   };
-  
 };
