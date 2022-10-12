@@ -2,18 +2,25 @@ import React from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Social } from "../../lib/typings";
+import { PageInfo, Social } from "../../lib/typings";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Head from "next/head";
 
 type Props = {
   socials: Social[];
+  pageInfo: PageInfo;
 };
 
-const Header = ({ socials }: Props) => {
+const Header = ({ socials, pageInfo }: Props) => {
   const { data: session } = useSession();
   console.log("HERE IS DATA", session);
   return (
     <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
+      <Head>
+        <title key="title">{pageInfo.name} - PortFolio</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      </Head>
       <motion.div
         initial={{ x: -500, opacity: 0, scale: 0.5 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}

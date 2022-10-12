@@ -33,12 +33,7 @@ type Props = {
 const Home = ({ pageInfo, experience, projects, skills, socials }: Props) => {
   return (
     <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll bg-[#242424] text-white scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#6667ab] ">
-      <Head>
-        <title key="title">{pageInfo.name} - PortFolio</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-
-      <Header socials={socials} />
+      <Header pageInfo={pageInfo} socials={socials} />
 
       {/* Hero */}
       <section id="hero" className="snap-start">
