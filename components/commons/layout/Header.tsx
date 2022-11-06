@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { PageInfo, Social } from "../../lib/typings";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { getSession, signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
+import Image from "next/image";
 
 type Props = {
   socials: Social[];
@@ -13,7 +14,18 @@ type Props = {
 
 const Header = ({ socials, pageInfo }: Props) => {
   const { data: session } = useSession();
-  console.log("HERE IS DATA", session);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const toggleMenu = () => {
+    return [() => signOut(), session?.user?.email];
+  };
+
+  const toggleDropDown = () => {
+    setIsOpen(!isOpen);
+  };
+  // const dismissHandler = (e: React.FocusEvent<HTMLButtonElement>): void => {
+  //   if (e.currentTarget === e.target) setIsOpen(false);
+  // };
   return (
     <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
       <Head>
@@ -38,12 +50,58 @@ const Header = ({ socials, pageInfo }: Props) => {
         ))}
       </motion.div>
       <div className="flex items-center justify-between">
+        <motion.div
+          initial={{ x: 500, opacity: 0, scale: 0.5 }}
+          animate={{ x: 0, opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          {session?.user ? (
+            <>
+              <div className="flex sm:w-full   ">
+                <div className="flex flex-col">
+                  <button
+                    className=" font-bold w-full sm:text-xs "
+                    onClick={(): void => toggleDropDown()}
+                  >
+                    <p className="mb:hidden sm:block sm:text-lg font-bold  text-gray-300 ">
+                      {session?.user.name}
+                    </p>
+                  </button>
+
+                  {isOpen && (
+                    <div className="relative bg-white flex flex-col md:flex-row items-center justify-center z-50     ">
+                      <div className="absolute  bg-inherit  rounded-lg px-2 top-3 ">
+                        <div className=" sm:items-center sm:justify-center border-b py-2 md:px-2 px-0 mb:hidden sm:block ">
+                          <img
+                            src={session.user.image as string}
+                            alt=""
+                            className={`rounded-full w-5 h-5 sm:w-10 sm:h-10  `}
+                          />
+                          <p className="lg:text-lg font-semibold text-gray-700 ">
+                            {session.user.email}
+                          </p>
+                        </div>
+                        <div className="text-black text-center py-2  ">
+                          <button onClick={() => signOut()}>Sign Out</button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <button onClick={() => signIn("google")}>Sign In</button>
+            </>
+          )}
+        </motion.div>
         <Link href="#contact">
           <motion.div
             initial={{ x: 500, opacity: 0, scale: 0.5 }}
             animate={{ x: 0, opacity: 1, scale: 1 }}
             transition={{ duration: 1.5 }}
-            className="flex flex-row items-center text-gray-300 cursor-pointer mx-5 "
+            className="flex flex-row items-center text-gray-300 cursor-pointer mx-2 "
           >
             {/* Nav */}
             <SocialIcon
@@ -57,25 +115,36 @@ const Header = ({ socials, pageInfo }: Props) => {
             </p>
           </motion.div>
         </Link>
-        <motion.div
-          initial={{ x: 500, opacity: 0, scale: 0.5 }}
-          animate={{ x: 0, opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5 }}
-        >
-          <div className="flex flex-col  items-center justify-center  ">
-            {session?.user ? (
-              <>
-                <p>{session?.user.name}</p>
-                <button onClick={() => signOut()}>Sign Out</button>
-              </>
-            ) : (
-              <button onClick={() => signIn("google")}>Sign In</button>
-            )}
-          </div>
-        </motion.div>
       </div>
     </header>
   );
 };
 
 export default Header;
+
+export async function GetServerSideProps() {
+  const session = await getSession();
+}
+
+/* 
+<div className="flex flex-col  items-center justify-center  ">
+            {session?.user ? (
+              <div className="border">
+                <div className="flex relative items-center ">
+                  <img
+                    src={session.user.image as string}
+                    alt=""
+                    className="object-cover w-10 h-10 rounded-full "
+                  />
+                  <div className="flex flex-col items-center ">
+                    <p className="text-lg font-bold">{session?.user.name}</p>
+                    <p className="text-xs">{session.user.email} </p>
+                  </div>
+                  <button onClick={() => signOut()}>Sign Out</button>
+                </div>
+              </div>
+            ) : (
+              <button onClick={() => signIn("google")}>Sign In</button>
+            )}
+          </div>
+*/
