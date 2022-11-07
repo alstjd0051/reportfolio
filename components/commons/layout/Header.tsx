@@ -84,9 +84,9 @@ const Header = ({ socials, pageInfo }: Props) => {
                 />
                 {isOpen && (
                   <div className="relative bg-white flex flex-col md:flex-row items-center justify-center z-50     ">
-                    <div className="absolute  bg-inherit  rounded-lg px-2 top-3  ">
+                    <div className="absolute  bg-inherit  rounded-lg px-2 top-3 md:w-20 text-center py-2  ">
                       {session?.user ? (
-                        <div className="text-black text-center py-2 lg:w-20  ">
+                        <div className="text-black text-center py-2   ">
                           <button
                             className="py-2 border-b"
                             onClick={() => signOut()}
