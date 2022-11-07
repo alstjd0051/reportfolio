@@ -5,7 +5,7 @@ import Link from "next/link";
 import { PageInfo, Social } from "../../lib/typings";
 import { getSession, signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
-import Image from "next/image";
+import { BiHelpCircle } from "react-icons/bi";
 
 type Props = {
   socials: Social[];
@@ -46,56 +46,11 @@ const Header = ({ socials, pageInfo }: Props) => {
             fgColor="gray"
             bgColor="transparent"
             url={social.url}
+            target={"_blank"}
           />
         ))}
       </motion.div>
       <div className="flex items-center justify-between">
-        <motion.div
-          initial={{ x: 500, opacity: 0, scale: 0.5 }}
-          animate={{ x: 0, opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5 }}
-        >
-          {session?.user ? (
-            <>
-              <div className="flex sm:w-full   ">
-                <div className="flex flex-col">
-                  <button
-                    className=" font-bold w-full sm:text-xs "
-                    onClick={(): void => toggleDropDown()}
-                  >
-                    <p className="mb:hidden sm:block sm:text-lg font-bold  text-gray-300 ">
-                      {session?.user.name}
-                    </p>
-                  </button>
-
-                  {isOpen && (
-                    <div className="relative bg-white flex flex-col md:flex-row items-center justify-center z-50     ">
-                      <div className="absolute  bg-inherit  rounded-lg px-2 top-3 ">
-                        <div className=" sm:items-center sm:justify-center border-b py-2 md:px-2 px-0 mb:hidden sm:block ">
-                          <img
-                            src={session.user.image as string}
-                            alt=""
-                            className={`rounded-full w-5 h-5 sm:w-10 sm:h-10  `}
-                          />
-                          <p className="lg:text-lg font-semibold text-gray-700 ">
-                            {session.user.email}
-                          </p>
-                        </div>
-                        <div className="text-black text-center py-2  ">
-                          <button onClick={() => signOut()}>Sign Out</button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <button onClick={() => signIn("google")}>Sign In</button>
-            </>
-          )}
-        </motion.div>
         <Link href="#contact">
           <motion.div
             initial={{ x: 500, opacity: 0, scale: 0.5 }}
@@ -115,6 +70,46 @@ const Header = ({ socials, pageInfo }: Props) => {
             </p>
           </motion.div>
         </Link>
+        <motion.div
+          initial={{ x: 500, opacity: 0, scale: 0.5 }}
+          animate={{ x: 0, opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          <>
+            <div className="flex sm:w-full   ">
+              <div className="flex flex-col">
+                <BiHelpCircle
+                  onClick={(): void => toggleDropDown()}
+                  className="w-5 h-5 text-gray-400 "
+                />
+                {isOpen && (
+                  <div className="relative bg-white flex flex-col md:flex-row items-center justify-center z-50     ">
+                    <div className="absolute  bg-inherit  rounded-lg px-2 top-3  ">
+                      {session?.user ? (
+                        <div className="text-black text-center py-2 lg:w-20  ">
+                          <button
+                            className="py-2 border-b"
+                            onClick={() => signOut()}
+                          >
+                            Sign Out
+                          </button>
+                          <p className="py-2">{session?.user?.name}</p>
+                        </div>
+                      ) : (
+                        <button
+                          className="text-black"
+                          onClick={() => signIn("google")}
+                        >
+                          Sign In
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </>
+        </motion.div>
       </div>
     </header>
   );
@@ -147,4 +142,23 @@ export async function GetServerSideProps() {
               <button onClick={() => signIn("google")}>Sign In</button>
             )}
           </div>
+*/
+/* 
+<div className="relative bg-white flex flex-col md:flex-row items-center justify-center z-50     ">
+                    <div className="absolute  bg-inherit  rounded-lg px-2 top-3 ">
+                      <div className=" sm:items-center sm:justify-center border-b py-2 md:px-2 px-0 mb:hidden sm:block ">
+                        <img
+                          src={session.user.image as string}
+                          alt=""
+                          className={`rounded-full w-5 h-5 sm:w-10 sm:h-10  `}
+                        />
+                        <p className="lg:text-lg font-semibold text-gray-700 ">
+                          {session.user.email}
+                        </p>
+                      </div>
+                      <div className="text-black text-center py-2  ">
+                        <button onClick={() => signOut()}>Sign Out</button>
+                      </div>
+                    </div>
+                  </div>
 */
