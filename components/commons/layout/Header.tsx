@@ -83,9 +83,9 @@ const Header = ({ socials, pageInfo }: Props) => {
                   className="w-5 h-5 text-gray-400 "
                 />
                 {isOpen && (
-                  <div className="relative bg-white flex flex-col md:flex-row items-center justify-center z-50     ">
-                    <div className="absolute  bg-inherit  rounded-lg px-2 top-3 md:w-20 text-center py-2  ">
-                      {session?.user ? (
+                  <div className="relative bg-white flex flex-col md:flex-row items-center justify-center z-50 ">
+                    <div className="absolute  bg-inherit  rounded-lg px-2 top-3 md:w-32 text-center py-2  container  ">
+                      {/* {session?.user ? (
                         <div className="text-black text-center py-2   ">
                           <button
                             className="py-2 border-b"
@@ -102,7 +102,8 @@ const Header = ({ socials, pageInfo }: Props) => {
                         >
                           Sign In
                         </button>
-                      )}
+                      )} */}
+                      <p className="text-black w-full">To be continued...</p>
                     </div>
                   </div>
                 )}
