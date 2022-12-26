@@ -40,7 +40,7 @@ const ContactMe = ({}: Props) => {
           </div>
           <div className="flex items-center space-x-5 justify-center">
             <MapPinIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
-            <p className="text-2xl">South Korea, Seoul</p>
+            <p className="text-2xl">South Korea, Hanam</p>
           </div>
         </div>
 
