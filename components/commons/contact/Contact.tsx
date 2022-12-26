@@ -2,6 +2,8 @@ import React from "react";
 import { PhoneIcon, MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Project } from "../../lib/typings";
+import { BiUpArrow } from "react-icons/bi";
+import Link from "next/link";
 
 type Props = {};
 
@@ -80,6 +82,11 @@ const ContactMe = ({}: Props) => {
             Submit
           </button>
         </form>
+      </div>
+      <div className="absolute right-20 bottom-20  ">
+        <Link href={"#about"}>
+          <BiUpArrow className="cursor-pointer" />
+        </Link>
       </div>
     </div>
   );
