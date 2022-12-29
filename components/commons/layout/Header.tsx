@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { SocialIcon } from "react-social-icons";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { PageInfo, Social } from "../../lib/typings";
-import { getSession, signIn, signOut, useSession } from "next-auth/react";
-import Head from "next/head";
-import { BiHelpCircle } from "react-icons/bi";
+import React, { useState } from 'react';
+import { SocialIcon } from 'react-social-icons';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { PageInfo, Social } from '../../lib/typings';
+import { getSession, signIn, signOut, useSession } from 'next-auth/react';
+import Head from 'next/head';
+import { BiHelpCircle } from 'react-icons/bi';
 
 type Props = {
   socials: Social[];
@@ -46,7 +46,7 @@ const Header = ({ socials, pageInfo }: Props) => {
             fgColor="gray"
             bgColor="transparent"
             url={social.url}
-            target={"_blank"}
+            target={'_blank'}
           />
         ))}
       </motion.div>
@@ -103,7 +103,15 @@ const Header = ({ socials, pageInfo }: Props) => {
                           Sign In
                         </button>
                       )} */}
-                      <p className="text-black w-full">To be continued...</p>
+                      <ul>
+                        <li>
+                          <Link href={'/reactquery'}>
+                            <h1 className="text-black cursor-pointer">
+                              ReactQuery
+                            </h1>
+                          </Link>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 )}
