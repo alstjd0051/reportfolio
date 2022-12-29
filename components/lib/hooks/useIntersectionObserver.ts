@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export default function useIntersectionObserver({
   root,
@@ -7,7 +7,7 @@ export default function useIntersectionObserver({
   threshold = 1.0,
   rootMargin = '0px',
   enabled = true,
-}) {
+}: any) {
   useEffect(() => {
     if (!enabled) {
       return;
