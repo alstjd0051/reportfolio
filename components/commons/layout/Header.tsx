@@ -103,12 +103,17 @@ const Header = ({ socials, pageInfo }: Props) => {
                           Sign In
                         </button>
                       )} */}
-                      <ul>
+                      <ul className="text-black">
                         <li>
                           <Link href={'/reactquery'}>
                             <h1 className="text-black cursor-pointer">
                               ReactQuery
                             </h1>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link href={'/reactquery/infinite'}>
+                            <h1 className="cursor-pointer">ReactQueryTest</h1>
                           </Link>
                         </li>
                       </ul>
@@ -129,45 +134,3 @@ export default Header;
 export async function GetServerSideProps() {
   const session = await getSession();
 }
-
-/* 
-<div className="flex flex-col  items-center justify-center  ">
-            {session?.user ? (
-              <div className="border">
-                <div className="flex relative items-center ">
-                  <img
-                    src={session.user.image as string}
-                    alt=""
-                    className="object-cover w-10 h-10 rounded-full "
-                  />
-                  <div className="flex flex-col items-center ">
-                    <p className="text-lg font-bold">{session?.user.name}</p>
-                    <p className="text-xs">{session.user.email} </p>
-                  </div>
-                  <button onClick={() => signOut()}>Sign Out</button>
-                </div>
-              </div>
-            ) : (
-              <button onClick={() => signIn("google")}>Sign In</button>
-            )}
-          </div>
-*/
-/* 
-<div className="relative bg-white flex flex-col md:flex-row items-center justify-center z-50     ">
-                    <div className="absolute  bg-inherit  rounded-lg px-2 top-3 ">
-                      <div className=" sm:items-center sm:justify-center border-b py-2 md:px-2 px-0 mb:hidden sm:block ">
-                        <img
-                          src={session.user.image as string}
-                          alt=""
-                          className={`rounded-full w-5 h-5 sm:w-10 sm:h-10  `}
-                        />
-                        <p className="lg:text-lg font-semibold text-gray-700 ">
-                          {session.user.email}
-                        </p>
-                      </div>
-                      <div className="text-black text-center py-2  ">
-                        <button onClick={() => signOut()}>Sign Out</button>
-                      </div>
-                    </div>
-                  </div>
-*/
