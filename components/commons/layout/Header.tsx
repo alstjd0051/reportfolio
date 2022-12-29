@@ -85,32 +85,7 @@ const Header = ({ socials, pageInfo }: Props) => {
                 {isOpen && (
                   <div className="relative bg-white flex flex-col md:flex-row items-center justify-center z-50 ">
                     <div className="absolute w-32  bg-inherit  rounded-lg  top-3 text-center container mb:right-[50%] md:right-0  ">
-                      {/* {session?.user ? (
-                        <div className="text-black text-center py-2   ">
-                          <button
-                            className="py-2 border-b"
-                            onClick={() => signOut()}
-                          >
-                            Sign Out
-                          </button>
-                          <p className="py-2">{session?.user?.name}</p>
-                        </div>
-                      ) : (
-                        <button
-                          className="text-black"
-                          onClick={() => signIn("google")}
-                        >
-                          Sign In
-                        </button>
-                      )} */}
                       <ul className="text-black">
-                        <li>
-                          <Link href={'/reactquery'}>
-                            <h1 className="text-black cursor-pointer">
-                              ReactQuery
-                            </h1>
-                          </Link>
-                        </li>
                         <li>
                           <Link href={'/reactquery/infinite'}>
                             <h1 className="cursor-pointer">ReactQueryTest</h1>
