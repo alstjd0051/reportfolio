@@ -23,6 +23,11 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
           <Component {...pageProps} />
         </QueryClientProvider>
       </div>
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8322923444929146"
+        crossOrigin="anonymous"
+      ></script>
     </SessionProvider>
   );
 };

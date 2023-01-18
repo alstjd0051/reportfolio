@@ -64,11 +64,6 @@ const Home = ({ pageInfo, experience, projects, skills, socials }: Props) => {
       <section id="contact" className="snap-start">
         <ContactMe />
       </section>
-      <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8322923444929146"
-        crossOrigin="anonymous"
-      ></script>
     </div>
   );
 };
