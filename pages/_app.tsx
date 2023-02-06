@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import { defaultComponents } from "@portabletext/react";
 import { NextComponentType } from "next";
 import Script from "next/script";
+import Head from "next/head";
 
 const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   Component,
@@ -28,6 +29,12 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
           crossOrigin="anonymous"
           async
         />
+        <Head>
+          <meta
+            name="google-site-verification"
+            content="gFP1kIc4wtOYUR2fxasBIZl9I5sbqmfGU7y632upcLs"
+          />
+        </Head>
         <QueryClientProvider client={queryClientRef.current}>
           <Component {...pageProps} />
         </QueryClientProvider>
