@@ -22,12 +22,9 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
     <SessionProvider>
       <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll bg-[#242424] text-white scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#6667ab] relative">
         <Script
-          style={{ display: "block", position: "absolute" }}
-          id="AdsenseId"
-          data-ad-client="ca-pub-8322923444929146"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          crossOrigin="anonymous"
           async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8322923444929146"
+          crossOrigin="anonymous"
         />
         <Head>
           <meta
