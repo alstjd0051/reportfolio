@@ -32,7 +32,7 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
         <Head>
           <meta
             name="google-site-verification"
-            content="gFP1kIc4wtOYUR2fxasBIZl9I5sbqmfGU7y632upcLs"
+            content="i1u4yIbhC41SOpFzuW4UTjueqO6j69ZxyTTNMZs-x-g"
           />
         </Head>
         <QueryClientProvider client={queryClientRef.current}>
