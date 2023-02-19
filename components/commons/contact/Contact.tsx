@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { PhoneIcon, MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Project } from "../../lib/typings";
 import { BiUpArrow } from "react-icons/bi";
 import Link from "next/link";
+import MapModal from "../modal/MapModal";
 
 type Props = {};
 
@@ -18,8 +19,14 @@ const ContactMe = ({}: Props) => {
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (formData) =>
     (window.location.href = `mailto:wsc7202@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. ${formData.message} (${formData.email})`);
+  const [isOpen, setisOpen] = useState<boolean>(false);
+  const onClickToggleModal = useCallback(() => {
+    setisOpen(!isOpen);
+  }, [isOpen]);
+
   return (
     <div className="h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly items-center mx-auto ">
+      {isOpen && <MapModal onClickToggleModal={onClickToggleModal} />}
       <h3 className="sm:hidden lg:absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl ">
         Contact
       </h3>
@@ -40,7 +47,10 @@ const ContactMe = ({}: Props) => {
             <EnvelopeIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
             <p className="text-2xl">wsc7202@gmail.com</p>
           </div>
-          <div className="flex items-center space-x-5 justify-center">
+          <div
+            onClick={onClickToggleModal}
+            className="flex items-center space-x-5 justify-center cursor-pointer"
+          >
             <MapPinIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
             <p className="text-2xl">South Korea, Hanam</p>
           </div>
