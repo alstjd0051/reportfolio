@@ -41,7 +41,12 @@ const ContactMe = ({}: Props) => {
         <div className="space-y-10">
           <div className="flex items-center space-x-5 justify-center">
             <PhoneIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
-            <p className="text-2xl">010-9567-9971</p>
+            <p
+              className="text-2xl cursor-pointer "
+              onClick={() => (document.location.href = "tel:01095679971")}
+            >
+              010-9567-9971
+            </p>
           </div>
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
