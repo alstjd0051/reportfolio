@@ -8,7 +8,9 @@ const Custom404 = () => {
   };
   return (
     <div className="w-full h-full flex items-center justify-center flex-col gap-5">
-      <Link href={"/"}>Way Back Home</Link>
+      <Link href={"/"}>
+        <a className="font-bold text-9xl">Way Back Home</a>
+      </Link>
       <button onClick={() => clickedToggle()}>Open</button>
       {!isOpen ? (
         <iframe
