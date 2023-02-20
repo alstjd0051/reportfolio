@@ -30,7 +30,7 @@ const ContactMe = ({}: Props) => {
       <h3 className="sm:hidden lg:absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl ">
         Contact
       </h3>
-      <div className="flex flex-col  lg:space-y-10">
+      <div className="flex flex-col  lg:space-y-10 gap-10">
         <h4 className=" text-4xl font-semibold text-center">
           I want your coffee chat &nbsp;
           <span className="decoration-[#F5DF4D]/50 underline">
