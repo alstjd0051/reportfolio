@@ -34,7 +34,7 @@ const Projects = ({ projects }: Props) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               src={urlFor(project.image).url()}
-              className="w-[70%] h-[355px]   "
+              className="w-[70%] h-[355px] cursor-pointer  "
               onClick={() => router.push(project.linkToBuild)}
             />
             <div className="max-w-6xl space-y-10 px-0  md:px-10">
