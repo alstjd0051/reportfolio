@@ -11,14 +11,10 @@ type Props = {
 
 const HeroUI = ({ pageInfo }: Props) => {
   const [text, count] = useTypewriter({
-    words: [
-      `Hi, My Name's `,
-      `${pageInfo?.name}`,
-      "Front-End Developer",
-      "Creator",
-    ],
+    words: [`Hi, My Name's`, `${pageInfo?.name}`, "Front-End", "Developer"],
+
     loop: true,
-    delaySpeed: 2000,
+    delaySpeed: 1000,
   });
 
   return (
@@ -34,7 +30,7 @@ const HeroUI = ({ pageInfo }: Props) => {
           {pageInfo?.role}
         </h2>
         <h1 className="text-5xl lg:text-6xl font-semibold px-10 ">
-          <span className="mr-3 ">{text}</span>
+          <span className="mr-3 sm:text-2xl md:text-6xl">{text}</span>
           <Cursor cursorColor="#F5DF4D" />
         </h1>
         <div className="pt-5 hidden lg:flex ">
