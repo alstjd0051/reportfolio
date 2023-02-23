@@ -15,11 +15,11 @@ type Props = {
 const Header = ({ socials, pageInfo }: Props) => {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [tooltip, setTooltip] = useState<boolean>(false);
 
   const toggleMenu = () => {
     return [() => signOut(), session?.user?.email];
   };
-
   const toggleDropDown = () => {
     setIsOpen(!isOpen);
   };
@@ -66,7 +66,7 @@ const Header = ({ socials, pageInfo }: Props) => {
               bgColor="transparent"
             />
             <p className="uppercase hidden md:inline-flex text-sm text-gray-400 ">
-              Get in Touch
+              Contect Me
             </p>
           </motion.div>
         </Link>
@@ -82,19 +82,15 @@ const Header = ({ socials, pageInfo }: Props) => {
                   onClick={(): void => toggleDropDown()}
                   className="w-5 h-5 text-gray-400 "
                 />
-                {/* {isOpen && (
+                {isOpen && (
                   <div className="relative bg-white flex flex-col md:flex-row items-center justify-center z-50 ">
                     <div className="absolute w-32  bg-inherit  rounded-lg  top-3 text-center container mb:right-[50%] md:right-0  ">
                       <ul className="text-black">
-                        <li>
-                          <Link href={'/reactquery/infinite'}>
-                            <h1 className="cursor-pointer">ReactQueryTest</h1>
-                          </Link>
-                        </li>
+                        <li>{/* <NewsModal /> */}</li>
                       </ul>
                     </div>
                   </div>
-                )} */}
+                )}
               </div>
             </div>
           </>

@@ -17,7 +17,7 @@ const MapModal = ({ onClickToggleModal }: Props) => {
           <h1 className="text-lg font-bold">여기에 뭘 넣어야할지 생각중...</h1>
           <div className="pt-10">
             <p>GoogleAPI</p>
-            <p>?KAKAO?...</p>
+            <p>KAKAO?...</p>
           </div>
         </div>
       </div>
