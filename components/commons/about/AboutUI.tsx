@@ -29,10 +29,10 @@ const About = ({ pageInfo }: Props) => {
       />
 
       <div className="space-y-10 px-0 md:px-10">
-        <h4 className="text-4xl font-semibold">
+        <h4 className="md:text-4xl text-2xl font-semibold">
           Hello My name&apos;s {pageInfo?.name}
           <br /> I&apos;m &nbsp;
-          <span className="underline decoration-[#F5DF4D]">
+          <span className="underline decoration-[#F5DF4D] ">
             {pageInfo.role}
           </span>
         </h4>

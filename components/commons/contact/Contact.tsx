@@ -63,7 +63,7 @@ const ContactMe = ({}: Props) => {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="md:flex flex-col space-y-2 hidden  w-fit mx-auto"
+          className="lg:flex flex-col space-y-2 hidden  w-fit mx-auto"
         >
           <div className="flex space-x-2 ">
             <input
@@ -98,7 +98,7 @@ const ContactMe = ({}: Props) => {
           </button>
         </form>
       </div>
-      <div className="absolute right-20 bottom-20  ">
+      <div className="absolute right-16 md:right-20 bottom-20  ">
         <Link href={"#about"}>
           <BiUpArrow className="cursor-pointer" />
         </Link>
