@@ -27,6 +27,7 @@ const Projects = ({ projects }: Props) => {
           <div
             key={project._id}
             className="flex h-screen w-screen flex-shrink-0 snap-center flex-col items-center justify-center space-y-5 p-20 md:p-44 "
+            onClick={() => router.push(project.linkToBuild)}
           >
             <motion.img
               initial={{ y: -300, opacity: 0 }}
@@ -34,8 +35,7 @@ const Projects = ({ projects }: Props) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               src={urlFor(project.image).url()}
-              className="w-[70%] h-[355px] cursor-pointer  "
-              onClick={() => router.push(project.linkToBuild)}
+              className="w-[70%]  sm:h-[355px] cursor-pointer  "
             />
             <div className="max-w-6xl space-y-10 px-0  md:px-10">
               <h4 className="text-center text-4xl font-semibold">

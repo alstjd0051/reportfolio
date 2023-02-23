@@ -51,7 +51,7 @@ const Home = ({ pageInfo, experience, projects, skills, socials }: Props) => {
       </section>
 
       {/* Skill */}
-      <section id="skills" className="snap-start">
+      <section id="skills" className="snap-start hidden md:block">
         <SkillUI skills={skills} />
       </section>
 

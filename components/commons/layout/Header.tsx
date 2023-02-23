@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { SocialIcon } from 'react-social-icons';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { PageInfo, Social } from '../../lib/typings';
-import { getSession, signIn, signOut, useSession } from 'next-auth/react';
-import Head from 'next/head';
-import { BiHelpCircle } from 'react-icons/bi';
+import React, { useState } from "react";
+import { SocialIcon } from "react-social-icons";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { PageInfo, Social } from "../../lib/typings";
+import { getSession, signOut, useSession } from "next-auth/react";
+import Head from "next/head";
+import { BiHelpCircle } from "react-icons/bi";
 
 type Props = {
   socials: Social[];
@@ -46,7 +46,7 @@ const Header = ({ socials, pageInfo }: Props) => {
             fgColor="gray"
             bgColor="transparent"
             url={social.url}
-            target={'_blank'}
+            target={"_blank"}
           />
         ))}
       </motion.div>

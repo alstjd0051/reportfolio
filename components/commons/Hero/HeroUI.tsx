@@ -20,6 +20,7 @@ const HeroUI = ({ pageInfo }: Props) => {
     loop: true,
     delaySpeed: 2000,
   });
+
   return (
     <div className="h-screen flex flex-col space-y-16 items-center justify-center text-center overflow-hidden ">
       <BackGroundCircles />
@@ -32,11 +33,11 @@ const HeroUI = ({ pageInfo }: Props) => {
         <h2 className="text-lg font-bold uppercase text-[#DBDBDB] pb-2 tracking-[15px]">
           {pageInfo?.role}
         </h2>
-        <h1 className="text-5xl lg:text-6xl font-semibold px-10">
+        <h1 className="text-5xl lg:text-6xl font-semibold px-10 ">
           <span className="mr-3 ">{text}</span>
           <Cursor cursorColor="#F5DF4D" />
         </h1>
-        <div className="pt-5">
+        <div className="pt-5 hidden lg:flex ">
           <Link href="#about">
             <a className="heroButton">About</a>
           </Link>
