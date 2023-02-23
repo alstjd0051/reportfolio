@@ -30,7 +30,7 @@ const ContactMe = ({}: Props) => {
       <h3 className="hidden lg:absolute top-24 uppercase tracking-[20px] text-gray-500 md:text-2xl ">
         Contact
       </h3>
-      <div className="flex flex-col sm:space-y-0 md:space-y-10 gap-10">
+      <div className="flex flex-col sm:space-y-0 md:space-y-10 ">
         <h4 className=" sm:text-4xl font-semibold text-center">
           I want your coffee chat &nbsp;
           <span className="decoration-[#F5DF4D]/50 underline">
@@ -98,7 +98,7 @@ const ContactMe = ({}: Props) => {
           </button>
         </form>
       </div>
-      <div className="absolute right-16 md:right-20 bottom-20  ">
+      <div className="absolute right-16 md:right-20 bottom-28  ">
         <Link href={"#about"}>
           <BiUpArrow className="cursor-pointer" />
         </Link>
