@@ -16,8 +16,8 @@ type Inputs = {
 const FormModal = ({ onClickFormModal }: Props) => {
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (formData) =>
-    (window.location.href = `mailto:wsc7202@gmail.com?subject=${formData.subject}&body=안녕하새요 송민성입니다. 하실말씀을 적어주세요.
-     ${formData.name}. ${formData.message} (${formData.email})`);
+    (window.location.href = `mailto:wsc7202@gmail.com?subject=${formData.subject}&body=
+     ${formData.name}(${formData.email})님 안녕하세요. ${formData.message}이시군요 의견을 보내주셔서 감사합니다. `);
 
   return (
     <div className="absolute w-5/6 h-3/4 rounded-xl z-50 flex flex-col   bg-[rgba(0,0,0,0.9)] p-3 m-auto space-y-10 ">
