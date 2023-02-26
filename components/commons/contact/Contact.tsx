@@ -43,7 +43,7 @@ const ContactMe = ({}: Props) => {
       </h3>
       <div className="flex flex-col sm:space-y-0 md:space-y-10 ">
         <h4 className=" sm:text-4xl font-semibold text-center">
-          I'll look forward to hearing &nbsp;
+          I&apos;ll look forward to hearing &nbsp;
           <span className="decoration-[#F5DF4D]/50 underline">from you</span>
         </h4>
 
