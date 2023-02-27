@@ -21,7 +21,7 @@ const HeroUI = ({ pageInfo }: Props) => {
     <div className="h-screen flex flex-col space-y-16 items-center justify-center text-center overflow-hidden ">
       <BackGroundCircles />
       <img
-        className="relative rounded-full h-52 w-52 mx-auto object-cover"
+        className="relative rounded-full h-60 w-60  mx-auto object-fill"
         src={urlFor(pageInfo?.heroImage).url()}
         alt=""
       />
