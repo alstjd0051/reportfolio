@@ -27,7 +27,7 @@ const Header = ({ socials, pageInfo }: Props) => {
   //   if (e.currentTarget === e.target) setIsOpen(false);
   // };
   return (
-    <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
+    <header className="sticky top-0 py-7 px-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
       <Head>
         <title key="title">{pageInfo.name} - PortFolio</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
