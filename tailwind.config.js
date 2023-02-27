@@ -5,7 +5,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Mochiy: ["Mochiy Pop One", "sans-serif"],
+      },
+    },
     screens: {
       mb: "320px",
       // => @media (min-width: 320px) { ... }
