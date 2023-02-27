@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap");
+}
+
 @layer components {
   .heroButton {
     @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-sm tracking-widest text-gray-500 transition-all hover:border-[#F5DF4D]/40 hover:text-[#F5DF4D]/40 cursor-pointer;
