@@ -30,8 +30,12 @@ const Weather = () => {
 
   return (
     <div className="pl-5 flex gap-3">
-      <p>{city}</p>
-      <p>{weather}</p>
+      {location && (
+        <>
+          <p>{city}</p>
+          <p>{weather}</p>
+        </>
+      )}
     </div>
   );
 };
