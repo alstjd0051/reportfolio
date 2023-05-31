@@ -19,24 +19,22 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   }
 
   return (
-    <SessionProvider>
-      <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll bg-[#242424] text-white scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#6667ab] relative">
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8322923444929146"
-          crossOrigin="anonymous"
+    <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll bg-[#242424] text-white scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#6667ab] relative">
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8322923444929146"
+        crossOrigin="anonymous"
+      />
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="i1u4yIbhC41SOpFzuW4UTjueqO6j69ZxyTTNMZs-x-g"
         />
-        <Head>
-          <meta
-            name="google-site-verification"
-            content="i1u4yIbhC41SOpFzuW4UTjueqO6j69ZxyTTNMZs-x-g"
-          />
-        </Head>
-        <QueryClientProvider client={queryClientRef.current}>
-          <Component {...pageProps} />
-        </QueryClientProvider>
-      </div>
-    </SessionProvider>
+      </Head>
+      <QueryClientProvider client={queryClientRef.current}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
+    </div>
   );
 };
 
