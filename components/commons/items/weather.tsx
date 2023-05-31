@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useGeoLocation } from "../../lib/hooks/useGeoLocation";
 import axios from "axios";
+import Image from "next/image";
 
-const geolocationOption = {
-  enableHightAccuracy: true,
-  timeout: 1000 * 10,
-  maximumAge: 1000 * 3600 * 24,
-};
+interface WeatherProps {
+  location: string | undefined | any;
+}
 
-const Weather = () => {
-  const { location, error } = useGeoLocation(geolocationOption);
+const Weather = ({ location }: WeatherProps) => {
   const weatherAPI = process.env.NEXT_PUBLIC_WEATHER_API!;
 
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
+  const [icon, setIcon] = useState();
 
   useEffect(() => {
     axios
@@ -25,18 +23,25 @@ const Weather = () => {
         setCity(data.name);
         const NowWeather = data.weather;
         setWeather(NowWeather[0].main);
+        setIcon(data.weather[0].icon);
       });
   }, []);
 
   return (
-    <div className="pl-5 flex gap-3">
-      {location && (
-        <>
-          <p>{city}</p>
-          <p>{weather}</p>
-        </>
-      )}
-    </div>
+    <>
+      <div className="pl-5 relative flex items-center flex-col ">
+        <p>{city}</p>
+        <div className="absolute  opacity-50 top-0">
+          <Image
+            src={`http://openweathermap.org/img/wn/${icon}.png`}
+            alt="Icon"
+            width={50}
+            height={50}
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </>
   );
 };
 

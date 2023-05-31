@@ -7,14 +7,22 @@ import Head from "next/head";
 import { BiHelpCircle } from "react-icons/bi";
 import { useRouter } from "next/router";
 import Weather from "../items/weather";
+import { useGeoLocation } from "../../lib/hooks/useGeoLocation";
 
 type Props = {
   socials: Social[];
   pageInfo: PageInfo;
 };
 
+const geolocationOption = {
+  enableHightAccuracy: true,
+  timeout: 1000 * 10,
+  maximumAge: 1000 * 3600 * 24,
+};
+
 const Header = ({ socials, pageInfo }: Props) => {
   const router = useRouter();
+  const { location, error } = useGeoLocation(geolocationOption);
 
   return (
     <header className="sticky top-0 py-7 px-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
@@ -39,7 +47,7 @@ const Header = ({ socials, pageInfo }: Props) => {
             target={"_blank"}
           />
         ))}
-        <Weather />
+        {location && <Weather location={location} />}
       </motion.div>
       <div className="flex items-center justify-between">
         <Link href="#contact">
