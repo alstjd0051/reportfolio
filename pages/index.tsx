@@ -21,6 +21,8 @@ import fetchPageInfo from "../components/utils/fetchPageInfo";
 import fetchProjects from "../components/utils/fetchProjects";
 import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
+import { Suspense } from "react";
+import Loading from "../components/loading";
 
 type Props = {
   pageInfo: PageInfo;
@@ -34,36 +36,37 @@ const Home = ({ pageInfo, experience, projects, skills, socials }: Props) => {
   return (
     <div className="">
       <Header pageInfo={pageInfo} socials={socials} />
+      <Suspense fallback={<Loading />}>
+        {/* Hero */}
+        <section id="hero" className="snap-start">
+          <HeroUI pageInfo={pageInfo} />
+        </section>
 
-      {/* Hero */}
-      <section id="hero" className="snap-start">
-        <HeroUI pageInfo={pageInfo} />
-      </section>
+        {/* About */}
+        <section id="about" className="snap-center">
+          <About pageInfo={pageInfo} />
+        </section>
 
-      {/* About */}
-      <section id="about" className="snap-center">
-        <About pageInfo={pageInfo} />
-      </section>
+        {/* Experience */}
+        <section id="experience" className="snap-center">
+          <WorkExperience experiences={experience} />
+        </section>
 
-      {/* Experience */}
-      <section id="experience" className="snap-center">
-        <WorkExperience experiences={experience} />
-      </section>
+        {/* Skill */}
+        <section id="skills" className="snap-start hidden md:block">
+          <SkillUI skills={skills} />
+        </section>
 
-      {/* Skill */}
-      <section id="skills" className="snap-start hidden md:block">
-        <SkillUI skills={skills} />
-      </section>
+        {/* Projects */}
+        <section id="projects" className="snap-center">
+          <Projects projects={projects} />
+        </section>
 
-      {/* Projects */}
-      <section id="projects" className="snap-center">
-        <Projects projects={projects} />
-      </section>
-
-      {/* Contact Me */}
-      <section id="contact" className="snap-start">
-        <ContactMe />
-      </section>
+        {/* Contact Me */}
+        <section id="contact" className="snap-start">
+          <ContactMe />
+        </section>
+      </Suspense>
     </div>
   );
 };

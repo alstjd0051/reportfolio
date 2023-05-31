@@ -47,7 +47,7 @@ const ContactMe = ({}: Props) => {
           <span className="decoration-[#F5DF4D]/50 underline">for you</span>
         </h4>
 
-        <div className="space-y-10">
+        <div className="space-y-10 pt-10">
           <div
             onClick={() => (document.location.href = "tel:01095679971")}
             className="flex items-center space-x-5 justify-center"
