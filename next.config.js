@@ -12,7 +12,7 @@ const nextConfig = {
 
   swcMinify: true,
   images: {
-    domains: ["cdn.sanity.io"],
+    domains: ["cdn.sanity.io", "openweathermap.org"],
   },
   trailingSlash: false,
 };
