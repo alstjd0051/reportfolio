@@ -3,9 +3,10 @@ import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { PageInfo, Social } from "../../lib/typings";
-import { getSession, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import { BiHelpCircle } from "react-icons/bi";
+import { useRouter } from "next/router";
+import Weather from "../items/weather";
 
 type Props = {
   socials: Social[];
@@ -13,23 +14,12 @@ type Props = {
 };
 
 const Header = ({ socials, pageInfo }: Props) => {
-  const { data: session } = useSession();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [tooltip, setTooltip] = useState<boolean>(false);
+  const router = useRouter();
 
-  const toggleMenu = () => {
-    return [() => signOut(), session?.user?.email];
-  };
-  const toggleDropDown = () => {
-    setIsOpen(!isOpen);
-  };
-  // const dismissHandler = (e: React.FocusEvent<HTMLButtonElement>): void => {
-  //   if (e.currentTarget === e.target) setIsOpen(false);
-  // };
   return (
     <header className="sticky top-0 py-7 px-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
       <Head>
-        <title key="title">{pageInfo.name} - PortFolio</title>
+        <title key="title">{pageInfo?.name} - PortFolio</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </Head>
@@ -40,7 +30,7 @@ const Header = ({ socials, pageInfo }: Props) => {
         className="flex flex-row items-center"
       >
         {/* Social Icons */}
-        {socials.map((social) => (
+        {socials?.map((social) => (
           <SocialIcon
             key={social._id}
             fgColor="gray"
@@ -49,6 +39,7 @@ const Header = ({ socials, pageInfo }: Props) => {
             target={"_blank"}
           />
         ))}
+        <Weather />
       </motion.div>
       <div className="flex items-center justify-between">
         <Link href="#contact">
@@ -79,18 +70,9 @@ const Header = ({ socials, pageInfo }: Props) => {
             <div className="flex sm:w-full   ">
               <div className="flex flex-col">
                 <BiHelpCircle
-                  onClick={(): void => toggleDropDown()}
-                  className="w-5 h-5 text-gray-400 "
+                  onClick={() => router.push("/readDoc")}
+                  className="w-5 h-5 text-gray-400 cursor-pointer "
                 />
-                {isOpen && (
-                  <div className="relative bg-white flex flex-col md:flex-row items-center justify-center z-50 ">
-                    <div className="absolute w-32  bg-inherit  rounded-lg  top-3 text-center container mb:right-[50%] md:right-0  ">
-                      <ul className="text-black">
-                        <li>{/* <NewsModal /> */}</li>
-                      </ul>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </>
@@ -101,7 +83,3 @@ const Header = ({ socials, pageInfo }: Props) => {
 };
 
 export default Header;
-
-export async function GetServerSideProps() {
-  const session = await getSession();
-}
