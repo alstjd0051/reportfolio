@@ -38,15 +38,22 @@ const Header = ({ socials, pageInfo, contact }: Props) => {
         initial={{ x: -500, opacity: 0, scale: 0.5 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
-        className="flex flex-row items-center gap-3"
+        className="flex flex-row items-center"
       >
         {/* Social Icons */}
         {socials?.map((social) => (
-          <>
+          <div className="flex items-center gap-5">
             <AiFillHome
               className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
               onClick={() => router.push("/")}
             />
+            <Link href={"https://tylerblog.store/"} target="_blank">
+              <SiBloglovin
+                key={social._id}
+                target={"_self"}
+                className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
+              />
+            </Link>
             <SocialIcon
               key={social._id}
               fgColor="gray"
@@ -55,15 +62,9 @@ const Header = ({ socials, pageInfo, contact }: Props) => {
               target={"_blank"}
               className="hover:fill-gray-300"
             />
-            {/* <SiBloglovin
-              key={social._id}
-              onClick={() => router.push("/blog")}
-              target={"_self"}
-              className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
-            /> */}
-          </>
+            {location && <Weather location={location} />}
+          </div>
         ))}
-        {location && <Weather location={location} />}
       </motion.div>
       <div className="flex items-center justify-between">
         {contact && (

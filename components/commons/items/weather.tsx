@@ -29,9 +29,9 @@ const Weather = ({ location }: WeatherProps) => {
 
   return (
     <>
-      <div className="pl-5 relative flex items-center flex-col ">
+      <div className="relative flex items-center ">
         <p>{city}</p>
-        <div className="absolute  opacity-50 top-0">
+        <div className="absolute  opacity-50 bottom-0">
           <Image
             src={`http://openweathermap.org/img/wn/${icon}.png`}
             alt="Icon"
