@@ -8,10 +8,13 @@ import { BiHelpCircle } from "react-icons/bi";
 import { useRouter } from "next/router";
 import Weather from "../items/weather";
 import { useGeoLocation } from "../../lib/hooks/useGeoLocation";
+import { SiBloglovin } from "react-icons/si";
+import { AiFillHome } from "react-icons/ai";
 
 type Props = {
   socials: Social[];
   pageInfo: PageInfo;
+  contact?: boolean;
 };
 
 const geolocationOption = {
@@ -20,7 +23,7 @@ const geolocationOption = {
   maximumAge: 1000 * 3600 * 24,
 };
 
-const Header = ({ socials, pageInfo }: Props) => {
+const Header = ({ socials, pageInfo, contact }: Props) => {
   const router = useRouter();
   const { location, error } = useGeoLocation(geolocationOption);
 
@@ -35,41 +38,56 @@ const Header = ({ socials, pageInfo }: Props) => {
         initial={{ x: -500, opacity: 0, scale: 0.5 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
-        className="flex flex-row items-center"
+        className="flex flex-row items-center gap-3"
       >
         {/* Social Icons */}
         {socials?.map((social) => (
-          <SocialIcon
-            key={social._id}
-            fgColor="gray"
-            bgColor="transparent"
-            url={social.url}
-            target={"_blank"}
-          />
+          <>
+            <AiFillHome
+              className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
+              onClick={() => router.push("/")}
+            />
+            <SocialIcon
+              key={social._id}
+              fgColor="gray"
+              bgColor="transparent"
+              url={social.url}
+              target={"_blank"}
+              className="hover:fill-gray-300"
+            />
+            {/* <SiBloglovin
+              key={social._id}
+              onClick={() => router.push("/blog")}
+              target={"_self"}
+              className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
+            /> */}
+          </>
         ))}
         {location && <Weather location={location} />}
       </motion.div>
       <div className="flex items-center justify-between">
-        <Link href="#contact">
-          <motion.div
-            initial={{ x: 500, opacity: 0, scale: 0.5 }}
-            animate={{ x: 0, opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5 }}
-            className="flex flex-row items-center text-gray-300 cursor-pointer mx-2 "
-          >
-            {/* Nav */}
-            <SocialIcon
-              className="cursor-pointer"
-              network="email"
-              fgColor="gray"
-              bgColor="transparent"
-            />
-            <p className="uppercase hidden md:inline-flex text-sm text-gray-400 ">
-              Contect Me
-            </p>
-          </motion.div>
-        </Link>
-        <motion.div
+        {contact && (
+          <Link href="#contact">
+            <motion.div
+              initial={{ x: 500, opacity: 0, scale: 0.5 }}
+              animate={{ x: 0, opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5 }}
+              className="flex flex-row items-center text-gray-300 cursor-pointer mx-2 "
+            >
+              {/* Nav */}
+              <SocialIcon
+                className="cursor-pointer"
+                network="email"
+                fgColor="gray"
+                bgColor="transparent"
+              />
+              <p className="uppercase hidden md:inline-flex text-sm text-gray-400 ">
+                Contect Me
+              </p>
+            </motion.div>
+          </Link>
+        )}
+        {/* <motion.div
           initial={{ x: 500, opacity: 0, scale: 0.5 }}
           animate={{ x: 0, opacity: 1, scale: 1 }}
           transition={{ duration: 1.5 }}
@@ -84,7 +102,7 @@ const Header = ({ socials, pageInfo }: Props) => {
               </div>
             </div>
           </>
-        </motion.div>
+        </motion.div> */}
       </div>
     </header>
   );
