@@ -1,7 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-import { ArrowUpIcon } from "@heroicons/react/24/solid";
-import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
-import Head from "next/head";
+import type { GetStaticProps } from "next";
 import About from "../components/commons/about/AboutUI";
 import ContactMe from "../components/commons/contact/Contact";
 import WorkExperience from "../components/commons/experience/WorkExperience";
@@ -21,7 +18,6 @@ import fetchPageInfo from "../components/utils/fetchPageInfo";
 import fetchProjects from "../components/utils/fetchProjects";
 import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
-import { Suspense } from "react";
 import Loading from "../components/loading";
 
 type Props = {
@@ -35,8 +31,7 @@ type Props = {
 const Home = ({ pageInfo, experience, projects, skills, socials }: Props) => {
   return (
     <div className="">
-      <Header pageInfo={pageInfo} socials={socials} />
-      <Suspense fallback={<Loading />}>
+      <Header pageInfo={pageInfo} contact socials={socials} />
         {/* Hero */}
         <section id="hero" className="snap-start">
           <HeroUI pageInfo={pageInfo} />
@@ -66,7 +61,6 @@ const Home = ({ pageInfo, experience, projects, skills, socials }: Props) => {
         <section id="contact" className="snap-start">
           <ContactMe />
         </section>
-      </Suspense>
     </div>
   );
 };

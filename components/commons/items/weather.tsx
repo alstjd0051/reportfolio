@@ -25,7 +25,7 @@ const Weather = ({ location }: WeatherProps) => {
         setWeather(NowWeather[0].main);
         setIcon(data.weather[0].icon);
       });
-  }, []);
+  }, [location, weatherAPI]);
 
   return (
     <>

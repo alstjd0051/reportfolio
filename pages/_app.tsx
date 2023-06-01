@@ -38,16 +38,4 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   );
 };
 
-MyApp.getInitialProps = async ({
-  Component,
-  ctx,
-}: AppContext): Promise<AppInitialProps> => {
-  let pageProps = {};
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
-  }
-
-  return { pageProps };
-};
-
 export default MyApp;
