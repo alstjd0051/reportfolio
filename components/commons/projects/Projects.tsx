@@ -49,7 +49,7 @@ const Projects = ({ projects }: Props) => {
                 {project.summary}
               </p>
               <div className="flex flex-row">
-                {project.technologies.map((index) => (
+                {project.technologies?.map((index) => (
                   <div className="space-x-2 m-2 " key={index._id}>
                     <img
                       className="w-10 h-10 rounded-full"
