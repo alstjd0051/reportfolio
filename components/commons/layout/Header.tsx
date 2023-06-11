@@ -26,6 +26,7 @@ const geolocationOption = {
 const Header = ({ socials, pageInfo, contact }: Props) => {
   const router = useRouter();
   const { location, error } = useGeoLocation(geolocationOption);
+  const [hover, setHover] = useState<boolean>(false);
 
   return (
     <header className="sticky top-0 py-7 px-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
@@ -64,14 +65,18 @@ const Header = ({ socials, pageInfo, contact }: Props) => {
           </div>
         ))}
       </motion.div>
-      <div className="flex items-center justify-between">
+      <div
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        className="flex items-center justify-between hover:delay-500 transition  "
+      >
         {contact && (
           <Link href="#contact">
             <motion.div
               initial={{ x: 500, opacity: 0, scale: 0.5 }}
               animate={{ x: 0, opacity: 1, scale: 1 }}
               transition={{ duration: 1.5 }}
-              className="flex flex-row items-center text-gray-300 cursor-pointer mx-2 "
+              className="flex  items-center text-gray-300 cursor-pointer mx-2 duration-700 "
             >
               {/* Nav */}
               <SocialIcon
@@ -80,9 +85,7 @@ const Header = ({ socials, pageInfo, contact }: Props) => {
                 fgColor="gray"
                 bgColor="transparent"
               />
-              <p className="uppercase hidden md:inline-flex text-sm text-gray-400 ">
-                Contect Me
-              </p>
+              {hover && <p className={`text-sm text-gray-400 `}>Contect Me</p>}
             </motion.div>
           </Link>
         )}
