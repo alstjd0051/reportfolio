@@ -47,7 +47,7 @@ const Header = ({ socials, pageInfo, contact }: Props) => {
               className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
               onClick={() => router.push("/")}
             />
-            <Link href={"/content"} target="">
+            <Link href={"https://tylerblog.store/"} target="">
               <SiBloglovin
                 target={"_self"}
                 className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
