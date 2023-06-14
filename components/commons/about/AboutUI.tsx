@@ -43,11 +43,10 @@ const About = ({ pageInfo, resume }: Props) => {
           {resume.map((resume) => (
             <div key={resume._id} className="flex flex-col gap-10 p-2">
               <div className="flex gap-2 items-center">
-                <Link
-                  className="hover-underline-animation  "
-                  href={resume.url!}
-                >
-                  <h1 className="font-extrabold text-lg  ">{resume.title}</h1>
+                <Link href={resume.url!}>
+                  <h1 className="font-extrabold hover-underline-animation text-lg cursor-pointer  ">
+                    {resume.title}
+                  </h1>
                 </Link>
                 <div className="flex items-center gap-3 ">
                   <p className="text-sm font-extralight">{resume.subTitle}</p>
