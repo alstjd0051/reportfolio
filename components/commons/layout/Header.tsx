@@ -44,7 +44,7 @@ const Header = ({ socials, pageInfo, contact }: Props) => {
         {/* Social Icons */}
         {socials?.map((social) => (
           <div key={social._id} className="flex items-center gap-5">
-            <AiFillHome
+            {/* <AiFillHome
               className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
               onClick={() => router.push("/")}
             />
@@ -53,7 +53,7 @@ const Header = ({ socials, pageInfo, contact }: Props) => {
                 target={"_self"}
                 className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
               />
-            </Link>
+            </Link> */}
             <SocialIcon
               fgColor="gray"
               bgColor="transparent"

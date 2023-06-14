@@ -8,27 +8,14 @@ import FormModal from "../modal/FormModal";
 type Props = {};
 
 const ContactMe = ({}: Props) => {
-  const [isOpen, setisOpen] = useState<boolean>(false);
   const [OpenForm, setOpenForm] = useState<boolean>(false);
 
-  const onClickToggleModal = () => {
-    setisOpen(!isOpen);
-  };
   const onClickFormModal = () => {
     setOpenForm(!OpenForm);
   };
 
   return (
     <div className="h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly items-center mx-auto  ">
-      {isOpen && (
-        <>
-          <div
-            className="w-full h-full absolute"
-            onClick={onClickToggleModal}
-          ></div>
-          <MapModal onClickToggleModal={onClickToggleModal} />
-        </>
-      )}
       {OpenForm && (
         <>
           <div
@@ -61,13 +48,6 @@ const ContactMe = ({}: Props) => {
           >
             <EnvelopeIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
             <p className="text-2xl cursor-pointer">wsc7202@gmail.com</p>
-          </div>
-          <div
-            onClick={onClickToggleModal}
-            className="flex items-center space-x-5 justify-center cursor-pointer"
-          >
-            <MapPinIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
-            <p className="text-2xl">South Korea, Hanam</p>
           </div>
         </div>
       </div>
