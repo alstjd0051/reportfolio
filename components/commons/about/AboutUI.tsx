@@ -6,7 +6,7 @@ import Link from "next/link";
 
 type Props = {
   pageInfo: PageInfo;
-  resume: Resume[];
+  resume?: Resume[];
 };
 
 const About = ({ pageInfo, resume }: Props) => {
@@ -40,7 +40,7 @@ const About = ({ pageInfo, resume }: Props) => {
         </h4>
 
         <div className="flex flex-col items-start gap-0">
-          {resume.map((resume) => (
+          {resume?.map((resume) => (
             <div key={resume._id} className="flex flex-col gap-10 p-2">
               <div className="flex gap-2 items-center">
                 <Link href={resume.url!}>
