@@ -15,14 +15,11 @@
     @apply outline-none bg-white rounded-sm border-b px-20 py-8 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-[#F5DF4D]/40 focus:text-[#000];
   }
 
-  a {
-    @apply transition ease-in-out duration-200;
-  }
-
   .hover-underline-animation {
     display: inline-block;
     position: relative;
     color: #fff;
+    cursor: pointer;
   }
 
   .hover-underline-animation::after {
