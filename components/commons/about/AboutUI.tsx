@@ -1,13 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { PageInfo } from "../../lib/typings";
+import { PageInfo, Resume } from "../../lib/typings";
 import { urlFor } from "../../../sanity";
+import Link from "next/link";
 
 type Props = {
   pageInfo: PageInfo;
+  resume: Resume[];
 };
 
-const About = ({ pageInfo }: Props) => {
+const About = ({ pageInfo, resume }: Props) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -37,10 +39,39 @@ const About = ({ pageInfo }: Props) => {
           </span>
         </h4>
 
-        <p className="text-sm">{pageInfo?.backgroundInformation}</p>
+        <div className="flex flex-col items-start gap-0">
+          {resume.map((resume) => (
+            <div key={resume._id} className="flex flex-col gap-10 p-2">
+              <div className="flex gap-2 items-center">
+                <Link
+                  className="hover-underline-animation  "
+                  href={resume.url!}
+                >
+                  <h1 className="font-extrabold text-lg  ">{resume.title}</h1>
+                </Link>
+                <div className="flex items-center gap-3 ">
+                  <p className="text-sm font-extralight">{resume.subTitle}</p>
+                  <div className="flex items-center text-red-300">
+                    <p>{resume.dateStarted} ~ </p>
+                    <p>{resume.dateEnded}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </motion.div>
   );
 };
 
 export default About;
+/* 
+
+KH Information Education Center(Full stack education) - 2020.11~2021.06
+
+
+CodeCmap(Front-End) - 2021.12~2022.03
+
+
+*/
