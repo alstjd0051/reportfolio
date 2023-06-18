@@ -13,11 +13,6 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   Component,
   pageProps,
 }) => {
-  const queryClientRef = useRef<QueryClient>();
-  if (!queryClientRef.current) {
-    queryClientRef.current = new QueryClient();
-  }
-
   return (
     <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll bg-[#242424] text-white scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#6667ab] relative">
       <Script
@@ -75,9 +70,9 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
           content="i1u4yIbhC41SOpFzuW4UTjueqO6j69ZxyTTNMZs-x-g"
         />
       </Head>
-      <QueryClientProvider client={queryClientRef.current}>
+      <>
         <Component {...pageProps} />
-      </QueryClientProvider>
+      </>
     </div>
   );
 };

@@ -65,12 +65,3 @@ const About = ({ pageInfo, resume }: Props) => {
 };
 
 export default About;
-/* 
-
-KH Information Education Center(Full stack education) - 2020.11~2021.06
-
-
-CodeCmap(Front-End) - 2021.12~2022.03
-
-
-*/
