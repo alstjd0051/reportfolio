@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { PageInfo, Resume } from "../../lib/typings";
 import { urlFor } from "../../../sanity";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 type Props = {
   pageInfo: PageInfo;
@@ -10,6 +11,7 @@ type Props = {
 };
 
 const About = ({ pageInfo, resume }: Props) => {
+  const router = useRouter();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -43,11 +45,11 @@ const About = ({ pageInfo, resume }: Props) => {
           {resume?.map((resume) => (
             <div key={resume._id} className="flex flex-col gap-10 p-2">
               <div className="flex gap-2 items-center">
-                <Link href={resume.url!}>
+                <div onClick={() => router.push(resume.url!)}>
                   <h1 className="font-extrabold hover-underline-animation text-lg cursor-pointer  ">
                     {resume.title}
                   </h1>
-                </Link>
+                </div>
                 <div className="flex items-center gap-3 ">
                   <p className="text-sm font-extralight">{resume.subTitle}</p>
                   <div className="flex items-center text-red-300">
