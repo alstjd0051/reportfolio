@@ -14,7 +14,7 @@ const nextConfig = {
   images: {
     domains: ["cdn.sanity.io", "openweathermap.org"],
   },
-  trailingSlash: false,
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
