@@ -1,12 +1,10 @@
 import axios from "axios";
+import { Resume } from "../lib/typings";
 
 export default async function fetchResume() {
-  try {
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/getResume`
-    );
-    return data.resume;
-  } catch (error) {
-    console.log(error);
-  }
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getResume`);
+  const data = await res.json();
+  const resume: Resume[] = data.resume;
+
+  return resume;
 }

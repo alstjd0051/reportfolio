@@ -17,11 +17,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  try {
-    const resume: Resume[] = await sanityClient.fetch(query);
+  const resume: Resume[] = await sanityClient.fetch(query);
 
-    res.status(200).json({ resume });
-  } catch (error) {
-    res.end();
-  }
+  res.status(200).json({ resume });
 }
