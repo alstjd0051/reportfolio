@@ -7,10 +7,9 @@ import { useRouter } from "next/router";
 
 type Props = {
   pageInfo: PageInfo;
-  resume?: Resume[];
 };
 
-const About = ({ pageInfo, resume }: Props) => {
+const About = ({ pageInfo }: Props) => {
   const router = useRouter();
 
   return (
@@ -41,41 +40,6 @@ const About = ({ pageInfo, resume }: Props) => {
             {pageInfo.role}
           </span>
         </h4>
-
-        <div className="flex flex-col items-start gap-0">
-          <>
-            {resume?.map((resume) => (
-              <>
-                <div
-                  key={resume?._id}
-                  className="flex flex-1 flex-col gap-10 p-2"
-                >
-                  <div className="flex gap-2 items-center">
-                    <div onClick={() => router.push(resume?.url!)}>
-                      <h1 className="font-extrabold hover-underline-animation text-lg cursor-pointer  ">
-                        {resume?.title}
-                      </h1>
-                    </div>
-                    <div className="flex items-center gap-3 ">
-                      <p className="text-sm font-extralight">
-                        {resume?.subTitle}
-                      </p>
-                      <div className="flex items-center sm:text-sm md:text-base 2xl:text-lg text-red-300 basis-3/4">
-                        <p>
-                          {new Date(resume?.dateStarted)?.toLocaleDateString()}{" "}
-                          ~{" "}
-                        </p>
-                        <p>
-                          {new Date(resume?.dateEnded)?.toLocaleDateString()}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </>
-            ))}
-          </>
-        </div>
       </div>
     </motion.div>
   );

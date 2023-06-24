@@ -32,14 +32,7 @@ type Props = {
   resume?: Resume[];
 };
 
-const Home = ({
-  pageInfo,
-  experience,
-  projects,
-  skills,
-  socials,
-  resume,
-}: Props) => {
+const Home = ({ pageInfo, experience, projects, skills, socials }: Props) => {
   return (
     <div className="">
       <Header pageInfo={pageInfo} contact socials={socials} />
@@ -50,7 +43,7 @@ const Home = ({
 
       {/* About */}
       <section id="about" className="snap-center">
-        <About resume={resume} pageInfo={pageInfo} />
+        <About pageInfo={pageInfo} />
       </section>
 
       {/* Experience */}

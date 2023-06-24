@@ -6,7 +6,6 @@ import { PageInfo, Social } from "../../lib/typings";
 import Head from "next/head";
 import { BiHelpCircle } from "react-icons/bi";
 import { useRouter } from "next/router";
-import Weather from "../items/weather";
 import { useGeoLocation } from "../../lib/hooks/useGeoLocation";
 import { SiBloglovin } from "react-icons/si";
 import { AiFillHome } from "react-icons/ai";
@@ -25,7 +24,6 @@ const geolocationOption = {
 
 const Header = ({ socials, pageInfo, contact }: Props) => {
   const router = useRouter();
-  const { location, error } = useGeoLocation(geolocationOption);
 
   return (
     <header className="sticky top-0 py-7 px-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
@@ -60,7 +58,6 @@ const Header = ({ socials, pageInfo, contact }: Props) => {
               target={"_blank"}
               className="hover:fill-gray-300"
             />
-            {location && <Weather location={location} />}
           </div>
         ))}
       </motion.div>
