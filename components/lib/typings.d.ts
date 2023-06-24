@@ -68,9 +68,9 @@ export interface Social extends SanityBody {
 }
 export interface Resume extends SanityBody {
   _type: "resume";
-  title: string;
-  subTitle?: string;
-  url?: string;
-  dateStarted?: string;
-  dateEnded?: string;
+  title: any;
+  subTitle?: any;
+  url?: any;
+  dateStarted?: any;
+  dateEnded?: any;
 }
