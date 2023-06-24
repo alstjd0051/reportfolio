@@ -29,10 +29,17 @@ type Props = {
   skills: Skill[];
   projects: Project[];
   socials: Social[];
-  resume?: Resume[];
+  resume: Resume[];
 };
 
-const Home = ({ pageInfo, experience, projects, skills, socials }: Props) => {
+const Home = ({
+  pageInfo,
+  experience,
+  projects,
+  skills,
+  socials,
+  resume,
+}: Props) => {
   return (
     <div className="">
       <Header pageInfo={pageInfo} contact socials={socials} />
@@ -43,7 +50,7 @@ const Home = ({ pageInfo, experience, projects, skills, socials }: Props) => {
 
       {/* About */}
       <section id="about" className="snap-center">
-        <About pageInfo={pageInfo} />
+        <About pageInfo={pageInfo} resume={resume} />
       </section>
 
       {/* Experience */}
@@ -77,6 +84,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const skills = await fetchSkills();
   const projects = await fetchProjects();
   const socials = await fetchSocials();
+  const resume = await fetchResume();
 
   return {
     props: {
@@ -85,6 +93,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       skills,
       projects,
       socials,
+      resume,
     },
     revalidate: 1000,
   };

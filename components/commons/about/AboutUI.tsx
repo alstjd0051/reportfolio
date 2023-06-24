@@ -7,10 +7,12 @@ import { useRouter } from "next/router";
 
 type Props = {
   pageInfo: PageInfo;
+  resume: Resume[];
 };
 
-const About = ({ pageInfo }: Props) => {
+const About = ({ pageInfo, resume }: Props) => {
   const router = useRouter();
+  console.log(resume);
 
   return (
     <motion.div
@@ -36,10 +38,29 @@ const About = ({ pageInfo }: Props) => {
         <h4 className="md:text-4xl text-2xl font-semibold">
           Hello My name&apos;s {pageInfo?.name}
           <br /> I&apos;m &nbsp;
-          <span className="underline decoration-[#F5DF4D] ">
+          <span className="underline  decoration-[#F5DF4D] underline-offset-[15px] ">
             {pageInfo.role}
           </span>
         </h4>
+        <div className="flex flex-col gap-3">
+          {resume.map((item) => (
+            <div key={item._id} className="flex-1   ">
+              <div className="flex items-center gap-5  ">
+                <Link className="basis-1/3 " href={item.url ? item.url : ""}>
+                  <h1 className="hover-underline-animation hover:text-yellow-300 ">
+                    {item.title}
+                  </h1>
+                </Link>
+                <div>
+                  <p className="basis-1/4">{item.subTitle}</p>
+                </div>
+                <p className="text-red-300">
+                  {item.dateStarted} - {item.dateEnded}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </motion.div>
   );
