@@ -9,27 +9,24 @@ import { useRouter } from "next/router";
 import { useGeoLocation } from "../../lib/hooks/useGeoLocation";
 import { SiBloglovin } from "react-icons/si";
 import { AiFillHome } from "react-icons/ai";
+import { HomeIcon, PencilIcon } from "@heroicons/react/24/solid";
 
 type Props = {
-  socials: Social[];
-  pageInfo: PageInfo;
+  socials?: Social[];
+  pageInfo?: PageInfo;
   contact?: boolean;
+  Home?: boolean;
+  Lean?: boolean;
 };
 
-const geolocationOption = {
-  enableHightAccuracy: true,
-  timeout: 1000 * 10,
-  maximumAge: 1000 * 3600 * 24,
-};
-
-const Header = ({ socials, pageInfo, contact }: Props) => {
+const Header = ({ socials, pageInfo, contact, Home, Lean }: Props) => {
   const router = useRouter();
   const [hover, setHover] = useState<boolean>(false);
 
   return (
     <header className="sticky top-0 py-7 px-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
       <Head>
-        <title key="title">{pageInfo?.name} - PortFolio</title>
+        <title key="title">Tyler - PortFolio</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </Head>
@@ -39,6 +36,11 @@ const Header = ({ socials, pageInfo, contact }: Props) => {
         transition={{ duration: 1.5 }}
         className="flex flex-row items-center"
       >
+        {Home && (
+          <div className="">
+            <HomeIcon className="w-5 h-5 fill-gray-300" />
+          </div>
+        )}
         {/* Social Icons */}
         {socials?.map((social) => (
           <div key={social._id} className="flex items-center gap-5">
@@ -59,6 +61,9 @@ const Header = ({ socials, pageInfo, contact }: Props) => {
               target={"_blank"}
               className="hover:fill-gray-300"
             />
+            {
+              <PencilIcon className="w-5 h-5 fill-gray-500 hover:fill-gray-300" />
+            }
           </div>
         ))}
       </motion.div>
