@@ -61,8 +61,12 @@ const About = ({ pageInfo, resume }: Props) => {
                         {resume?.subTitle}
                       </p>
                       <div className="flex items-center sm:text-sm md:text-base 2xl:text-lg text-red-300 basis-3/4">
-                        <p>{resume?.dateStarted?.toDateString()} ~ </p>
-                        <p>{resume?.dateEnded?.toDateString()}</p>
+                        <p>
+                          {new Date(resume.dateStarted)?.toLocaleDateString()} ~{" "}
+                        </p>
+                        <p>
+                          {new Date(resume.dateEnded)?.toLocaleDateString()}
+                        </p>
                       </div>
                     </div>
                   </div>
