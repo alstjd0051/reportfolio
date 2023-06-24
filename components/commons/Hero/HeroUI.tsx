@@ -35,19 +35,19 @@ const HeroUI = ({ pageInfo }: Props) => {
         </h1>
         <div className="pt-5 hidden lg:flex ">
           <Link href="#about">
-            <a className="heroButton">About</a>
+            <p className="heroButton">About</p>
           </Link>
           <Link href="#experience">
-            <a className="heroButton">Experience</a>
+            <p className="heroButton">Experience</p>
           </Link>
           <Link href="#skills">
-            <a className="heroButton">Skills</a>
+            <p className="heroButton">Skills</p>
           </Link>
           <Link href="#projects">
-            <a className="heroButton">Projects</a>
+            <p className="heroButton">Projects</p>
           </Link>
           <Link href="#contact">
-            <a className="heroButton">Contact</a>
+            <p className="heroButton">Contact</p>
           </Link>
         </div>
       </div>

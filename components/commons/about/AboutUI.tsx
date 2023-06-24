@@ -1,13 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { PageInfo } from "../../lib/typings";
+import { PageInfo, Resume } from "../../lib/typings";
 import { urlFor } from "../../../sanity";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 type Props = {
   pageInfo: PageInfo;
+  resume?: Resume[];
 };
 
-const About = ({ pageInfo }: Props) => {
+const About = ({ pageInfo, resume }: Props) => {
+  const router = useRouter();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -37,7 +41,26 @@ const About = ({ pageInfo }: Props) => {
           </span>
         </h4>
 
-        <p className="text-sm">{pageInfo?.backgroundInformation}</p>
+        <div className="flex flex-col items-start gap-0">
+          {resume?.map((resume) => (
+            <div key={resume?._id} className="flex flex-col gap-10 p-2">
+              <div className="flex gap-2 items-center">
+                <div onClick={() => router.push(resume?.url!)}>
+                  <h1 className="font-extrabold hover-underline-animation text-lg cursor-pointer  ">
+                    {resume?.title}
+                  </h1>
+                </div>
+                <div className="flex items-center gap-3 ">
+                  <p className="text-sm font-extralight">{resume?.subTitle}</p>
+                  <div className="flex items-center text-red-300">
+                    <p>{resume?.dateStarted} ~ </p>
+                    <p>{resume?.dateEnded}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </motion.div>
   );

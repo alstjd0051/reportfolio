@@ -10,6 +10,7 @@ import {
   Experience,
   PageInfo,
   Project,
+  Resume,
   Skill,
   Social,
 } from "../components/lib/typings";
@@ -19,6 +20,8 @@ import fetchProjects from "../components/utils/fetchProjects";
 import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
 import Loading from "../components/loading";
+import fetchResume from "../components/utils/fetchResume";
+import { useEffect } from "react";
 
 type Props = {
   pageInfo: PageInfo;
@@ -26,41 +29,49 @@ type Props = {
   skills: Skill[];
   projects: Project[];
   socials: Social[];
+  resume?: Resume[];
 };
 
-const Home = ({ pageInfo, experience, projects, skills, socials }: Props) => {
+const Home = ({
+  pageInfo,
+  experience,
+  projects,
+  skills,
+  socials,
+  resume,
+}: Props) => {
   return (
     <div className="">
       <Header pageInfo={pageInfo} contact socials={socials} />
-        {/* Hero */}
-        <section id="hero" className="snap-start">
-          <HeroUI pageInfo={pageInfo} />
-        </section>
+      {/* Hero */}
+      <section id="hero" className="snap-start">
+        <HeroUI pageInfo={pageInfo} />
+      </section>
 
-        {/* About */}
-        <section id="about" className="snap-center">
-          <About pageInfo={pageInfo} />
-        </section>
+      {/* About */}
+      <section id="about" className="snap-center">
+        <About resume={resume} pageInfo={pageInfo} />
+      </section>
 
-        {/* Experience */}
-        <section id="experience" className="snap-center">
-          <WorkExperience experiences={experience} />
-        </section>
+      {/* Experience */}
+      <section id="experience" className="snap-center">
+        <WorkExperience experiences={experience} />
+      </section>
 
-        {/* Skill */}
-        <section id="skills" className="snap-start hidden md:block">
-          <SkillUI skills={skills} />
-        </section>
+      {/* Skill */}
+      <section id="skills" className="snap-start hidden md:block">
+        <SkillUI skills={skills} />
+      </section>
 
-        {/* Projects */}
-        <section id="projects" className="snap-center">
-          <Projects projects={projects} />
-        </section>
+      {/* Projects */}
+      <section id="projects" className="snap-center">
+        <Projects projects={projects} />
+      </section>
 
-        {/* Contact Me */}
-        <section id="contact" className="snap-start">
-          <ContactMe />
-        </section>
+      {/* Contact Me */}
+      <section id="contact" className="snap-start">
+        <ContactMe />
+      </section>
     </div>
   );
 };
@@ -73,6 +84,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const skills = await fetchSkills();
   const projects = await fetchProjects();
   const socials = await fetchSocials();
+  const resume = await fetchResume();
 
   return {
     props: {
@@ -81,7 +93,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       skills,
       projects,
       socials,
+      resume,
     },
-    revalidate: 100,
+    revalidate: 10,
   };
 };

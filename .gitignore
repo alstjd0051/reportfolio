@@ -40,3 +40,5 @@ next-env.d.ts
 
 # yarn berry
 /.yarn
+
+/reportfolio2.0
