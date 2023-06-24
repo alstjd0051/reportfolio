@@ -10,9 +10,17 @@ import project from "./project";
 import skill from "./skill";
 import social from "./social";
 import pageInfo from "./pageInfo";
+import resume from "./resume";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   name: "default",
-  types: schemaTypes.concat([pageInfo, expreience, project, skill, social]),
+  types: schemaTypes.concat([
+    pageInfo,
+    expreience,
+    project,
+    skill,
+    social,
+    resume,
+  ]),
 });
