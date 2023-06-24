@@ -71,6 +71,6 @@ export interface Resume extends SanityBody {
   title: string;
   subTitle?: string;
   url?: string;
-  dateStarted?: string;
-  dateEnded?: string;
+  dateStarted?: Date;
+  dateEnded?: Date;
 }

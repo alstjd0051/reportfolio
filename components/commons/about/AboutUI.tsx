@@ -12,6 +12,7 @@ type Props = {
 
 const About = ({ pageInfo, resume }: Props) => {
   const router = useRouter();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -42,24 +43,33 @@ const About = ({ pageInfo, resume }: Props) => {
         </h4>
 
         <div className="flex flex-col items-start gap-0">
-          {resume?.map((resume) => (
-            <div key={resume?._id} className="flex flex-col gap-10 p-2">
-              <div className="flex gap-2 items-center">
-                <div onClick={() => router.push(resume?.url!)}>
-                  <h1 className="font-extrabold hover-underline-animation text-lg cursor-pointer  ">
-                    {resume?.title}
-                  </h1>
-                </div>
-                <div className="flex items-center gap-3 ">
-                  <p className="text-sm font-extralight">{resume?.subTitle}</p>
-                  <div className="flex items-center text-red-300">
-                    <p>{resume?.dateStarted} ~ </p>
-                    <p>{resume?.dateEnded}</p>
+          <>
+            {resume?.map((resume) => (
+              <>
+                <div
+                  key={resume?._id}
+                  className="flex flex-1 flex-col gap-10 p-2"
+                >
+                  <div className="flex gap-2 items-center">
+                    <div onClick={() => router.push(resume?.url!)}>
+                      <h1 className="font-extrabold hover-underline-animation text-lg cursor-pointer  ">
+                        {resume?.title}
+                      </h1>
+                    </div>
+                    <div className="flex items-center gap-3 ">
+                      <p className="text-sm font-extralight">
+                        {resume?.subTitle}
+                      </p>
+                      <div className="flex items-center sm:text-sm md:text-base 2xl:text-lg text-red-300 basis-3/4">
+                        <p>{resume?.dateStarted?.toDateString()} ~ </p>
+                        <p>{resume?.dateEnded?.toDateString()}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </>
+            ))}
+          </>
         </div>
       </div>
     </motion.div>
