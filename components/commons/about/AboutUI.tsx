@@ -43,18 +43,18 @@ const About = ({ pageInfo, resume }: Props) => {
 
         <div className="flex flex-col items-start gap-0">
           {resume?.map((resume) => (
-            <div key={resume._id} className="flex flex-col gap-10 p-2">
+            <div key={resume?._id} className="flex flex-col gap-10 p-2">
               <div className="flex gap-2 items-center">
-                <div onClick={() => router.push(resume.url!)}>
+                <div onClick={() => router.push(resume?.url!)}>
                   <h1 className="font-extrabold hover-underline-animation text-lg cursor-pointer  ">
-                    {resume.title}
+                    {resume?.title}
                   </h1>
                 </div>
                 <div className="flex items-center gap-3 ">
-                  <p className="text-sm font-extralight">{resume.subTitle}</p>
+                  <p className="text-sm font-extralight">{resume?.subTitle}</p>
                   <div className="flex items-center text-red-300">
-                    <p>{resume.dateStarted} ~ </p>
-                    <p>{resume.dateEnded}</p>
+                    <p>{resume?.dateStarted} ~ </p>
+                    <p>{resume?.dateEnded}</p>
                   </div>
                 </div>
               </div>

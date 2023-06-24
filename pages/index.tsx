@@ -21,6 +21,7 @@ import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
 import Loading from "../components/loading";
 import fetchResume from "../components/utils/fetchResume";
+import { useEffect } from "react";
 
 type Props = {
   pageInfo: PageInfo;
@@ -28,7 +29,7 @@ type Props = {
   skills: Skill[];
   projects: Project[];
   socials: Social[];
-  resume: Resume[];
+  resume?: Resume[];
 };
 
 const Home = ({
