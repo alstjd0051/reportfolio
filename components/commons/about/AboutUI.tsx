@@ -62,10 +62,11 @@ const About = ({ pageInfo, resume }: Props) => {
                       </p>
                       <div className="flex items-center sm:text-sm md:text-base 2xl:text-lg text-red-300 basis-3/4">
                         <p>
-                          {new Date(resume.dateStarted)?.toLocaleDateString()} ~{" "}
+                          {new Date(resume?.dateStarted)?.toLocaleDateString()}{" "}
+                          ~{" "}
                         </p>
                         <p>
-                          {new Date(resume.dateEnded)?.toLocaleDateString()}
+                          {new Date(resume?.dateEnded)?.toLocaleDateString()}
                         </p>
                       </div>
                     </div>
