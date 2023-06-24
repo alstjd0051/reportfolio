@@ -4,9 +4,7 @@ import { sanityClient } from "../../sanity";
 import { Resume } from "../../components/lib/typings";
 
 const query = groq`
-    *[_type=='resume'] {
-      ...
-    } 
+    *[_type == 'resume'] 
 `;
 
 type Data = {
