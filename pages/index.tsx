@@ -77,7 +77,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const skills = await fetchSkills();
   const projects = await fetchProjects();
   const socials = await fetchSocials();
-  const resume = await fetchResume();
 
   return {
     props: {
@@ -86,7 +85,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       skills,
       projects,
       socials,
-      resume,
     },
     revalidate: 1000,
   };
