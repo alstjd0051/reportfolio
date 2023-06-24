@@ -1,4 +1,4 @@
-import type { GetStaticProps } from "next";
+import type { GetServerSideProps, GetStaticProps } from "next";
 import About from "../components/commons/about/AboutUI";
 import ContactMe from "../components/commons/contact/Contact";
 import WorkExperience from "../components/commons/experience/WorkExperience";
@@ -78,7 +78,7 @@ const Home = ({
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const pageInfo = await fetchPageInfo();
   const experience: Experience[] = await fetchExperiences();
   const skills = await fetchSkills();
