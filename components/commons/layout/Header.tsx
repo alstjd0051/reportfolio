@@ -61,9 +61,9 @@ const Header = ({ socials, pageInfo, contact, Home, Lean }: Props) => {
               target={"_blank"}
               className="hover:fill-gray-300"
             />
-            {
+            {/* {
               <PencilIcon className="w-5 h-5 fill-gray-500 hover:fill-gray-300" />
-            }
+            } */}
           </div>
         ))}
       </motion.div>
