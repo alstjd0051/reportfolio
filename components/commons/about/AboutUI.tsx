@@ -31,7 +31,7 @@ const About = ({ pageInfo, resume }: Props) => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         src={urlFor(pageInfo?.profilePic).url()}
-        className=" md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg  md:w-96 md:h-96 xl:h-80 xl:w-[500px] mt-28 md:mt-10   "
+        className="md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg  md:w-96 md:h-96 xl:h-80 xl:w-[500px] mt-28 md:mt-10   "
       />
 
       <div className="space-y-10 px-0 md:px-10">
@@ -45,16 +45,16 @@ const About = ({ pageInfo, resume }: Props) => {
         <div className="flex flex-col gap-3">
           {resume.map((item) => (
             <div key={item._id} className="flex-1   ">
-              <div className="flex items-center gap-5  ">
-                <Link className="basis-1/3 " href={item.url ? item.url : ""}>
-                  <h1 className="hover-underline-animation hover:text-yellow-300 ">
+              <div className="flex items-center gap-3">
+                <Link className="basis-1/3  " href={item.url ? item.url : ""}>
+                  <h1 className="hover-underline-animation hover:text-yellow-300 border-r border-solid pr-2  ">
                     {item.title}
                   </h1>
                 </Link>
                 <div>
                   <p className="basis-1/4">{item.subTitle}</p>
                 </div>
-                <p className="text-red-300">
+                <p className="text-red-300 sm:text-sm  md:text-base 2xl:text-lg">
                   {item.dateStarted} - {item.dateEnded}
                 </p>
               </div>
