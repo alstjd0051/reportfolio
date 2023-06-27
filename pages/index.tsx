@@ -8,6 +8,7 @@ import Projects from "../components/commons/projects/Projects";
 import SkillUI from "../components/commons/skill/SkillUI";
 import {
   Experience,
+  Learn,
   PageInfo,
   Project,
   Resume,
@@ -22,6 +23,8 @@ import fetchSocials from "../components/utils/fetchSocials";
 import Loading from "../components/loading";
 import fetchResume from "../components/utils/fetchResume";
 import { useEffect } from "react";
+import fetchLearn from "../components/utils/fetchLearn";
+import Footer from "../components/commons/layout/Footer";
 
 type Props = {
   pageInfo: PageInfo;
@@ -30,6 +33,7 @@ type Props = {
   projects: Project[];
   socials: Social[];
   resume: Resume[];
+  learn: Learn[];
 };
 
 const Home = ({
@@ -39,6 +43,7 @@ const Home = ({
   skills,
   socials,
   resume,
+  learn,
 }: Props) => {
   return (
     <div className="">
@@ -54,9 +59,9 @@ const Home = ({
       </section>
 
       {/* Experience */}
-      <section id="experience" className="snap-center">
+      {/* <section id="experience" className="snap-center">
         <WorkExperience experiences={experience} />
-      </section>
+      </section> */}
 
       {/* Skill */}
       <section id="skills" className="snap-start hidden md:block">
@@ -85,6 +90,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const projects = await fetchProjects();
   const socials = await fetchSocials();
   const resume = await fetchResume();
+  const learn = await fetchLearn();
 
   return {
     props: {
@@ -94,6 +100,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       projects,
       socials,
       resume,
+      learn,
     },
     revalidate: 1000,
   };
