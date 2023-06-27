@@ -22,6 +22,11 @@ export default {
       type: "text",
     },
     {
+      name: "content",
+      title: "Content",
+      type: "string",
+    },
+    {
       name: "dateStarted",
       title: "DateStarted",
       type: "date",
@@ -47,6 +52,11 @@ export default {
       title: "Points",
       type: "array",
       of: [{ type: "string" }],
+    },
+    {
+      name: "page",
+      title: "Page",
+      type: "string",
     },
   ],
 };

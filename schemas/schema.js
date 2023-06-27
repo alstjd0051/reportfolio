@@ -11,6 +11,9 @@ import skill from "./skill";
 import social from "./social";
 import pageInfo from "./pageInfo";
 import resume from "./resume";
+import learn from "./learn";
+import nextjs from "./nextjs";
+import categories from "./categories";
 
 // // Then we give our schema to the builder and provide the result to Sanity
 // export default createSchema({
@@ -24,4 +27,14 @@ import resume from "./resume";
 //     resume,
 //   ]),
 // });
-export default [pageInfo, expreience, project, skill, social, resume];
+export default [
+  pageInfo,
+  expreience,
+  project,
+  skill,
+  social,
+  resume,
+  learn,
+  nextjs,
+  categories,
+];
