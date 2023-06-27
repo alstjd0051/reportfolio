@@ -37,9 +37,9 @@ const HeroUI = ({ pageInfo }: Props) => {
           <Link href="#about">
             <p className="heroButton">About</p>
           </Link>
-          <Link href="#experience">
+          {/* <Link href="#experience">
             <p className="heroButton">SideProject</p>
-          </Link>
+          </Link> */}
           <Link href="#skills">
             <p className="heroButton">Skills</p>
           </Link>
