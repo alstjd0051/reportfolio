@@ -12,7 +12,6 @@ type Props = {
 
 const About = ({ pageInfo, resume }: Props) => {
   const router = useRouter();
-  console.log(resume);
 
   return (
     <motion.div
@@ -35,7 +34,7 @@ const About = ({ pageInfo, resume }: Props) => {
       />
 
       <div className="space-y-10 px-0 md:px-10">
-        <h4 className="md:text-4xl text-2xl font-semibold">
+        <h4 className="lg:text-4xl sm:text-2xl font-semibold">
           Hello My name&apos;s {pageInfo?.name}
           <br /> I&apos;m &nbsp;
           <span className="underline  decoration-[#F5DF4D] underline-offset-[15px] ">
@@ -46,15 +45,17 @@ const About = ({ pageInfo, resume }: Props) => {
           {resume.map((item) => (
             <div key={item._id} className="flex-1   ">
               <div className="flex items-center gap-3">
-                <Link className="basis-1/3  " href={item.url ? item.url : ""}>
-                  <h1 className="hover-underline-animation hover:text-yellow-300 border-r border-solid pr-2  ">
+                <Link className="  " href={item.url ? item.url : ""}>
+                  <h1 className=" hover-underline-animation hover:text-yellow-300 border-r  border-solid pr-2 text-sm  xl:text-lg  ">
                     {item.title}
                   </h1>
                 </Link>
                 <div>
-                  <p className="basis-1/4">{item.subTitle}</p>
+                  <p className="basis-1/4 sm:text-sm md:text-base">
+                    {item.subTitle}
+                  </p>
                 </div>
-                <p className="text-red-300 sm:text-sm  md:text-base 2xl:text-lg">
+                <p className="text-red-300 sm:text-xl  md:text-sm 2xl:text-lg">
                   {item.dateStarted} - {item.dateEnded}
                 </p>
               </div>
