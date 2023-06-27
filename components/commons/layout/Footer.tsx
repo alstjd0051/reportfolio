@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-type Props = {};
-
-const Footer = (props: Props) => {
+const Footer = () => {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {

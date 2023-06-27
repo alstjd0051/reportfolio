@@ -38,7 +38,10 @@ const Header = ({ socials, pageInfo, contact, Home, Lean }: Props) => {
       >
         {Home && (
           <div className="">
-            <HomeIcon className="w-5 h-5 fill-gray-300" />
+            <HomeIcon
+              className="w-5 h-5 fill-gray-300 cursor-pointer"
+              onClick={() => router.push("/")}
+            />
           </div>
         )}
         {/* Social Icons */}
