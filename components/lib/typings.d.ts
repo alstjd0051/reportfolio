@@ -42,13 +42,14 @@ export interface Skill extends SanityBody {
 export interface Experience extends SanityBody {
   _type: "experience";
   company: string;
+  content?: string;
   page: string;
   companyImage: Image;
   dateStarted: date;
   dateEnded: data;
   isCurrentlyWorkingHere: boolean;
   jobTitle: string;
-  points: string[];
+  points?: string[];
   technologies: Technology[];
 }
 
@@ -73,4 +74,27 @@ export interface Resume extends SanityBody {
   url?: string;
   dateStarted?: date;
   dateEnded?: date;
+}
+
+export interface Learn extends SanityBody {
+  _type: "learn";
+  title: string;
+  content: [
+    {
+      _type: "block";
+    },
+    {
+      language: string;
+      code: string;
+      _type: "code";
+      highlightedLines: [1, 2];
+    }
+  ];
+  tag?: Skill[];
+}
+
+export interface NextJS extends SanityBody {
+  _type: "nextjs";
+  title: string;
+  code: any[];
 }
