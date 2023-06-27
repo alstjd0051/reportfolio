@@ -30,10 +30,10 @@ const About = ({ pageInfo, resume }: Props) => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         src={urlFor(pageInfo?.profilePic).url()}
-        className="md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg  md:w-96 md:h-96 xl:h-80 xl:w-[500px] mt-28 md:mt-10   "
+        className="md:mb-0 flex-shrink-0 basis-1/3 h-56 rounded-full object-cover md:rounded-lg  md:w-96 md:h-96 xl:h-80 xl:w-[500px] mt-28 md:mt-10   "
       />
 
-      <div className="space-y-10 px-0 md:px-10">
+      <div className="space-y-10 px-0 basis-2/3 ">
         <h4 className="lg:text-4xl sm:text-2xl font-semibold">
           Hello My name&apos;s {pageInfo?.name}
           <br /> I&apos;m &nbsp;
