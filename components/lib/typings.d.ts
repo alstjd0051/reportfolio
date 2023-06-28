@@ -1,5 +1,5 @@
 interface SanityBody {
-  _createdAt: string;
+  _createdAt: Date;
   _id: string;
   _rev: string;
   _updatedAt: string;
@@ -12,6 +12,10 @@ interface Image {
     _type: "reference";
   };
 }
+
+// interface Code {
+//   [{ _type: "block",children:  }];
+// }
 
 export interface PageInfo extends SanityBody {
   _type: "pageInfo";
@@ -37,6 +41,7 @@ export interface Skill extends SanityBody {
   image: Image;
   progress: number;
   title: string;
+  route?: string;
 }
 
 export interface Experience extends SanityBody {
@@ -96,5 +101,6 @@ export interface Learn extends SanityBody {
 export interface NextJS extends SanityBody {
   _type: "nextjs";
   title: string;
-  code: any[];
+  sumbnail?: Image;
+  code?: any;
 }
