@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import fetchPageInfo from "../../../components/utils/fetchPageInfo";
 import fetchSocials from "../../../components/utils/fetchSocials";
 import fetchNextjs from "../../../components/utils/fetchNextjs";
-import { GetStaticPaths, GetStaticProps } from "next";
+import {
+  GetStaticPaths,
+  GetStaticPathsContext,
+  GetStaticProps,
+  NextApiRequest,
+} from "next";
 import { NextJS, PageInfo, Social } from "../../../components/lib/typings";
 import Header from "../../../components/commons/layout/Header";
 import fetchNextjsId from "../../../components/utils/fetchNextjsId";
@@ -33,7 +38,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function NextIdPage({ pageInfo, socials, nextjs }: Props) {
-  console.log(nextjs);
   return (
     <>
       <Header Home contact pageInfo={pageInfo} socials={socials} />
@@ -52,14 +56,14 @@ export default function NextIdPage({ pageInfo, socials, nextjs }: Props) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const nextjs = await fetchNextjs();
+
+  const paths = nextjs.map((post) => ({
+    params: { title: post.title },
+  }));
+
   return {
-    paths: [
-      {
-        params: {
-          title: "/nextjs/[title]",
-        },
-      }, // See the "paths" section below
-    ],
-    fallback: true, // false or "blocking"
+    paths,
+    fallback: "blocking", // false or "blocking"
   };
 };
