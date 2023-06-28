@@ -28,7 +28,6 @@ import Footer from "../components/commons/layout/Footer";
 
 type Props = {
   pageInfo: PageInfo;
-  experience: Experience[];
   skills: Skill[];
   projects: Project[];
   socials: Social[];
@@ -38,7 +37,6 @@ type Props = {
 
 const Home = ({
   pageInfo,
-  experience,
   projects,
   skills,
   socials,
@@ -85,7 +83,6 @@ export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo = await fetchPageInfo();
-  const experience: Experience[] = await fetchExperiences();
   const skills = await fetchSkills();
   const projects = await fetchProjects();
   const socials = await fetchSocials();
@@ -95,7 +92,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       pageInfo,
-      experience,
       skills,
       projects,
       socials,
