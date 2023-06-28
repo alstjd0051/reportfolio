@@ -1,30 +1,23 @@
 import type { GetStaticProps } from "next";
 import About from "../components/commons/about/AboutUI";
 import ContactMe from "../components/commons/contact/Contact";
-import WorkExperience from "../components/commons/experience/WorkExperience";
 import HeroUI from "../components/commons/Hero/HeroUI";
 import Header from "../components/commons/layout/Header";
 import Projects from "../components/commons/projects/Projects";
 import SkillUI from "../components/commons/skill/SkillUI";
 import {
-  Experience,
-  Learn,
   PageInfo,
   Project,
   Resume,
   Skill,
   Social,
 } from "../components/lib/typings";
-import { fetchExperiences } from "../components/utils/fetchExperiences";
 import fetchPageInfo from "../components/utils/fetchPageInfo";
 import fetchProjects from "../components/utils/fetchProjects";
 import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
 import Loading from "../components/loading";
 import fetchResume from "../components/utils/fetchResume";
-import { useEffect } from "react";
-import fetchLearn from "../components/utils/fetchLearn";
-import Footer from "../components/commons/layout/Footer";
 
 type Props = {
   pageInfo: PageInfo;
@@ -32,17 +25,9 @@ type Props = {
   projects: Project[];
   socials: Social[];
   resume: Resume[];
-  learn: Learn[];
 };
 
-const Home = ({
-  pageInfo,
-  projects,
-  skills,
-  socials,
-  resume,
-  learn,
-}: Props) => {
+const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
   return (
     <div className="">
       <Header pageInfo={pageInfo} contact socials={socials} />
@@ -87,7 +72,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const projects = await fetchProjects();
   const socials = await fetchSocials();
   const resume = await fetchResume();
-  const learn = await fetchLearn();
 
   return {
     props: {
@@ -96,7 +80,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       projects,
       socials,
       resume,
-      learn,
     },
     revalidate: 1000,
   };
