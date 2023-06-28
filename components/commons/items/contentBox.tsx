@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { urlFor } from "../../../sanity";
 import { motion } from "framer-motion";
 import { Image } from "../../lib/typings";
+import { useRouter } from "next/router";
 
 type Props = {
   title: string;
@@ -11,6 +12,7 @@ type Props = {
 
 const ContentBox = ({ title, image, createdAt }: Props) => {
   const [ShowTitle, setShowTitle] = useState(false);
+  const router = useRouter();
 
   return (
     <div className="max-w-72 relative h-80 border rounded-2xl flex flex-col overflow-hidden">
@@ -21,7 +23,10 @@ const ContentBox = ({ title, image, createdAt }: Props) => {
       >
         <>
           {ShowTitle && (
-            <div className="absolute flex items-center justify-center h-full w-full font-bold bg-gray-900/20 text-purple-500 sm:text-3xl lg:text-7xl  ">
+            <div
+              onClick={() => router.push(`nextjs/${title}`)}
+              className="absolute cursor-pointer flex items-center justify-center h-full w-full font-bold bg-gray-900/20 text-purple-500 sm:text-3xl lg:text-7xl  "
+            >
               <h1>{title}</h1>
             </div>
           )}
