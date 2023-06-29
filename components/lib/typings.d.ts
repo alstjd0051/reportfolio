@@ -4,6 +4,11 @@ interface SanityBody {
   _rev: string;
   _updatedAt: string;
 }
+interface Dcode {
+  _updatedAt: string;
+  _key: string;
+  style?: string;
+}
 
 interface Image {
   _type: "image";
@@ -102,5 +107,10 @@ export interface NextJS extends SanityBody {
   _type: "nextjs";
   title: string;
   sumbnail?: Image;
-  code?: any;
+  code?: Code[];
+}
+
+export interface Code extends Dcode {
+  language?: string;
+  code: string | string[];
 }
