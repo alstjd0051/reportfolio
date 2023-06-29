@@ -11,11 +11,7 @@ import {
 import { NextJS, PageInfo, Social } from "../../../components/lib/typings";
 import Header from "../../../components/commons/layout/Header";
 import fetchNextjsId from "../../../components/utils/fetchNextjsId";
-import { useRouter } from "next/router";
-import { groq } from "next-sanity";
-import { sanityClient } from "../../../sanity";
-import { title } from "process";
-import axios from "axios";
+import CodeBox from "../../../components/commons/items/codeBox";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -38,15 +34,34 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function NextIdPage({ pageInfo, socials, nextjs }: Props) {
+  console.log(nextjs.map((item) => item.code));
   return (
     <>
       <Header Home contact pageInfo={pageInfo} socials={socials} />
 
       <main className="py-5 px-20 max-w-7xl">
-        <div className=" w-full h-32 flex items-center  ">
+        <div className=" w-full flex items-center  ">
           {nextjs.map((item) => (
             <div key={item._id}>
               <h1>{item.title}</h1>
+              <div className="flex flex-col mt-10 ">
+                {item.code?.map((code) => (
+                  <>
+                    {/* <SyntaxHighlighter
+                      key={code._key}
+                      style={anOldHope}
+                      language={code?.language}
+                    >
+                      {code?.code}
+                    </SyntaxHighlighter> */}
+                    <CodeBox
+                      key={code._key}
+                      code={code?.code}
+                      language={code?.language}
+                    />
+                  </>
+                ))}
+              </div>
             </div>
           ))}
         </div>
