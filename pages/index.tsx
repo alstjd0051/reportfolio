@@ -16,8 +16,8 @@ import fetchPageInfo from "../components/utils/fetchPageInfo";
 import fetchProjects from "../components/utils/fetchProjects";
 import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
-import Loading from "../components/loading";
 import fetchResume from "../components/utils/fetchResume";
+import fetchNextjs from "../components/utils/fetchNextjs";
 
 type Props = {
   pageInfo: PageInfo;
@@ -40,11 +40,6 @@ const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
       <section id="about" className="snap-center">
         <About pageInfo={pageInfo} resume={resume} />
       </section>
-
-      {/* Experience */}
-      {/* <section id="experience" className="snap-center">
-        <WorkExperience experiences={experience} />
-      </section> */}
 
       {/* Skill */}
       <section id="skills" className="snap-start hidden md:block">
