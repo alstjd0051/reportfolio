@@ -23,6 +23,7 @@ export const getStaticProps: GetStaticProps = async () => {
       socials,
       flutter,
     },
+    revalidate: 1000,
   };
 };
 
