@@ -8,6 +8,8 @@ import Header from "../../../components/commons/layout/Header";
 import CodeBox from "../../../components/commons/items/codeBox";
 import fetchFlutterId from "../../../components/utils/flutter/fetchFlutterId";
 import fetchFlutter from "../../../components/utils/flutter/fetchFlutter";
+import { PortableText } from "@portabletext/react";
+import { RichTextComponents } from "../../../components/commons/items/RichTextComponents";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -42,13 +44,17 @@ export default function NextIdPage({ pageInfo, socials, flutter }: Props) {
               <div className="flex flex-col mt-10 flex-1 ">
                 {item.content?.map((code) => (
                   <>
-                    <CodeBox
+                    {/* <CodeBox
                       key={code._key}
                       code={code?.code}
                       language={code?.language}
-                    />
+                    /> */}
                   </>
                 ))}
+                <PortableText
+                  value={item?.content}
+                  components={RichTextComponents}
+                />
               </div>
             </div>
           ))}
