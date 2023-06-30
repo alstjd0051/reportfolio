@@ -13,14 +13,10 @@ export default async function handler(
 ) {
   const title = req.query.title;
   const query = groq`
-    *[_type == 'nextjs' && title== '${title}'] {
+    *[_type == 'nextjs' && title == '${title}'] {
       ...,
     }
 `;
-  try {
-    const nextjs: NextJS[] = await sanityClient.fetch(query);
-    res.status(200).json({ nextjs });
-  } catch (error) {
-    res.status(404 || 500).end();
-  }
+  const nextjs: NextJS[] = await sanityClient.fetch(query);
+  res.status(200).json({ nextjs });
 }
