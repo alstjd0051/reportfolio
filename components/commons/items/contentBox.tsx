@@ -8,15 +8,16 @@ type Props = {
   title: string;
   image?: Image;
   createdAt: Date;
-  onClick?: () => void;
+  route?: string;
 };
 
-const ContentBox = ({ title, image, createdAt, onClick }: Props) => {
+const ContentBox = ({ title, image, createdAt, route }: Props) => {
   const [ShowTitle, setShowTitle] = useState(false);
+  const router = useRouter();
 
   return (
     <div
-      onClick={onClick}
+      onClick={() => router.push(route!)}
       className="max-w-72 relative h-80 rounded-2xl flex flex-col overflow-hidden"
     >
       <div
@@ -26,10 +27,7 @@ const ContentBox = ({ title, image, createdAt, onClick }: Props) => {
       >
         <div>
           {ShowTitle && (
-            <div
-              onClick={onClick}
-              className="absolute cursor-pointer flex items-center justify-center h-full w-full font-bold bg-gray-900/50 text-white sm:text-3xl lg:text-4xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
-            >
+            <div className="absolute cursor-pointer flex items-center justify-center h-full w-full font-bold bg-gray-900/50 text-white sm:text-3xl lg:text-4xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300">
               <h1>{title}</h1>
             </div>
           )}
