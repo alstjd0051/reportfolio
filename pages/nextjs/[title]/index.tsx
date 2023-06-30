@@ -42,13 +42,6 @@ export default function NextIdPage({ pageInfo, socials, nextjs }: Props) {
               <div className="flex flex-col mt-10 ">
                 {item.code?.map((code) => (
                   <>
-                    {/* <SyntaxHighlighter
-                      key={code._key}
-                      style={anOldHope}
-                      language={code?.language}
-                    >
-                      {code?.code}
-                    </SyntaxHighlighter> */}
                     <CodeBox
                       key={code._key}
                       code={code?.code}
