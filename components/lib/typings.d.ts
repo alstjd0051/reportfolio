@@ -18,6 +18,11 @@ interface Image {
   };
 }
 
+export interface Code extends Dcode {
+  language?: string;
+  code: string | string[];
+}
+
 // interface Code {
 //   [{ _type: "block",children:  }];
 // }
@@ -109,14 +114,8 @@ export interface NextJS extends SanityBody {
   sumbnail?: Image;
   code?: Code[];
 }
-
-export interface Code extends Dcode {
-  language?: string;
-  code: string | string[];
-}
-
 export interface Flutter extends SanityBody {
-  _type: "nextjs";
+  _type: "flutter";
   title: string;
   sumbnail?: Image;
   content?: Code[];
