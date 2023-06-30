@@ -8,43 +8,46 @@ type Props = {
   title: string;
   image?: Image;
   createdAt: Date;
+  onClick?: () => void;
 };
 
-const ContentBox = ({ title, image, createdAt }: Props) => {
+const ContentBox = ({ title, image, createdAt, onClick }: Props) => {
   const [ShowTitle, setShowTitle] = useState(false);
-  const router = useRouter();
 
   return (
-    <div className="max-w-72 relative h-80 border rounded-2xl flex flex-col overflow-hidden">
+    <div
+      onClick={onClick}
+      className="max-w-72 relative h-80 rounded-2xl flex flex-col overflow-hidden"
+    >
       <div
         onMouseEnter={() => setShowTitle(true)}
         onMouseLeave={() => setShowTitle(false)}
         className="w-full h-full overflow-hidden text-center "
       >
-        <>
+        <div>
           {ShowTitle && (
             <div
-              onClick={() => router.push(`nextjs/${title}`)}
-              className="absolute cursor-pointer flex items-center justify-center h-full w-full font-bold bg-gray-900/20 text-purple-500 sm:text-3xl lg:text-7xl  "
+              onClick={onClick}
+              className="absolute cursor-pointer flex items-center justify-center h-full w-full font-bold bg-gray-900/50 text-white sm:text-3xl lg:text-7xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300  "
             >
               <h1>{title}</h1>
             </div>
           )}
-        </>
+        </div>
         <div className="w-full h-full">
           {image ? (
             <motion.img
               src={urlFor(image)?.url()}
-              className="w-full h-full object-cover"
-              alt=""
-            />
+              className="w-full h-full  object-cover"
+              alt={`${image} image`}
+            ></motion.img>
           ) : (
             <div className="bg-white w-full h-full ">
               <motion.img
                 src="/vercel.svg"
                 alt="none"
-                className="object-contain w-full h-full"
-              />
+                className="object-contain  w-full h-full "
+              ></motion.img>
             </div>
           )}
         </div>
