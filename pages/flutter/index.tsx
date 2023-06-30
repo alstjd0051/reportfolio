@@ -40,7 +40,7 @@ const Flutter = ({ socials, pageInfo, flutter }: Props) => {
               <ContentBox
                 title={item.title}
                 image={item.image}
-                createdAt={item._createdAt}
+                createdAt={item?.createdAt}
                 key={item._id}
                 route={`/flutter/${item.title}`}
               />

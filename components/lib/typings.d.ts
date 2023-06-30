@@ -117,6 +117,7 @@ export interface NextJS extends SanityBody {
 export interface Flutter extends SanityBody {
   _type: "flutter";
   title: string;
-  sumbnail?: Image;
+  image?: Image;
   content?: Code[];
+  createdAt?: string;
 }

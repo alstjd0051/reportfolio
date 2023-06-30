@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 type Props = {
   title: string;
   image?: Image;
-  createdAt: Date;
+  createdAt: string | undefined;
   route?: string;
 };
 
@@ -49,9 +49,7 @@ const ContentBox = ({ title, image, createdAt, route }: Props) => {
             </div>
           )}
         </div>
-        <h1 className="absolute bottom-0 right-0 text-black">
-          {new Date(createdAt).toLocaleDateString()}
-        </h1>
+        <h1 className="absolute bottom-0 right-0 text-black">{createdAt}</h1>
       </div>
     </div>
   );
