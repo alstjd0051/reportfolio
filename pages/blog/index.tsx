@@ -25,7 +25,10 @@ const BlogPage = ({ pageInfo, socials, blog }: Props) => {
           {blog.map((item) => {
             if (item.route !== null)
               return (
-                <div key={item.route} className="basis-1/4 overflow-hidden  ">
+                <div
+                  key={item.route}
+                  className="basis-1/6 xl:basis-1/12 overflow-hidden  "
+                >
                   {item.route !== null && (
                     <div
                       onClick={() => router.push(`/${item.route}`)}
