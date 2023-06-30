@@ -35,7 +35,13 @@ const Skill = ({ directionLeft, skill }: Props) => {
                 Click Me
               </p>
               <p className="text-3xl font-bold text-black opacity-100">
-                {skill.progress}%
+                {skill.progress ? (
+                  `${skill.progress}%`
+                ) : (
+                  <p className="text-base text-white p-1 rounded-lg bg-red-600">
+                    Studying
+                  </p>
+                )}
               </p>
             </div>
           </div>
@@ -43,7 +49,7 @@ const Skill = ({ directionLeft, skill }: Props) => {
           <div className=" opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white h-24 w-24  xl:w-32 xl:h-32 rounded-full z-0 ">
             <div className="flex items-center justify-center h-full">
               <p className="text-3xl font-bold text-black opacity-100">
-                {skill.progress}%
+                {`${skill.progress}%`}
               </p>
             </div>
           </div>
