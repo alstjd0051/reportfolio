@@ -10,11 +10,11 @@ type Props = {
 
 const CodeBox = ({ code, language }: Props) => {
   return (
-    <div>
+    <>
       <SyntaxHighlighter style={anOldHope} language={language}>
         {code}
       </SyntaxHighlighter>
-    </div>
+    </>
   );
 };
 
