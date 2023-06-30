@@ -119,5 +119,5 @@ export interface Flutter extends SanityBody {
   title: string;
   image?: Image;
   content?: Code[];
-  createdAt?: string;
+  createdAt: Date;
 }
