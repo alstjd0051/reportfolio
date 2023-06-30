@@ -17,6 +17,10 @@ export default async function handler(
       ...,
     }
 `;
-  const nextjs: NextJS[] = await sanityClient.fetch(query);
-  res.status(200).json({ nextjs });
+  try {
+    const nextjs: NextJS[] = await sanityClient.fetch(query);
+    res.status(200).json({ nextjs });
+  } catch (error) {
+    res.status(404 || 500).end();
+  }
 }
