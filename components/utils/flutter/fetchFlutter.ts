@@ -1,4 +1,4 @@
-import { Flutter } from "../lib/typings";
+import { Flutter } from "../../lib/typings";
 
 export default async function fetchFlutter() {
   const res = await fetch(
