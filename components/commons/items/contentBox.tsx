@@ -28,7 +28,7 @@ const ContentBox = ({ title, image, createdAt, onClick }: Props) => {
           {ShowTitle && (
             <div
               onClick={onClick}
-              className="absolute cursor-pointer flex items-center justify-center h-full w-full font-bold bg-gray-900/50 text-white sm:text-3xl lg:text-4xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300  "
+              className="absolute cursor-pointer flex items-center justify-center h-full w-full font-bold bg-gray-900/50 text-white sm:text-3xl lg:text-4xl transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
             >
               <h1>{title}</h1>
             </div>

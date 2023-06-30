@@ -38,7 +38,7 @@ const FlutterPage = ({ pageInfo, socials, flutter }: Props) => {
           {flutter.map((flutter) => (
             <ContentBox
               key={flutter._id}
-              title={flutter.title}
+              title={flutter.title ? flutter.title : "untitle"}
               createdAt={flutter._createdAt}
               image={flutter.sumbnail}
               onClick={() => router.push(`/flutter/${flutter.title}`)}
