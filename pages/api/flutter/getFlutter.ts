@@ -4,9 +4,7 @@ import { sanityClient } from "../../../sanity";
 import { Flutter } from "../../../components/lib/typings";
 
 const query = groq`
-    *[_type == "flutter"] {
-    ...,
-    } 
+  *[_type == 'flutter' ]
 `;
 
 type Data = {
