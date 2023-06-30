@@ -7,6 +7,7 @@ import fetchSocials from "../../components/utils/fetchSocials";
 import Footer from "../../components/commons/layout/Footer";
 import fetchNextjs from "../../components/utils/fetchNextjs";
 import ContentBox from "../../components/commons/items/contentBox";
+import { useRouter } from "next/router";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -15,10 +16,12 @@ type Props = {
 };
 
 const NextJSPage = ({ pageInfo, socials, nextjs }: Props) => {
+  const router = useRouter();
+
   return (
     <div>
       <Header Home socials={socials} pageInfo={pageInfo} contact />
-      <div className="flex flex-col px-20   ">
+      <main className="flex flex-col px-20   ">
         <hr className="w-full py-5 " />
         <div className="grid lg:grid-cols-4 sm:grid-cols-2 items-center justify-items-center gap-10">
           {nextjs?.map((item) => (
@@ -27,10 +30,11 @@ const NextJSPage = ({ pageInfo, socials, nextjs }: Props) => {
               image={item.sumbnail}
               createdAt={item._createdAt}
               key={item._id}
+              onClick={() => router.push(`nextjs/${item.title}`)}
             />
           ))}
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   );
