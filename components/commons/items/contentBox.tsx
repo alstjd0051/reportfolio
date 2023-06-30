@@ -18,7 +18,7 @@ const ContentBox = ({ title, image, createdAt, route }: Props) => {
   return (
     <div
       onClick={() => router.push(route!)}
-      className="max-w-72 relative h-80 rounded-2xl flex flex-col overflow-hidden"
+      className="w-full relative h-80 rounded-2xl flex flex-col overflow-hidden"
     >
       <div
         onMouseEnter={() => setShowTitle(true)}
@@ -36,7 +36,7 @@ const ContentBox = ({ title, image, createdAt, route }: Props) => {
           {image ? (
             <motion.img
               src={urlFor(image)?.url()}
-              className="w-full h-full  object-cover"
+              className="h-full w-full object-fill"
               alt={`${image} image`}
             ></motion.img>
           ) : (
