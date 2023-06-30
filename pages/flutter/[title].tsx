@@ -29,6 +29,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 const DetailFlutter = ({ pageInfo, social, flutter }: Props) => {
+  //
   return (
     <div>
       <Header Home contact socials={social} pageInfo={pageInfo} back />
