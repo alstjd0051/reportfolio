@@ -6,7 +6,7 @@ import { sanityClient } from "../../../sanity";
 const query = groq`
 *[_type == 'flutter'] {
   ...,
-}
+} | order(createdAt desc)
 `;
 type Data = {
   flutter: Flutter[];
