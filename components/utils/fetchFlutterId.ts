@@ -1,11 +1,8 @@
-import { Flutter } from "../lib/typings";
+import axios from "axios";
 
 export default async function fetchFlutterId(title: any) {
-  const res = await fetch(
+  const { data } = await axios.get(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/flutter/${title}`
   );
-  const data = await res.json();
-  const flutter: Flutter[] = data.flutter;
-
-  return flutter;
+  return data.flutter;
 }

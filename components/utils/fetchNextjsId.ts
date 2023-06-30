@@ -1,5 +1,4 @@
 import axios from "axios";
-import { NextJS } from "../lib/typings";
 
 export default async function fetchNextjsId(title: any) {
   const { data } = await axios.get(
