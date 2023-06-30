@@ -1,17 +1,17 @@
 import React from "react";
-import fetchPageInfo from "../../components/utils/fetchPageInfo";
-import fetchSocials from "../../components/utils/fetchSocials";
-import fetchNextjs from "../../components/utils/fetchNextjs";
+import fetchPageInfo from "../../../components/utils/fetchPageInfo";
+import fetchSocials from "../../../components/utils/fetchSocials";
+import fetchNextjs from "../../../components/utils/fetchNextjs";
 import {
   GetStaticPaths,
   GetStaticPathsContext,
   GetStaticProps,
   NextApiRequest,
 } from "next";
-import { NextJS, PageInfo, Social } from "../../components/lib/typings";
-import Header from "../../components/commons/layout/Header";
-import fetchNextjsId from "../../components/utils/fetchNextjsId";
-import CodeBox from "../../components/commons/items/codeBox";
+import { NextJS, PageInfo, Social } from "../../../components/lib/typings";
+import Header from "../../../components/commons/layout/Header";
+import fetchNextjsId from "../../../components/utils/fetchNextjsId";
+import CodeBox from "../../../components/commons/items/codeBox";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -71,6 +71,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: "blocking", // false or "blocking"
+    fallback: false, // false or "blocking"
   };
 };
