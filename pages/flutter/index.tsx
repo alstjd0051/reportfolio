@@ -27,6 +27,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Flutter = ({ socials, pageInfo, flutter }: Props) => {
+  console.log(flutter);
   return (
     <>
       <Header Home pageInfo={pageInfo} socials={socials} />
@@ -38,7 +39,7 @@ const Flutter = ({ socials, pageInfo, flutter }: Props) => {
             {flutter?.map((item) => (
               <ContentBox
                 title={item.title}
-                image={item.sumbnail}
+                image={item.image}
                 createdAt={item._createdAt}
                 key={item._id}
                 route={`/flutter/${item.title}`}
