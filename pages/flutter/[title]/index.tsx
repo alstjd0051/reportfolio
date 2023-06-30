@@ -5,11 +5,11 @@ import fetchNextjs from "../../../components/utils/fetchNextjs";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Flutter, PageInfo, Social } from "../../../components/lib/typings";
 import Header from "../../../components/commons/layout/Header";
-import CodeBox from "../../../components/commons/items/codeBox";
 import fetchFlutterId from "../../../components/utils/flutter/fetchFlutterId";
 import fetchFlutter from "../../../components/utils/flutter/fetchFlutter";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../../../components/commons/items/RichTextComponents";
+import "easymde/dist/easymde.min.css";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -40,17 +40,10 @@ export default function NextIdPage({ pageInfo, socials, flutter }: Props) {
         <div className=" w-full flex items-center  ">
           {flutter.map((item) => (
             <div className="w-full" key={item._id}>
-              <h1>{item.title}</h1>
+              <h1 className="flex-1 text-4xl font-bold py-3 pl-3 dark:bg-white bg-black text-white dark:text-black ">
+                {item.title}
+              </h1>
               <div className="flex flex-col mt-10 flex-1 ">
-                {item.content?.map((code) => (
-                  <>
-                    {/* <CodeBox
-                      key={code._key}
-                      code={code?.code}
-                      language={code?.language}
-                    /> */}
-                  </>
-                ))}
                 <PortableText
                   value={item?.content}
                   components={RichTextComponents}
