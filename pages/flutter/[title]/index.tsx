@@ -6,6 +6,7 @@ import fetchSocials from "../../../components/utils/fetchSocials";
 import fetchPageInfo from "../../../components/utils/fetchPageInfo";
 import fetchFlutter from "../../../components/utils/fetchFlutter";
 import CodeBox from "../../../components/commons/items/codeBox";
+import fetchFlutterId from "../../../components/utils/fetchFlutterId";
 
 type Props = {
   pageInfo: PageInfo;
@@ -13,16 +14,17 @@ type Props = {
   flutter: Flutter[];
 };
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const flutter = await fetchFlutterId(params?.title);
   const social = await fetchSocials();
   const pageInfo = await fetchPageInfo();
-  const flutter = await fetchFlutter();
   return {
     props: {
       social,
       pageInfo,
       flutter,
     },
+    revalidate: 1000,
   };
 };
 

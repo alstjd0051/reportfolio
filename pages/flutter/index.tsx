@@ -29,7 +29,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const FlutterPage = ({ pageInfo, socials, flutter }: Props) => {
   const router = useRouter();
-  console.log(flutter);
   return (
     <>
       <Header Home contact pageInfo={pageInfo} back socials={socials} />
