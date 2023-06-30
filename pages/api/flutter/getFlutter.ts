@@ -19,7 +19,7 @@ export default async function handler(
   const flutter: Flutter[] = await sanityClient.fetch(query);
 
   res.status(200).json({ flutter });
-  if (res.status(400)) {
+  if (res.status(404)) {
     res.end();
   }
 }

@@ -37,9 +37,9 @@ export default function NextIdPage({ pageInfo, socials, flutter }: Props) {
       <main className="py-5 px-20 max-w-7xl">
         <div className=" w-full flex items-center  ">
           {flutter.map((item) => (
-            <div key={item._id}>
+            <div className="w-full" key={item._id}>
               <h1>{item.title}</h1>
-              <div className="flex flex-col mt-10 ">
+              <div className="flex flex-col mt-10 flex-1 ">
                 {item.content?.map((code) => (
                   <>
                     <CodeBox
