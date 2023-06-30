@@ -1,7 +1,7 @@
 import { NextApiResponse, NextApiRequest } from "next";
 import { groq } from "next-sanity";
-import { NextJS } from "../../../../components/lib/typings";
-import { sanityClient } from "../../../../sanity";
+import { NextJS } from "../../../components/lib/typings";
+import { sanityClient } from "../../../sanity";
 
 type Data = {
   nextjs: NextJS[];
@@ -13,7 +13,7 @@ export default async function handler(
 ) {
   const title = req.query.title;
   const query = groq`
-    *[_type == 'nextjs' && title == '${title}'] {
+    *[_type == 'nextjs' && title== '${title}'] {
       ...,
     }
 `;
