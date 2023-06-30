@@ -39,7 +39,7 @@ const Flutter = ({ socials, pageInfo, flutter }: Props) => {
             {flutter?.map((item) => (
               <ContentBox
                 title={item.title}
-                image={item.image}
+                image={item?.image}
                 createdAt={item?.createdAt}
                 key={item._id}
                 route={`/flutter/${item.title}`}
