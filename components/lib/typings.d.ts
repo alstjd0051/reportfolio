@@ -114,3 +114,10 @@ export interface Code extends Dcode {
   language?: string;
   code: string | string[];
 }
+
+export interface Flutter extends SanityBody {
+  _type: "nextjs";
+  title: string;
+  sumbnail?: Image;
+  content?: Code[];
+}
