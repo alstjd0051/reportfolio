@@ -1,6 +1,6 @@
 export default {
-  name: "nextjs",
-  title: "Nextjs",
+  name: "dart",
+  title: "Dart",
   type: "document",
   fields: [
     {
@@ -9,13 +9,13 @@ export default {
       type: "string",
     },
     {
-      name: "sumbnail",
-      title: "Sumbnail",
+      name: "image",
+      title: "Image",
       type: "image",
     },
     {
-      name: "code",
-      title: "Code",
+      name: "content",
+      title: "Content",
       type: "array",
       of: [{ type: "block" }, { type: "image" }, { type: "code" }],
     },

@@ -22,5 +22,10 @@ export default {
       type: "image",
       options: { hotspot: true },
     },
+    {
+      name: "route",
+      title: "Route",
+      type: "string",
+    },
   ],
 };

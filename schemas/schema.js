@@ -14,6 +14,9 @@ import resume from "./resume";
 import learn from "./learn";
 import nextjs from "./nextjs";
 import categories from "./categories";
+import flutter from "./flutter";
+import dart from "./dart";
+import blog from "./blog";
 
 // // Then we give our schema to the builder and provide the result to Sanity
 // export default createSchema({
@@ -37,4 +40,6 @@ export default [
   learn,
   nextjs,
   categories,
+  flutter,
+  dart,
 ];
