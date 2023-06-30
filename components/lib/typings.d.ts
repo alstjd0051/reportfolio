@@ -146,3 +146,8 @@ export interface NestJS extends SanityBody {
   content: Block[];
   createdAt: Date;
 }
+export interface Blog extends SanityBody {
+  _type: "skill";
+  image: Image;
+  route: string;
+}
