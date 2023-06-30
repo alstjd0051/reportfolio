@@ -24,30 +24,31 @@ const Header = ({ socials, pageInfo, contact, Home, Lean }: Props) => {
   const [hover, setHover] = useState<boolean>(false);
 
   return (
-    <header className="sticky top-0 py-7 px-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
+    <>
       <Head>
         <title key="title">Tyler - PortFolio</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </Head>
-      <motion.div
-        initial={{ x: -500, opacity: 0, scale: 0.5 }}
-        animate={{ x: 0, opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5 }}
-        className="flex flex-row items-center"
-      >
-        {Home && (
-          <div className="">
-            <HomeIcon
-              className="w-5 h-5 fill-gray-300 cursor-pointer"
-              onClick={() => router.push("/")}
-            />
-          </div>
-        )}
-        {/* Social Icons */}
-        {socials?.map((social) => (
-          <div key={social._id} className="flex items-center gap-5">
-            {/* <AiFillHome
+      <header className="sticky top-0 py-7 px-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
+        <motion.div
+          initial={{ x: -500, opacity: 0, scale: 0.5 }}
+          animate={{ x: 0, opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5 }}
+          className="flex flex-row items-center"
+        >
+          {Home && (
+            <div className="pr-5">
+              <HomeIcon
+                className="w-5 h-5 fill-gray-300 cursor-pointer"
+                onClick={() => router.push("/")}
+              />
+            </div>
+          )}
+          {/* Social Icons */}
+          {socials?.map((social) => (
+            <div key={social._id} className="flex items-center gap-5">
+              {/* <AiFillHome
               className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
               onClick={() => router.push("/")}
             />
@@ -57,44 +58,46 @@ const Header = ({ socials, pageInfo, contact, Home, Lean }: Props) => {
                 className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
               />
             </Link> */}
-            <SocialIcon
-              fgColor="gray"
-              bgColor="transparent"
-              url={social.url}
-              target={"_blank"}
-              className="hover:fill-gray-300"
-            />
-            {/* {
-              <PencilIcon className="w-5 h-5 fill-gray-500 hover:fill-gray-300" />
-            } */}
-          </div>
-        ))}
-      </motion.div>
-      <div
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        className="flex items-center justify-between hover:delay-500 transition  "
-      >
-        {contact && (
-          <Link href="#contact">
-            <motion.div
-              initial={{ x: 500, opacity: 0, scale: 0.5 }}
-              animate={{ x: 0, opacity: 1, scale: 1 }}
-              transition={{ duration: 1.5 }}
-              className="flex  items-center text-gray-300 cursor-pointer mx-2 duration-700 "
-            >
-              {/* Nav */}
               <SocialIcon
-                className="cursor-pointer"
-                network="email"
                 fgColor="gray"
                 bgColor="transparent"
+                url={social.url}
+                target={"_blank"}
+                className="hover:fill-gray-300"
               />
-              {hover && <p className={`text-sm text-gray-400 `}>Contect Me</p>}
-            </motion.div>
-          </Link>
-        )}
-        {/* <motion.div
+              {/* {
+              <PencilIcon className="w-5 h-5 fill-gray-500 hover:fill-gray-300" />
+            } */}
+            </div>
+          ))}
+        </motion.div>
+        <div
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          className="flex items-center justify-between hover:delay-500 transition  "
+        >
+          {contact && (
+            <Link href="#contact">
+              <motion.div
+                initial={{ x: 500, opacity: 0, scale: 0.5 }}
+                animate={{ x: 0, opacity: 1, scale: 1 }}
+                transition={{ duration: 1.5 }}
+                className="flex  items-center text-gray-300 cursor-pointer mx-2 duration-700 "
+              >
+                {/* Nav */}
+                <SocialIcon
+                  className="cursor-pointer"
+                  network="email"
+                  fgColor="gray"
+                  bgColor="transparent"
+                />
+                {hover && (
+                  <p className={`text-sm text-gray-400 `}>Contect Me</p>
+                )}
+              </motion.div>
+            </Link>
+          )}
+          {/* <motion.div
           initial={{ x: 500, opacity: 0, scale: 0.5 }}
           animate={{ x: 0, opacity: 1, scale: 1 }}
           transition={{ duration: 1.5 }}
@@ -110,8 +113,9 @@ const Header = ({ socials, pageInfo, contact, Home, Lean }: Props) => {
             </div>
           </>
         </motion.div> */}
-      </div>
-    </header>
+        </div>
+      </header>
+    </>
   );
 };
 
