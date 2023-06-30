@@ -16,7 +16,6 @@ type Props = {
 };
 
 const NextJSPage = ({ pageInfo, socials, nextjs }: Props) => {
-  const router = useRouter();
   return (
     <div>
       <Header Home socials={socials} pageInfo={pageInfo} contact />
