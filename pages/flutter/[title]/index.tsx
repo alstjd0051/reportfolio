@@ -40,7 +40,7 @@ export default function NextIdPage({ pageInfo, socials, flutter }: Props) {
         <div className=" w-full flex items-center  ">
           {flutter.map((item) => (
             <div className="w-full" key={item._id}>
-              <h1 className="flex-1 text-4xl font-bold py-3 pl-3 dark:bg-white bg-black text-white dark:text-black ">
+              <h1 className="flex-1 text-4xl font-bold py-3 pl-3 dark:bg-white/40 bg-black text-white dark:text-white/60 ">
                 {item.title}
               </h1>
               <div className="flex flex-col mt-10 flex-1 ">
