@@ -1,7 +1,6 @@
-import "easymde/dist/easymde.min.css";
 export default {
-  name: "flutter",
-  title: "Flutter",
+  name: "nestjs",
+  title: "NestJS",
   type: "document",
   fields: [
     {
@@ -37,13 +36,6 @@ export default {
         },
         {
           type: "code",
-          options: {
-            language: "dart",
-            languageAlternatives: [
-              { title: "dart", value: "dart" },
-              { title: "markdown", value: "markdown" },
-            ],
-          },
         },
       ],
     },

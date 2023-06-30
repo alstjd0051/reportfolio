@@ -19,5 +19,10 @@ export default {
       type: "array",
       of: [{ type: "block" }, { type: "image" }, { type: "code" }],
     },
+    {
+      name: "createdAt",
+      title: "Created at",
+      type: "date",
+    },
   ],
 };
