@@ -20,7 +20,7 @@ export const RichTextComponents = {
     code: ({ value }: any) => {
       return (
         <>
-          <div className="">
+          <div className="text-clip">
             <SyntaxHighlighter
               PreTag={"div"}
               style={atelierSeasideDark}
@@ -36,30 +36,30 @@ export const RichTextComponents = {
 
   list: {
     bullet: ({ children }: any) => (
-      <ul className="ml-3 list-disc space-y-5">
+      <ul className="ml-3 sm:text-lg md:text-xl list-disc space-y-5">
         <li>{children}</li>
       </ul>
     ),
     number: ({ children }: any) => (
-      <ol className="mt-10 list-decimal">{children}</ol>
+      <ol className="mt-10 sm:text-lg md:text-xl list-decimal">{children}</ol>
     ),
   },
   block: {
     h1: ({ children }: any) => (
-      <h1 className="text-4xl py-10 font-bold">{children}</h1>
+      <h1 className="sm:text-3xl md:text-4xl py-10 font-bold">{children}</h1>
     ),
     h2: ({ children }: any) => (
-      <h2 className="text-3xl py-10 font-bold">{children}</h2>
+      <h2 className="sm:text-2xl md:text-3xl py-10 font-bold">{children}</h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="text-2xl py-10 font-bold">{children}</h3>
+      <h3 className="sm:text-xl md:text-2xl py-10 font-bold">{children}</h3>
     ),
     h4: ({ children }: any) => (
-      <h4 className="text-xl py-10 font-bold">{children}</h4>
+      <h4 className="sm:text-lg md:text-xl py-10 font-bold">{children}</h4>
     ),
 
     blockquote: ({ children }: any) => (
-      <blockquote className="border-l-[#f7ab0a] border-l-4 pl-5 py-5 my-5">
+      <blockquote className="border-l-[#f7ab0a] sm:text-lg md:text-xl border-l-4 pl-5 py-5 my-5">
         {children}
       </blockquote>
     ),
