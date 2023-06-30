@@ -7,7 +7,6 @@ import fetchSocials from "../../components/utils/fetchSocials";
 import Footer from "../../components/commons/layout/Footer";
 import fetchNextjs from "../../components/utils/fetchNextjs";
 import ContentBox from "../../components/commons/items/contentBox";
-import { useRouter } from "next/router";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -26,7 +25,7 @@ const NextJSPage = ({ pageInfo, socials, nextjs }: Props) => {
             <ContentBox
               title={item.title}
               image={item.sumbnail}
-              createdAt={item._createdAt}
+              createdAt={item?.createdAt}
               key={item._id}
               route={`/nextjs/${item.title}`}
             />
