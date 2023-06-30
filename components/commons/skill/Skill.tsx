@@ -26,7 +26,7 @@ const Skill = ({ directionLeft, skill }: Props) => {
         transition={{ duration: 1 }}
         whileInView={{ opacity: 1, x: 0 }}
         className="absolute"
-        onClick={() => router.push(`/${skill.route ? skill.route : ""}`)}
+        onClick={() => router.push(`/${skill?.route ? skill.route : ""}`)}
       >
         {skill.route ? (
           <div className=" opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white h-24 w-24  xl:w-32 xl:h-32 rounded-full z-0 ">

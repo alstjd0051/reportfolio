@@ -1,12 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
-import { Flutter, PageInfo, Social } from "../../../components/lib/typings";
-import Header from "../../../components/commons/layout/Header";
-import fetchSocials from "../../../components/utils/fetchSocials";
-import fetchPageInfo from "../../../components/utils/fetchPageInfo";
-import fetchFlutter from "../../../components/utils/fetchFlutter";
-import CodeBox from "../../../components/commons/items/codeBox";
-import fetchFlutterId from "../../../components/utils/fetchFlutterId";
+import { Flutter, PageInfo, Social } from "../../components/lib/typings";
+import Header from "../../components/commons/layout/Header";
+import fetchSocials from "../../components/utils/fetchSocials";
+import fetchPageInfo from "../../components/utils/fetchPageInfo";
+import fetchFlutter from "../../components/utils/fetchFlutter";
+import CodeBox from "../../components/commons/items/codeBox";
+import fetchFlutterId from "../../components/utils/fetchFlutterId";
 
 type Props = {
   pageInfo: PageInfo;
