@@ -13,7 +13,7 @@ export default async function handler(
 ) {
   const title = req.query.title;
   const query = groq`
-    *[_type == 'flutter' && title== '${title}'] {
+    *[_type == 'flutter' && title == '${title}'] {
       ...,
     }
 `;
