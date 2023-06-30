@@ -1,7 +1,8 @@
 interface SanityBody {
-  _createdAt: Date;
+  _createdAt: string;
   _id: string;
   _rev: string;
+  _type: string;
   _updatedAt: string;
 }
 interface Dcode {
@@ -113,11 +114,28 @@ export interface NextJS extends SanityBody {
   title: string;
   sumbnail?: Image;
   code?: Code[];
+  createdAt: Date;
 }
 export interface Flutter extends SanityBody {
   _type: "flutter";
   title: string;
   image?: Image;
-  content?: Code[];
+  content: Block[];
   createdAt: Date;
+}
+
+// Sanity VersionUp
+interface Block {
+  _key: string;
+  _type: "block";
+  children: Span[];
+  markDefs: any[];
+  style: any;
+}
+
+interface Span {
+  _key: string;
+  _type: "span";
+  marks: string[];
+  text: string;
 }
