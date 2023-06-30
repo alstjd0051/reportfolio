@@ -139,3 +139,10 @@ interface Span {
   marks: string[];
   text: string;
 }
+export interface NestJS extends SanityBody {
+  _type: "nestjs";
+  title: string;
+  image?: Image;
+  content: Block[];
+  createdAt: Date;
+}
