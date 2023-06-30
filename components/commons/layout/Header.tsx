@@ -4,8 +4,12 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { PageInfo, Social } from "../../lib/typings";
 import Head from "next/head";
+import { BiHelpCircle } from "react-icons/bi";
 import { useRouter } from "next/router";
-import { HomeIcon, ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
+import { useGeoLocation } from "../../lib/hooks/useGeoLocation";
+import { SiBloglovin } from "react-icons/si";
+import { AiFillHome } from "react-icons/ai";
+import { HomeIcon, PencilIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   socials?: Social[];
@@ -13,10 +17,9 @@ type Props = {
   contact?: boolean;
   Home?: boolean;
   Lean?: boolean;
-  back?: boolean;
 };
 
-const Header = ({ socials, pageInfo, contact, Home, Lean, back }: Props) => {
+const Header = ({ socials, pageInfo, contact, Home, Lean }: Props) => {
   const router = useRouter();
   const [hover, setHover] = useState<boolean>(false);
 
@@ -67,14 +70,7 @@ const Header = ({ socials, pageInfo, contact, Home, Lean, back }: Props) => {
             } */}
             </div>
           ))}
-          {back && (
-            <ArrowUturnLeftIcon
-              className="w-5 h-5 ml-3  cursor-pointer fill-gray-600 "
-              onClick={() => router.back()}
-            />
-          )}
         </motion.div>
-
         <div
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
