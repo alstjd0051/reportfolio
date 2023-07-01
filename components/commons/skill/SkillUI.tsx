@@ -21,7 +21,7 @@ const SkillUI = ({ skills }: Props) => {
       <h3 className="absolute top-36 uppercase tracking-[3px] text-gray-500 text-sm">
         Hover over a sill for currency profieciency
       </h3>
-      <div className="pt-44 grid grid-cols-6 gap-5 relative   ">
+      <div className="pt-44 grid overflow-x-scroll grid-cols-3  md:grid-cols-6 gap-5 relative   ">
         {skills?.slice(0, skills.length / 2)?.map((skill) => (
           <Skill key={skill._id} skill={skill} />
         ))}
