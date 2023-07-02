@@ -35,6 +35,7 @@ const NestPage = ({ socials, pageInfo, nestjs }: Props) => {
   const onClickState = () => {
     setChangedBoard(!changedBoard);
   };
+
   return (
     <>
       <Header Home pageInfo={pageInfo} socials={socials} />
@@ -65,7 +66,7 @@ const NestPage = ({ socials, pageInfo, nestjs }: Props) => {
             className={`${
               changedBoard
                 ? "grid lg:grid-cols-4 sm:grid-cols-2 items-center justify-items-center gap-10"
-                : "flex items-center"
+                : "flex items-center flex-col"
             }`}
           >
             {changedBoard
@@ -79,12 +80,14 @@ const NestPage = ({ socials, pageInfo, nestjs }: Props) => {
                   />
                 ))
               : nestjs.map((item) => (
-                  <BoardList
-                    key={item._id}
-                    createdAt={item?.createdAt}
-                    title={item.title}
-                    route="nestjs"
-                  />
+                  <>
+                    <BoardList
+                      key={item._id}
+                      createdAt={item?.createdAt}
+                      title={item.title}
+                      route="nestjs"
+                    />
+                  </>
                 ))}
           </div>
         </div>

@@ -11,7 +11,7 @@ type Props = {
 const BoardList = ({ title, Num, createdAt, route }: Props) => {
   const router = useRouter();
   return (
-    <div className="flex items-center w-full mt-10 py-3 border-b-2 border-white/50  ">
+    <div className="flex items-center  w-full mt-10 py-3 border-b-2 border-white/50  ">
       <div className="px-4">
         <h1>{Num}</h1>
       </div>
