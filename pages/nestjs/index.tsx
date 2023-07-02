@@ -31,7 +31,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const NestPage = ({ socials, pageInfo, nestjs }: Props) => {
   const [changedBoard, setChangedBoard] = useState(false);
-  console.log(nestjs);
   const onClickState = () => {
     setChangedBoard(!changedBoard);
   };

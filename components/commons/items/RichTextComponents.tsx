@@ -35,7 +35,7 @@ export const RichTextComponents = {
   },
 
   list: {
-    bullet: ({ children }: any) => (
+    bullet: ({ children, markDefs }: any) => (
       <ul className="ml-3 sm:text-lg md:text-xl list-disc space-y-5">
         <li>{children}</li>
       </ul>
@@ -45,11 +45,16 @@ export const RichTextComponents = {
     ),
   },
   block: {
-    h1: ({ children }: any) => (
-      <h1 className="text-3xl md:text-4xl py-5 md:py-10 font-bold">
-        {children}
-      </h1>
-    ),
+    h1: ({ children }: any) => {
+      console.log(children);
+      return (
+        <h1
+          className={`text-3xl md:text-4xl pt-5 pb-2 font-bold text-[${children[0].props.value.hex}]  `}
+        >
+          {children}
+        </h1>
+      );
+    },
     h2: ({ children }: any) => (
       <h2 className="text-2xl md:text-3xl py-5 md:py-10 font-bold">
         {children}

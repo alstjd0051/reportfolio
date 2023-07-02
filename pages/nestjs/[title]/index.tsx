@@ -34,6 +34,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export default function NextIdPage({ pageInfo, socials, nestjs }: Props) {
   const router = useRouter();
+  console.log(nestjs);
   return (
     <>
       <Header Home contact pageInfo={pageInfo} socials={socials} />
