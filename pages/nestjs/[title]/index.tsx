@@ -9,6 +9,7 @@ import { RichTextComponents } from "../../../components/commons/items/RichTextCo
 import "easymde/dist/easymde.min.css";
 import fetchNestjsId from "../../../components/utils/nestjs/fetchNestjsID";
 import fetchNestjs from "../../../components/utils/nestjs/fetchNestjs";
+import { useRouter } from "next/router";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -31,6 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function NextIdPage({ pageInfo, socials, nestjs }: Props) {
+  const router = useRouter();
   return (
     <>
       <Header Home contact pageInfo={pageInfo} socials={socials} />
@@ -39,8 +41,14 @@ export default function NextIdPage({ pageInfo, socials, nestjs }: Props) {
         <div className=" w-full flex items-center  ">
           {nestjs.map((item) => (
             <div className="w-full" key={item._id}>
-              <h1 className="flex-1 text-4xl font-bold py-3 pl-3 dark:bg-white/40 bg-black text-white dark:text-white/60 h-20 md:h-32 items-center flex ">
-                {item.title}
+              <h1 className="flex-1  py-2 font-bold  pl-3 dark:bg-white/40 bg-black text-white/10 dark:text-white/60 items-center flex gap-3 ">
+                <p
+                  className="cursor-pointer"
+                  onClick={() => router.push("/nestjs")}
+                >
+                  nestjs /
+                </p>
+                <p>{item.title}</p>
               </h1>
               <div className="flex flex-col sm:mt-0 md:mt-10 flex-1 ">
                 <PortableText
