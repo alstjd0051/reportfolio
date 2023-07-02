@@ -1,13 +1,9 @@
 import "../styles/globals.css";
 import type { AppContext, AppInitialProps, AppProps } from "next/app";
-import { SessionProvider } from "next-auth/react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import { useRef, useState } from "react";
-import { defaultComponents } from "@portabletext/react";
 import { NextComponentType } from "next";
 import Script from "next/script";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
 
 const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   Component,
@@ -72,6 +68,7 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
       </Head>
       <>
         <Component {...pageProps} />
+        <Analytics />
       </>
     </div>
   );
