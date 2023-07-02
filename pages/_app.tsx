@@ -68,7 +68,7 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
       </Head>
       <>
         <Component {...pageProps} />
-        <Analytics />
+        {process.env.NODE_ENV !== "development" && <Analytics />}
       </>
     </div>
   );
