@@ -35,7 +35,7 @@ export const RichTextComponents = {
   },
 
   list: {
-    bullet: ({ children, markDefs }: any) => (
+    bullet: ({ children }: any) => (
       <ul className="ml-3 sm:text-lg md:text-xl list-disc space-y-5">
         <li>{children}</li>
       </ul>
@@ -49,7 +49,7 @@ export const RichTextComponents = {
       console.log(children);
       return (
         <h1
-          className={`text-3xl md:text-4xl pt-5 pb-2 font-bold text-[${children[0].props.value.hex}]  `}
+          className={`text-3xl md:text-4xl pt-5 pb-2 font-bold text-[${children[0]?.props?.value?.hex}]  `}
         >
           {children}
         </h1>
