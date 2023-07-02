@@ -49,7 +49,10 @@ export const RichTextComponents = {
       console.log(children);
       return (
         <h1
-          className={`text-3xl md:text-4xl pt-5 pb-2 font-bold text-[${children[0]?.props?.value?.hex}]  `}
+          className={`text-3xl md:text-4xl pt-5 pb-2 font-bold ${
+            children[0]?.props?.value?.hex &&
+            `text-[${children[0]?.props?.value?.hex}]`
+          }  `}
         >
           {children}
         </h1>
