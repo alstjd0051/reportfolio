@@ -41,13 +41,22 @@ export const RichTextComponents = {
       </ul>
     ),
     number: ({ children }: any) => (
-      <ol className="mt-10 sm:text-lg md:text-xl list-decimal">{children}</ol>
+      <ol className="ml-7 mt-2sm:text-lg md:text-xl list-decimal">
+        {children}
+      </ol>
     ),
+  },
+  listItem: {
+    bullet: ({ children }: any) => (
+      <li style={{ listStyleType: "disclosure-closed" }}>{children}</li>
+    ),
+
+    checkmarks: ({ children }: any) => <li>✅ {children}</li>,
   },
   block: {
     h1: ({ children }: any) => (
       <h1
-        className={`text-3xl md:text-4xl pt-5 pb-2 font-bold ${
+        className={`text-3xl md:text-4xl  font-bold ${
           children[0]?.props?.value?.hex &&
           `text-[${children[0]?.props?.value?.hex!}]`
         }  `}
@@ -56,17 +65,13 @@ export const RichTextComponents = {
       </h1>
     ),
     h2: ({ children }: any) => (
-      <h2 className="text-2xl md:text-3xl py-5 md:py-10 font-bold">
-        {children}
-      </h2>
+      <h2 className="text-2xl md:text-3xl font-bold">{children}</h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="text-xl md:text-2xl py-5 md:py-10 font-bold">
-        {children}
-      </h3>
+      <h3 className="text-xl md:text-2xl font-bold">{children}</h3>
     ),
     h4: ({ children }: any) => (
-      <h4 className="text-lg md:text-xl py-5 md:py-10 font-bold">{children}</h4>
+      <h4 className="text-lg md:text-xl font-bold">{children}</h4>
     ),
 
     blockquote: ({ children }: any) => (
@@ -80,13 +85,17 @@ export const RichTextComponents = {
       const rel = !value.href.startsWith("/")
         ? "noreferrer nopener"
         : undefined;
+      const target = (value?.href || "").startsWith("http")
+        ? "_blank"
+        : undefined;
+
       return (
         <Link
-          href={value.href}
-          rel={rel}
+          href={`${value?.href}`}
+          target={target}
           className="underline decoration-[#f7ab0a] hover:decoration-black"
         >
-          {children}
+          <a>{children}</a>
         </Link>
       );
     },
