@@ -29,8 +29,8 @@ type Props = {
 
 const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
   return (
-    <div className="">
-      <Header pageInfo={pageInfo} contact socials={socials} />
+    <>
+      <Header skill={skills} pageInfo={pageInfo} contact socials={socials} />
       {/* Hero */}
       <section id="hero" className="snap-start">
         <HeroUI pageInfo={pageInfo} />
@@ -55,7 +55,7 @@ const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
       <section id="contact" className="snap-start">
         <ContactMe />
       </section>
-    </div>
+    </>
   );
 };
 

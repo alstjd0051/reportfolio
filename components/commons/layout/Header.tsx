@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { PageInfo, Social } from "../../lib/typings";
+import { PageInfo, Skill, Social } from "../../lib/typings";
 import Head from "next/head";
 import { BiHelpCircle } from "react-icons/bi";
 import { useRouter } from "next/router";
@@ -17,11 +17,17 @@ type Props = {
   contact?: boolean;
   Home?: boolean;
   Lean?: boolean;
+  skill?: Skill[];
 };
 
-const Header = ({ socials, pageInfo, contact, Home, Lean }: Props) => {
+const Header = ({ socials, pageInfo, contact, Home, Lean, skill }: Props) => {
   const router = useRouter();
   const [hover, setHover] = useState<boolean>(false);
+  const [tooltip, setTooltip] = useState(false);
+
+  const onCLickTooltip = () => {
+    setTooltip(!tooltip);
+  };
 
   return (
     <>
@@ -45,7 +51,7 @@ const Header = ({ socials, pageInfo, contact, Home, Lean }: Props) => {
               />
             </div>
           )}
-          {/* Social Icons */}
+
           {socials?.map((social) => (
             <div key={social._id} className="flex items-center gap-5">
               {/* <AiFillHome
@@ -70,6 +76,29 @@ const Header = ({ socials, pageInfo, contact, Home, Lean }: Props) => {
             } */}
             </div>
           ))}
+          {skill?.map((skill) => {
+            if (skill.route !== undefined)
+              return (
+                <>
+                  <PencilIcon
+                    key={skill._id}
+                    onClick={onCLickTooltip}
+                    className="w-7 h-7 fill-black bg-gray-600 rounded-full p-1 "
+                  />
+                  {tooltip && (
+                    <div className="absolute left-14 bg-white/75 text-black px-3 bottom-0 ">
+                      <h1
+                        className="cursor-pointer "
+                        onClick={() => router.push(`/${skill.route}`)}
+                      >
+                        {skill.route}
+                      </h1>
+                    </div>
+                  )}
+                </>
+              );
+          })}
+          {/* Social Icons */}
         </motion.div>
         <div
           onMouseEnter={() => setHover(true)}
