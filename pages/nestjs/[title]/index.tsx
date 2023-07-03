@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export default function NextIdPage({ pageInfo, socials, nestjs }: Props) {
+export default function NestIdPage({ pageInfo, socials, nestjs }: Props) {
   const router = useRouter();
   return (
     <>
