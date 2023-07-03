@@ -54,6 +54,7 @@ export default function NextIdPage({ pageInfo, socials, nextjs }: Props) {
             </div>
           ))}
         </div>
+        <div className="h-52"></div>
       </main>
     </>
   );
