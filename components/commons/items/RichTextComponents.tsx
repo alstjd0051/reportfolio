@@ -50,6 +50,7 @@ export const RichTextComponents = {
     normal: ({ children }: any) => (
       <p className={`text-sm py-1 md:text-base font-bold`}>{children}</p>
     ),
+
     h1: ({ children }: any) => (
       <h1
         className={`text-3xl py-4 md:text-4xl  font-bold ${
@@ -91,5 +92,10 @@ export const RichTextComponents = {
         </Link>
       );
     },
+    strong: ({ children }: any) => (
+      <strong className={`text-sm py-1 md:text-lg font-bold`}>
+        {children}
+      </strong>
+    ),
   },
 };
