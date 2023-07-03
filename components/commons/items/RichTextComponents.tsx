@@ -49,7 +49,7 @@ export const RichTextComponents = {
   block: {
     h1: ({ children }: any) => (
       <h1
-        className={`text-3xl md:text-4xl  font-bold ${
+        className={`text-3xl py-4 md:text-4xl  font-bold ${
           children[0]?.props?.value?.hex &&
           `text-[${children[0]?.props?.value?.hex!}]`
         }  `}
@@ -58,17 +58,17 @@ export const RichTextComponents = {
       </h1>
     ),
     h2: ({ children }: any) => (
-      <h2 className="text-2xl md:text-3xl font-bold">{children}</h2>
+      <h2 className="text-2xl py-4 md:text-3xl font-bold">{children}</h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="text-xl md:text-2xl font-bold">{children}</h3>
+      <h3 className="text-xl py-4 md:text-2xl font-bold">{children}</h3>
     ),
     h4: ({ children }: any) => (
-      <h4 className="text-lg md:text-xl font-bold">{children}</h4>
+      <h4 className="text-lg py-4 md:text-xl font-bold">{children}</h4>
     ),
 
     blockquote: ({ children }: any) => (
-      <blockquote className="border-l-[#f7ab0a] sm:text-lg md:text-xl border-l-4 pl-5 py-5 my-5">
+      <blockquote className="border-l-[#f7ab0a] sm:text-lg md:text-xl border-l-4 pl-5 px-4 py-2 my-5">
         {children}
       </blockquote>
     ),
@@ -83,12 +83,8 @@ export const RichTextComponents = {
         : undefined;
 
       return (
-        <Link
-          href={`${value?.href}`}
-          target={target}
-          className="underline decoration-[#f7ab0a] hover:decoration-black"
-        >
-          <a>{children}</a>
+        <Link href={`${value?.href}`} target={target}>
+          <a className="hover-underline-animation">{children}</a>
         </Link>
       );
     },
