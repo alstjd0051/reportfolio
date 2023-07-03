@@ -62,8 +62,10 @@ const About = ({ pageInfo, resume }: Props) => {
                       {item.subTitle}
                     </p>
                   </div>
-                  <p className="text-red-300 sm:text-xl hidden md:block  md:text-sm 2xl:text-lg">
-                    {item.dateStarted} - {item.dateEnded}
+                  <p className="text-red-300  sm:text-xs hidden md:block   md:text-sm 2xl:text-lg">
+                    <span>{item.dateStarted}</span>
+                    <span> - </span>
+                    <span>{item.dateEnded}</span>
                   </p>
                 </div>
               </div>

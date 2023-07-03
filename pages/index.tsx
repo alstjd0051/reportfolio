@@ -18,6 +18,7 @@ import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
 import fetchResume from "../components/utils/fetchResume";
 import fetchNextjs from "../components/utils/fetchNextjs";
+import Footer from "../components/commons/layout/Footer";
 
 type Props = {
   pageInfo: PageInfo;

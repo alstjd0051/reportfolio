@@ -11,7 +11,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <div className="absolute flex justify-between p-5 bg-gray-100/30  lg:bottom-0  w-full flex-1 mt-5 text-white ">
+    <div className=" flex justify-between p-5 bg-gray-100/30  lg:bottom-0 fixed  w-full flex-1 mt-5 text-white ">
       <div className="flex items-center gap-3">
         <h1>Copyright ⓒ 2023</h1>
         <p>This is CMSProject</p>
