@@ -70,11 +70,13 @@ const Header = ({ socials, pageInfo, contact, Home, Lean, skill }: Props) => {
             if (skill.route !== undefined)
               return (
                 <>
-                  <PencilIcon
-                    key={skill._id}
-                    onClick={onCLickTooltip}
-                    className="w-7 h-7 cursor-pointer fill-black bg-gray-600 rounded-full p-1 "
-                  />
+                  {skill.route && (
+                    <PencilIcon
+                      key={skill._id}
+                      onClick={onCLickTooltip}
+                      className="w-7 h-7 cursor-pointer fill-black bg-gray-600 rounded-full p-1 "
+                    />
+                  )}
                   {tooltip && (
                     <motion.div
                       initial={{ y: -500, opacity: 0, scale: 1 }}
