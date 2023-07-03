@@ -32,7 +32,6 @@ const NextJSPage = ({ pageInfo, socials, nextjs }: Props) => {
           ))}
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
