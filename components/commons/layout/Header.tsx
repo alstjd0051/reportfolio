@@ -83,6 +83,7 @@ const Header = ({ socials, pageInfo, contact, Home, Lean, skill }: Props) => {
                       <h1
                         className="cursor-pointer hover:text-red-600"
                         key={skill.route}
+                        onClick={() => router.push(`nextjs`)}
                       >
                         {skill.route}
                       </h1>
