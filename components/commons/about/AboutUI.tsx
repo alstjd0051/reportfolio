@@ -14,7 +14,6 @@ type Props = {
 
 const About = ({ pageInfo, resume }: Props) => {
   const router = useRouter();
-  console.log(pageInfo);
   return (
     <motion.div
       initial={{ opacity: 0 }}

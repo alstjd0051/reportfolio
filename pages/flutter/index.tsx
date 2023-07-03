@@ -30,7 +30,6 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Flutter = ({ socials, pageInfo, flutter }: Props) => {
-  console.log(flutter);
   const [changedBoard, setChangedBoard] = useState(false);
   const onClickState = () => {
     setChangedBoard(!changedBoard);
