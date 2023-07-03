@@ -66,34 +66,31 @@ const Header = ({ socials, pageInfo, contact, Home, Lean, skill }: Props) => {
             } */}
             </div>
           ))}
-          {skill?.map((skill) => {
-            if (skill.route !== undefined)
-              return (
-                <>
-                  {skill.route && (
-                    <PencilIcon
-                      key={skill._id}
-                      onClick={onCLickTooltip}
-                      className="w-7 h-7 cursor-pointer fill-black bg-gray-600 rounded-full p-1 "
-                    />
-                  )}
-                  {tooltip && (
-                    <motion.div
-                      initial={{ y: -500, opacity: 0, scale: 1 }}
-                      animate={{ y: 0, opacity: 0.5, scale: 1 }}
-                      className="absolute left-14 bg-white/75 flex gap-3 rounded-md text-black/60 font-bold  px-4 py-1 bottom-2 "
-                    >
+          <PencilIcon
+            onClick={onCLickTooltip}
+            className="w-7 h-7 cursor-pointer fill-black bg-gray-600 rounded-full p-1 "
+          />
+          {tooltip && (
+            <>
+              <motion.div
+                initial={{ y: -500, opacity: 0, scale: 1 }}
+                animate={{ x: -40, y: 15, opacity: 0.5, scale: 1 }}
+                className="absolute left-14 bg-white/75 flex gap-3 rounded-md text-black/60 font-bold  px-4 py-1 bottom-2 "
+              >
+                {skill?.map((skill) => {
+                  if (skill.route !== undefined || null)
+                    return (
                       <h1
-                        className="cursor-pointer "
-                        onClick={() => router.push(`/${skill.route}`)}
+                        className="cursor-pointer hover:text-red-600"
+                        key={skill.route}
                       >
                         {skill.route}
                       </h1>
-                    </motion.div>
-                  )}
-                </>
-              );
-          })}
+                    );
+                })}
+              </motion.div>
+            </>
+          )}
           {/* Social Icons */}
         </motion.div>
         <div
