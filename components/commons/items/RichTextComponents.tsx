@@ -46,13 +46,6 @@ export const RichTextComponents = {
       </ol>
     ),
   },
-  listItem: {
-    bullet: ({ children }: any) => (
-      <li style={{ listStyleType: "disclosure-closed" }}>{children}</li>
-    ),
-
-    checkmarks: ({ children }: any) => <li>✅ {children}</li>,
-  },
   block: {
     h1: ({ children }: any) => (
       <h1
