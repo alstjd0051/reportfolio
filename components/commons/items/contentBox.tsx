@@ -49,7 +49,7 @@ const ContentBox = ({ title, image, createdAt, route }: Props) => {
             </div>
           )}
         </div>
-        <h1 className="absolute bottom-0 right-4  text-black">
+        <h1 className="absolute bottom-0 right-4  text-white">
           {new Date(createdAt).toLocaleDateString()}
         </h1>
       </div>
