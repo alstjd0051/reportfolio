@@ -31,7 +31,7 @@ export interface Code extends Dcode {
 export interface PageInfo extends SanityBody {
   _type: "pageInfo";
   address: string;
-  backgroundInformation: string;
+  backgroundInformation: Block[];
   email: string;
   role: string;
   heroImage: Image;

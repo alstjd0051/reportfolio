@@ -4,6 +4,8 @@ import { PageInfo, Resume } from "../../lib/typings";
 import { urlFor } from "../../../sanity";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { PortableText } from "@portabletext/react";
+import { RichTextComponents } from "../items/RichTextComponents";
 
 type Props = {
   pageInfo: PageInfo;
@@ -12,7 +14,7 @@ type Props = {
 
 const About = ({ pageInfo, resume }: Props) => {
   const router = useRouter();
-
+  console.log(pageInfo);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -30,37 +32,43 @@ const About = ({ pageInfo, resume }: Props) => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         src={urlFor(pageInfo?.profilePic).url()}
-        className="md:mb-0 flex-shrink-0 basis-1/3 h-56 rounded-full object-cover md:rounded-lg  md:w-96 md:h-96 xl:h-80 xl:w-[500px] mt-28 md:mt-10   "
+        className="md:mb-0 flex-shrink-0 h-56 rounded-full object-cover md:rounded-lg  md:w-52 md:h-52 xl:h-80 xl:w-[500px] mt-28 md:mt-10   "
       />
 
-      <div className="space-y-10 px-0 basis-2/3 ">
-        <h4 className="lg:text-4xl sm:text-2xl font-semibold">
-          Hello My name&apos;s {pageInfo?.name}
-          <br /> I&apos;m &nbsp;
-          <span className="underline  decoration-[#F5DF4D] underline-offset-[15px] ">
-            {pageInfo.role}
+      <div className="space-y-10 px-0  ">
+        <h4 className="lg:text-4xl sm:text-2xl font-semibold ">
+          안녕하세요 저는 {pageInfo?.name} 입니다.
+          <br /> 저는
+          <span className="underline  decoration-[#F5DF4D] underline-offset-[10px] ">
+            {pageInfo.role} 개발자입니다.
           </span>
         </h4>
-        <div className="flex flex-col gap-3">
-          {resume.map((item) => (
-            <div key={item._id} className="flex-1   ">
-              <div className="flex items-center gap-3">
-                <Link className="  " href={item.url ? item.url : ""}>
-                  <h1 className=" hover-underline-animation hover:text-yellow-300 border-r  border-solid pr-2 text-sm  xl:text-lg  ">
-                    {item.title}
-                  </h1>
-                </Link>
-                <div>
-                  <p className="basis-1/4 sm:text-sm md:text-base">
-                    {item.subTitle}
+        <div className="flex flex-col gap-3 ">
+          <PortableText
+            components={RichTextComponents}
+            value={pageInfo?.backgroundInformation}
+          />
+          <div className="pt-5">
+            {resume.map((item) => (
+              <div key={item._id} className="   ">
+                <div className="flex items-center gap-2 ">
+                  <Link className="  " href={item.url ? item.url : ""}>
+                    <h1 className=" hover-underline-animation hover:text-yellow-300 border-r  border-solid pr-2 text-sm  xl:text-lg  ">
+                      {item.title}
+                    </h1>
+                  </Link>
+                  <div>
+                    <p className="basis-1/4 sm:text-sm md:text-base">
+                      {item.subTitle}
+                    </p>
+                  </div>
+                  <p className="text-red-300 sm:text-xl hidden md:block  md:text-sm 2xl:text-lg">
+                    {item.dateStarted} - {item.dateEnded}
                   </p>
                 </div>
-                <p className="text-red-300 sm:text-xl  md:text-sm 2xl:text-lg">
-                  {item.dateStarted} - {item.dateEnded}
-                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>
