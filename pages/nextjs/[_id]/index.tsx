@@ -38,7 +38,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export default function NextIdPage({ pageInfo, socials, nextjs }: Props) {
   return (
     <>
-      <Header Home contact pageInfo={pageInfo} socials={socials} />
+      <div className="w-full  sticky">
+        <Header Home contact pageInfo={pageInfo} socials={socials} />
+      </div>
 
       <main className="py-5 px-20 max-w-7xl">
         <div className=" w-full flex items-center  ">
