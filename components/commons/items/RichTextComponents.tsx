@@ -3,16 +3,17 @@ import Link from "next/link";
 import { atelierSeasideDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { urlFor } from "../../../sanity";
+import { motion } from "framer-motion";
 
 export const RichTextComponents = {
   types: {
     image: ({ value }: any) => {
       return (
         <>
-          <Image
+          <motion.img
             src={urlFor(value).url()}
             alt="Blog Post Image"
-            className="object-cover"
+            className="object-fill"
           />
         </>
       );
