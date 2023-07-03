@@ -54,16 +54,6 @@ const Header = ({ socials, pageInfo, contact, Home, Lean, skill }: Props) => {
 
           {socials?.map((social) => (
             <div key={social._id} className="flex items-center gap-5">
-              {/* <AiFillHome
-              className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
-              onClick={() => router.push("/")}
-            />
-            <Link href={"https://tylerblog.store/"} target="">
-              <SiBloglovin
-                target={"_self"}
-                className="text-gray-700 w-7 h-7 cursor-pointer hover:text-gray-300 "
-              />
-            </Link> */}
               <SocialIcon
                 fgColor="gray"
                 bgColor="transparent"
@@ -83,17 +73,21 @@ const Header = ({ socials, pageInfo, contact, Home, Lean, skill }: Props) => {
                   <PencilIcon
                     key={skill._id}
                     onClick={onCLickTooltip}
-                    className="w-7 h-7 fill-black bg-gray-600 rounded-full p-1 "
+                    className="w-7 h-7 cursor-pointer fill-black bg-gray-600 rounded-full p-1 "
                   />
                   {tooltip && (
-                    <div className="absolute left-14 bg-white/75 text-black px-3 bottom-0 ">
+                    <motion.div
+                      initial={{ y: -500, opacity: 0, scale: 1 }}
+                      animate={{ y: 0, opacity: 0.5, scale: 1 }}
+                      className="absolute left-14 bg-white/75 flex gap-3 rounded-md text-black/60 font-bold  px-4 py-1 bottom-2 "
+                    >
                       <h1
                         className="cursor-pointer "
                         onClick={() => router.push(`/${skill.route}`)}
                       >
                         {skill.route}
                       </h1>
-                    </div>
+                    </motion.div>
                   )}
                 </>
               );
