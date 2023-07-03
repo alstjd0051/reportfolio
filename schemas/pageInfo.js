@@ -24,7 +24,22 @@ export default {
     {
       name: "backgroundInformation",
       title: "BackgroundInformation",
-      type: "text",
+      type: "array",
+      of: [
+        {
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H1", value: "h1" },
+            { title: "H2", value: "h2" },
+            { title: "H3", value: "h3" },
+            { title: "H4", value: "h4" },
+            { title: "H5", value: "h5" },
+            { title: "H6", value: "h6" },
+            { title: "Quote", value: "blockquote" },
+          ],
+        },
+      ],
     },
     {
       name: "profilePic",
@@ -54,6 +69,26 @@ export default {
       title: "Socials",
       type: "array",
       of: [{ type: "reference", to: { type: "social" } }],
+    },
+    {
+      name: "footerComments",
+      title: "Footer comments",
+      type: "array",
+      of: [
+        {
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H1", value: "h1" },
+            { title: "H2", value: "h2" },
+            { title: "H3", value: "h3" },
+            { title: "H4", value: "h4" },
+            { title: "H5", value: "h5" },
+            { title: "H6", value: "h6" },
+            { title: "Quote", value: "blockquote" },
+          ],
+        },
+      ],
     },
   ],
 };

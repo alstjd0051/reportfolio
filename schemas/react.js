@@ -1,6 +1,6 @@
 export default {
-  name: "nestjs",
-  title: "NestJS",
+  name: "react",
+  title: "React",
   type: "document",
   fields: [
     {
@@ -30,25 +30,12 @@ export default {
             { title: "H6", value: "h6" },
             { title: "Quote", value: "blockquote" },
           ],
-          marks: {
-            annotations: [{ name: "color", title: "Color", type: "color" }],
-          },
-        },
-        {
-          type: "color",
-          name: "color",
-          options: {
-            disableAlpha: true,
-          },
         },
         {
           type: "image",
         },
         {
           type: "code",
-        },
-        {
-          type: "color",
         },
       ],
     },

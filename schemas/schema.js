@@ -16,8 +16,9 @@ import nextjs from "./nextjs";
 import categories from "./categories";
 import flutter from "./flutter";
 import dart from "./dart";
-import blog from "./blog";
 import nestjs from "./nestjs";
+import html from "./html";
+import react from "./react";
 
 // // Then we give our schema to the builder and provide the result to Sanity
 // export default createSchema({
@@ -44,4 +45,6 @@ export default [
   flutter,
   dart,
   nestjs,
+  html,
+  react,
 ];
