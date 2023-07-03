@@ -27,7 +27,7 @@ const NextJSPage = ({ pageInfo, socials, nextjs }: Props) => {
               image={item.sumbnail}
               createdAt={item?.createdAt}
               key={item._id}
-              route={`/nextjs/${item.title}`}
+              route={`/nextjs/${item._id}`}
             />
           ))}
         </div>

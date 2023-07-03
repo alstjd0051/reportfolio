@@ -12,6 +12,8 @@ import { NextJS, PageInfo, Social } from "../../../components/lib/typings";
 import Header from "../../../components/commons/layout/Header";
 import fetchNextjsId from "../../../components/utils/fetchNextjsId";
 import CodeBox from "../../../components/commons/items/codeBox";
+import { PortableText } from "@portabletext/react";
+import { RichTextComponents } from "../../../components/commons/items/RichTextComponents";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -20,7 +22,7 @@ type Props = {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const nextjs = await fetchNextjsId(params?.title);
+  const nextjs = await fetchNextjsId(params?._id);
   const pageInfo = await fetchPageInfo();
   const socials = await fetchSocials();
   return {
@@ -44,15 +46,10 @@ export default function NextIdPage({ pageInfo, socials, nextjs }: Props) {
             <div key={item._id}>
               <h1>{item.title}</h1>
               <div className="flex flex-col mt-10 ">
-                {item.code?.map((code) => (
-                  <>
-                    <CodeBox
-                      key={code._key}
-                      code={code?.code}
-                      language={code?.language}
-                    />
-                  </>
-                ))}
+                <PortableText
+                  value={item.content}
+                  components={RichTextComponents}
+                />
               </div>
             </div>
           ))}
@@ -66,7 +63,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const nextjs = await fetchNextjs();
 
   const paths = nextjs.map((post) => ({
-    params: { title: post.title },
+    params: { _id: post._id },
   }));
 
   return {

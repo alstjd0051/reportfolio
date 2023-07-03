@@ -11,9 +11,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const title = req.query.title;
+  const id = req.query.id;
   const query = groq`
-    *[_type == 'nextjs' && title== '${title}'] {
+    *[_type == 'nextjs' && _id== '${id}'] {
       ...,
     }
 `;

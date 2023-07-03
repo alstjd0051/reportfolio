@@ -114,7 +114,7 @@ export interface NextJS extends SanityBody {
   _type: "nextjs";
   title: string;
   sumbnail?: Image;
-  code?: Code[];
+  content: Block[];
   createdAt: Date;
 }
 export interface Flutter extends SanityBody {
