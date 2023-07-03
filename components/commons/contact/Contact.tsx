@@ -1,13 +1,18 @@
-import React, { useState, useCallback } from "react";
-import { PhoneIcon, MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
+import React, { useState } from "react";
+import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { BiUpArrow } from "react-icons/bi";
 import Link from "next/link";
 import MapModal from "../modal/MapModal";
 import FormModal from "../modal/FormModal";
+import { PageInfo } from "../../lib/typings";
+import { PortableText } from "@portabletext/react";
+import { RichTextComponents } from "../items/RichTextComponents";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-const ContactMe = ({}: Props) => {
+const ContactMe = ({ pageInfo }: Props) => {
   const [OpenForm, setOpenForm] = useState<boolean>(false);
 
   const onClickFormModal = () => {
@@ -29,10 +34,12 @@ const ContactMe = ({}: Props) => {
         Contact
       </h3>
       <div className="flex flex-col sm:space-y-0 md:space-y-10 ">
-        <h4 className=" sm:text-4xl font-semibold text-center">
-          I&apos;ll look forward to hearing &nbsp;
-          <span className="decoration-[#F5DF4D]/50 underline">for you</span>
-        </h4>
+        <div className=" sm:text-4xl font-semibold text-center">
+          <PortableText
+            components={RichTextComponents}
+            value={pageInfo.footerComments}
+          />
+        </div>
 
         <div className="space-y-10 pt-10">
           <div
@@ -40,14 +47,18 @@ const ContactMe = ({}: Props) => {
             className="flex items-center space-x-5 justify-center"
           >
             <PhoneIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
-            <p className="text-2xl cursor-pointer ">010-9567-9971</p>
+            <p className="text-2xl cursor-pointer ">
+              {pageInfo.phoneNumber
+                .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+                .replace(/\-{1,2}$/g, "")}
+            </p>
           </div>
           <div
             onClick={onClickFormModal}
             className="flex items-center space-x-5 justify-center"
           >
             <EnvelopeIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
-            <p className="text-2xl cursor-pointer">wsc7202@gmail.com</p>
+            <p className="text-2xl cursor-pointer">{pageInfo.email}</p>
           </div>
         </div>
       </div>

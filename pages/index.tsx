@@ -17,8 +17,6 @@ import fetchProjects from "../components/utils/fetchProjects";
 import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
 import fetchResume from "../components/utils/fetchResume";
-import fetchNextjs from "../components/utils/fetchNextjs";
-import Footer from "../components/commons/layout/Footer";
 
 type Props = {
   pageInfo: PageInfo;
@@ -54,7 +52,7 @@ const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
 
       {/* Contact Me */}
       <section id="contact" className="snap-start">
-        <ContactMe />
+        <ContactMe pageInfo={pageInfo} />
       </section>
     </>
   );
