@@ -35,13 +35,6 @@ export default {
           },
         },
         {
-          type: "color",
-          name: "color",
-          options: {
-            disableAlpha: true,
-          },
-        },
-        {
           type: "image",
         },
         {

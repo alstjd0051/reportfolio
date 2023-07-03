@@ -1956,18 +1956,6 @@
   resolved "https://registry.yarnpkg.com/@sanity/asset-utils/-/asset-utils-1.3.0.tgz#6460cd993a2c24368a6308028f3bc57df91f131e"
   integrity sha512-uyIOtGA4Duf+68I3BSbYHY5P+WGftn3QtNJD2Pn7h9WPGYsSrWViIPebE9yRN8N0NHhYj+hDQXaMpVdjG7r+zA==
 
-"@sanity/assist@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@sanity/assist/-/assist-1.0.7.tgz#345cdbe4ab239095fc231cfcb17e35ac32a38b5a"
-  integrity sha512-vwQM1E8I2O0tmC0rEowDhHWUwqbOOaXQTkSw0GL02NHGVSUK3zL4EMeIqA/ZL3S5rP1FgloJ/4Kp1YwYpo8PCA==
-  dependencies:
-    "@sanity/icons" "^2.4.0"
-    "@sanity/incompatible-plugin" "^1.0.4"
-    "@sanity/ui" "^1.6.0"
-    react-fast-compare "^3.2.1"
-    rxjs "^7.8.0"
-    rxjs-exhaustmap-with-trailing "^2.1.1"
-
 "@sanity/base@2.36.1":
   version "2.36.1"
   resolved "https://registry.yarnpkg.com/@sanity/base/-/base-2.36.1.tgz#6862770688a80b7474dec9c83803a3f0913c5239"
@@ -6201,7 +6189,7 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-fast-compare@^3.0.1, react-fast-compare@^3.2.0, react-fast-compare@^3.2.1:
+react-fast-compare@^3.0.1, react-fast-compare@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.2.tgz#929a97a532304ce9fee4bcae44234f1ce2c21d49"
   integrity sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==
