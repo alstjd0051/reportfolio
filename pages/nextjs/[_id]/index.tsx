@@ -14,6 +14,7 @@ import fetchNextjsId from "../../../components/utils/fetchNextjsId";
 import CodeBox from "../../../components/commons/items/codeBox";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../../../components/commons/items/RichTextComponents";
+import { useRouter } from "next/router";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -36,6 +37,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function NextIdPage({ pageInfo, socials, nextjs }: Props) {
+  const router = useRouter();
   return (
     <>
       <div className="w-full  sticky">
@@ -46,7 +48,11 @@ export default function NextIdPage({ pageInfo, socials, nextjs }: Props) {
         <div className=" w-full flex items-center  ">
           {nextjs.map((item) => (
             <div key={item._id}>
-              <h1>{item.title}</h1>
+              <div className="font-bold text-5xl cursor-pointer flex gap-3 items-center ">
+                <span onClick={() => router.push("/nextjs")}>nextjs</span>
+                <span>/</span>
+                <h1 className="">{item.title}</h1>
+              </div>
               <div className="flex flex-col mt-10 ">
                 <PortableText
                   value={item.content}
