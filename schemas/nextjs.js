@@ -14,10 +14,40 @@ export default {
       type: "image",
     },
     {
-      name: "code",
-      title: "Code",
+      name: "content",
+      title: "Content",
       type: "array",
-      of: [{ type: "block" }, { type: "image" }, { type: "code" }],
+      of: [
+        {
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H1", value: "h1" },
+            { title: "H2", value: "h2" },
+            { title: "H3", value: "h3" },
+            { title: "H4", value: "h4" },
+            { title: "H5", value: "h5" },
+            { title: "H6", value: "h6" },
+            { title: "Quote", value: "blockquote" },
+          ],
+          marks: {
+            annotations: [{ name: "color", title: "Color", type: "color" }],
+          },
+        },
+        {
+          type: "color",
+          name: "color",
+          options: {
+            disableAlpha: true,
+          },
+        },
+        {
+          type: "image",
+        },
+        {
+          type: "code",
+        },
+      ],
     },
     {
       name: "createdAt",
