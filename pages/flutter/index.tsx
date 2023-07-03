@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/commons/layout/Header";
 import { Flutter, PageInfo, Social } from "../../components/lib/typings";
 import ContentBox from "../../components/commons/items/contentBox";
@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
       socials,
       flutter,
     },
-    revalidate: 1000,
+    revalidate: 10,
   };
 };
 
@@ -35,6 +35,7 @@ const Flutter = ({ socials, pageInfo, flutter }: Props) => {
   const onClickState = () => {
     setChangedBoard(!changedBoard);
   };
+
   return (
     <>
       <Header Home pageInfo={pageInfo} socials={socials} />
