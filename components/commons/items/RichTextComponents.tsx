@@ -83,7 +83,7 @@ export const RichTextComponents = {
         : undefined;
 
       return (
-        <Link href={`${value?.href}`} target={target}>
+        <Link rel={rel} href={`${value?.href}`} target={target}>
           <a className="hover-underline-animation">{children}</a>
         </Link>
       );
