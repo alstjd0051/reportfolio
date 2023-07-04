@@ -18,7 +18,7 @@ type Props = {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const flutter = await fetchFlutterId(params?.title);
+  const flutter = await fetchFlutterId(params?._id);
   const pageInfo = await fetchPageInfo();
   const socials = await fetchSocials();
   return {
@@ -61,7 +61,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const flutter = await fetchFlutter();
 
   const paths = flutter.map((post) => ({
-    params: { title: post.title },
+    params: { _id: post._id },
   }));
 
   return {

@@ -11,9 +11,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const title = req.query.title;
+  const id = req.query.id;
   const query = groq`
-    *[_type == 'flutter' && title== '${title}'] 
+    *[_type == 'flutter' && _id== '${id}'] 
 `;
   const flutter: Flutter[] = await sanityClient.fetch(query);
   return res.status(200).json({ flutter });

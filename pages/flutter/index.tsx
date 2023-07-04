@@ -75,7 +75,7 @@ const Flutter = ({ socials, pageInfo, flutter }: Props) => {
                     image={item?.image}
                     createdAt={item?.createdAt}
                     key={item._id}
-                    route={`/flutter/${item.title}`}
+                    route={`/flutter/${item._id}`}
                   />
                 ))
               : flutter.map((item) => (
@@ -84,7 +84,7 @@ const Flutter = ({ socials, pageInfo, flutter }: Props) => {
                       key={item._id}
                       createdAt={item?.createdAt}
                       title={item.title}
-                      route="flutter"
+                      route={`flutter/${item._id}`}
                     />
                   </>
                 ))}
