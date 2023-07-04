@@ -153,3 +153,10 @@ export interface Blog extends SanityBody {
   image: Image;
   route: string;
 }
+export interface ReactJS extends SanityBody {
+  _type: "react";
+  title: string;
+  sumbnail?: Image;
+  content: Block[];
+  createdAt: Date;
+}
