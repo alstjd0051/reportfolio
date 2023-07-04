@@ -17,7 +17,7 @@ type Props = {
   skill?: Skill[];
 };
 
-const Header = ({ socials, pageInfo, contact, Home, Lean, skill }: Props) => {
+const Header = ({ socials, pageInfo, contact, Home, skill }: Props) => {
   const router = useRouter();
   const [hover, setHover] = useState<boolean>(false);
   const [tooltip, setTooltip] = useState(false);
