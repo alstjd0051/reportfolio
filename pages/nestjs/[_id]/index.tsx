@@ -19,7 +19,7 @@ type Props = {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const nestjs = await fetchNestjsId(params?.title);
+  const nestjs = await fetchNestjsId(params?._id);
   const pageInfo = await fetchPageInfo();
   const socials = await fetchSocials();
   return {
@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       socials,
       nestjs,
     },
-    revalidate: 1000,
+    revalidate: 10,
   };
 };
 
@@ -86,7 +86,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const nestjs = await fetchNestjs();
 
   const paths = nestjs.map((post) => ({
-    params: { title: post.title },
+    params: { _id: post._id },
   }));
 
   return {

@@ -11,9 +11,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const title = req.query.title;
+  const id = req.query.id;
   const query = groq`
-    *[_type == 'nestjs' && title== '${title}'] 
+    *[_type == 'nestjs' && _id== '${id}'] {
+      ...
+    }
 `;
   const nestjs: NestJS[] = await sanityClient.fetch(query);
   return res.status(200).json({ nestjs });

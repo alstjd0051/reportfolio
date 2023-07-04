@@ -75,7 +75,7 @@ const NestPage = ({ socials, pageInfo, nestjs }: Props) => {
                     image={item?.image}
                     createdAt={item?.createdAt}
                     key={item._id}
-                    route={`/nestjs/${item.title}`}
+                    route={`/nestjs/${item._id}`}
                   />
                 ))
               : nestjs.map((item) => (
@@ -84,7 +84,7 @@ const NestPage = ({ socials, pageInfo, nestjs }: Props) => {
                       key={item._id}
                       createdAt={item?.createdAt}
                       title={item.title}
-                      route="nestjs"
+                      route={`nestjs/${item._id}`}
                     />
                   </>
                 ))}
