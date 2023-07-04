@@ -4,12 +4,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { PageInfo, Skill, Social } from "../../lib/typings";
 import Head from "next/head";
-import { BiHelpCircle } from "react-icons/bi";
 import { useRouter } from "next/router";
-import { useGeoLocation } from "../../lib/hooks/useGeoLocation";
-import { SiBloglovin } from "react-icons/si";
-import { AiFillHome } from "react-icons/ai";
 import { HomeIcon, PencilIcon } from "@heroicons/react/24/solid";
+import { SiBloglovin } from "react-icons/si";
 
 type Props = {
   socials?: Social[];
@@ -51,25 +48,23 @@ const Header = ({ socials, pageInfo, contact, Home, Lean, skill }: Props) => {
               />
             </div>
           )}
-
-          {socials?.map((social) => (
-            <div key={social._id} className="flex items-center gap-5">
-              <SocialIcon
-                fgColor="gray"
-                bgColor="transparent"
-                url={social.url}
-                target={"_blank"}
-                className="hover:fill-gray-300"
-              />
-              {/* {
-              <PencilIcon className="w-5 h-5 fill-gray-500 hover:fill-gray-300" />
-            } */}
-            </div>
-          ))}
-          <PencilIcon
-            onClick={onCLickTooltip}
-            className="w-7 h-7 cursor-pointer fill-black bg-gray-600 rounded-full p-1 "
-          />
+          <div className="flex items-center gap-5">
+            {socials?.map((social) => (
+              <div key={social._id} className="">
+                <SocialIcon
+                  fgColor="gray"
+                  bgColor="transparent"
+                  url={social.url}
+                  target={"_blank"}
+                  className="hover:fill-gray-300"
+                />
+              </div>
+            ))}
+            <SiBloglovin
+              onClick={onCLickTooltip}
+              className="w-8 h-8  cursor-pointer fill-gray-600 hover:fill-gray-300  "
+            />
+          </div>
           {tooltip && (
             <>
               <motion.div
@@ -92,7 +87,6 @@ const Header = ({ socials, pageInfo, contact, Home, Lean, skill }: Props) => {
               </motion.div>
             </>
           )}
-          {/* Social Icons */}
         </motion.div>
         <div
           onMouseEnter={() => setHover(true)}
@@ -120,22 +114,6 @@ const Header = ({ socials, pageInfo, contact, Home, Lean, skill }: Props) => {
               </motion.div>
             </Link>
           )}
-          {/* <motion.div
-          initial={{ x: 500, opacity: 0, scale: 0.5 }}
-          animate={{ x: 0, opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5 }}
-        >
-          <>
-            <div className="flex sm:w-full   ">
-              <div className="flex flex-col">
-                <BiHelpCircle
-                  onClick={() => router.push("/readDoc")}
-                  className="w-5 h-5 text-gray-400 cursor-pointer "
-                />
-              </div>
-            </div>
-          </>
-        </motion.div> */}
         </div>
       </header>
     </>

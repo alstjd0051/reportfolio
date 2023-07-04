@@ -4,6 +4,8 @@ import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { urlFor } from "../../../sanity";
 import { PageInfo } from "../../lib/typings";
 import BackGroundCircles from "../BackGroundCircles";
+import { motion } from "framer-motion";
+import { TagIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   pageInfo: PageInfo;
@@ -17,7 +19,7 @@ const HeroUI = ({ pageInfo }: Props) => {
   });
 
   return (
-    <div className="h-screen flex flex-col space-y-16 items-center justify-center text-center overflow-hidden ">
+    <div className="h-screen flex flex-col space-y-16 items-center justify-center text-center overflow-hidden relative ">
       <BackGroundCircles />
       <img
         className="relative rounded-full h-60 w-60  mx-auto object-fill"
