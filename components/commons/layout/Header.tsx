@@ -69,7 +69,7 @@ const Header = ({ socials, pageInfo, contact, Home, Lean, skill }: Props) => {
             <>
               <motion.div
                 initial={{ y: -500, opacity: 0, scale: 1 }}
-                animate={{ x: -40, y: 15, opacity: 0.5, scale: 1 }}
+                animate={{ x: 80, y: 25, opacity: 0.5, scale: 1 }}
                 className="absolute left-14 bg-white/75 flex gap-3 rounded-md text-black/60 font-bold  px-4 py-1 bottom-2 "
               >
                 {skill?.map((skill) => {
