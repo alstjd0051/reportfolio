@@ -15,7 +15,7 @@ export default async function handler(
   const query = groq`
     *[_type == 'nextjs' && _id== '${id}'] {
       ...,
-    }
+    } | order(createdAt desc)
 `;
   const nextjs: NextJS[] = await sanityClient.fetch(query);
   res.status(200).json({ nextjs });
