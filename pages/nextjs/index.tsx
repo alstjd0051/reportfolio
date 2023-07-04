@@ -69,7 +69,7 @@ const NextJSPage = ({ pageInfo, socials, nextjs, skills }: Props) => {
                     image={item.sumbnail}
                     createdAt={item?.createdAt}
                     key={item._id}
-                    route={`/nestjs/${item.title}`}
+                    route={`/nextjs/${item._id}`}
                   />
                 ))
               : nextjs.map((item) => (
@@ -78,7 +78,8 @@ const NextJSPage = ({ pageInfo, socials, nextjs, skills }: Props) => {
                       key={item._id}
                       createdAt={item?.createdAt}
                       title={item.title}
-                      route="nestjs"
+                      route={`nextjs/${item._id}`}
+                      id={item._id}
                     />
                   </>
                 ))}
