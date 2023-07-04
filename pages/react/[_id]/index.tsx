@@ -50,7 +50,7 @@ export default function NextIdPage({ pageInfo, socials, reactjs }: Props) {
         <div className=" w-full flex items-center  ">
           {reactjs.map((item) => (
             <div key={item._id}>
-              <div className="font-bold text-5xl cursor-pointer flex gap-3 items-center ">
+              <div className="font-bold cursor-pointer flex gap-3 items-center text-xl md:text-xl lg:text-2xl xl:text-3xl ">
                 <span onClick={() => router.push("/react")}>reactjs</span>
                 <span>/</span>
                 <h1 className="">{item.title}</h1>
