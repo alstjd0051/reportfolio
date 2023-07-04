@@ -77,8 +77,8 @@ const Header = ({ socials, pageInfo, contact, Home, skill }: Props) => {
                     return (
                       <h1
                         className="cursor-pointer hover:text-red-600"
-                        key={skill.route}
-                        onClick={() => router.push(`nextjs`)}
+                        key={skill._id}
+                        onClick={() => router.push(`${skill.route}`)}
                       >
                         {skill.route}
                       </h1>
