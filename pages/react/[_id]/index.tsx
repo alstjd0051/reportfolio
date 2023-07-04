@@ -10,7 +10,6 @@ import {
   Social,
 } from "../../../components/lib/typings";
 import Header from "../../../components/commons/layout/Header";
-import CodeBox from "../../../components/commons/items/codeBox";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../../../components/commons/items/RichTextComponents";
 import { useRouter } from "next/router";
@@ -33,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       socials,
       reactjs,
     },
-    revalidate: 1000,
+    revalidate: 10,
   };
 };
 
