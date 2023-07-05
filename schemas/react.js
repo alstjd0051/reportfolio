@@ -9,8 +9,8 @@ export default {
       type: "string",
     },
     {
-      name: "image",
-      title: "Image",
+      name: "sumbnail",
+      title: "Sumbnail",
       type: "image",
     },
     {
@@ -30,6 +30,9 @@ export default {
             { title: "H6", value: "h6" },
             { title: "Quote", value: "blockquote" },
           ],
+          marks: {
+            annotations: [{ name: "color", title: "Color", type: "color" }],
+          },
         },
         {
           type: "image",
@@ -43,11 +46,6 @@ export default {
       name: "createdAt",
       title: "Created at",
       type: "date",
-    },
-    {
-      name: "link",
-      title: "Link",
-      type: "string",
     },
   ],
 };

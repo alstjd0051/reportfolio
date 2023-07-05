@@ -19,6 +19,8 @@ import dart from "./dart";
 import nestjs from "./nestjs";
 import html from "./html";
 import react from "./react";
+import user from "./user";
+import post from "./post";
 
 // // Then we give our schema to the builder and provide the result to Sanity
 // export default createSchema({
@@ -33,6 +35,8 @@ import react from "./react";
 //   ]),
 // });
 export default [
+  user,
+  post,
   pageInfo,
   expreience,
   project,
