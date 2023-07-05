@@ -1,4 +1,9 @@
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  type Variants,
+  useReducedMotion,
+} from "framer-motion";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -6,34 +11,59 @@ type Props = {
   children: React.ReactNode;
 };
 
-const variants = {
-  out: {
-    opacity: 0,
-    y: 40,
+const variants: Variants = {
+  scaleDown: {
+    scale: 0.8,
+    y: 100,
     transition: {
-      duration: 0.75,
+      duration: 0.4,
+    },
+  },
+  out: {
+    x: "-100%",
+    transition: {
+      duration: 0.4,
+      delay: 0.5,
     },
   },
   in: {
-    opacity: 1,
+    scale: 0.8,
+    y: 100,
+    x: "100%",
+    transition: {
+      duration: 0.4,
+    },
+  },
+  center: {
+    x: 0,
+    scale: 0.8,
+    transformOrigin: "top",
+    transition: {
+      duration: 0.4,
+    },
+  },
+  scaleUp: {
+    scale: 1,
     y: 0,
     transition: {
-      duration: 0.75,
-      delay: 0.2,
+      duration: 0.4,
+      delay: 0.5,
     },
   },
 };
 
 const Layout = ({ children }: Props) => {
   const { asPath } = useRouter();
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <div className="overflow-hidden">
-      <AnimatePresence initial={false} exitBeforeEnter>
+    <div className="overflow-hidden effect">
+      <AnimatePresence initial={false} mode={"popLayout"}>
         <motion.div
-          variants={variants}
-          animate="in"
-          initial="out"
-          exit={"out"}
+          variants={!shouldReduceMotion ? variants : undefined}
+          initial="in"
+          animate={["center", "scaleUp"]}
+          exit={["scaleDown", "out"]}
           key={asPath}
         >
           {children}
