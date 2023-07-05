@@ -2,26 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer base {
+  @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap");
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  .effect::after {
+    content: "";
+    display: block;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      hsla(0, 100%, 76%, 1) 0% hsla(237, 100%, 73%, 1) 100%
+    );
+    z-index: -1;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+  .heroButton {
+    @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-sm tracking-widest text-gray-500 transition-all hover:border-[#F5DF4D]/40 hover:text-[#F5DF4D]/40 cursor-pointer;
+  }
+
+  .contactInput {
+    @apply outline-none bg-white rounded-sm border-b px-20 py-8 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-[#F5DF4D]/40 focus:text-[#000];
+  }
+
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .hover-underline-animation::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    top: 1.7rem;
+    left: 0;
+    background-color: #bb2649;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 }
