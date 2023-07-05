@@ -3,6 +3,7 @@ import fetchPageInfo from "../../../components/utils/fetchPageInfo";
 import fetchSocials from "../../../components/utils/fetchSocials";
 import fetchNextjs from "../../../components/utils/fetchNextjs";
 import {
+  GetServerSideProps,
   GetStaticPaths,
   GetStaticPathsContext,
   GetStaticProps,
@@ -22,7 +23,7 @@ type Props = {
   nextjs: NextJS[];
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const nextjs = await fetchNextjsId(params?._id);
   const pageInfo = await fetchPageInfo();
   const socials = await fetchSocials();
@@ -32,7 +33,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       socials,
       nextjs,
     },
-    revalidate: 1000,
   };
 };
 
@@ -68,15 +68,15 @@ export default function NextIdPage({ pageInfo, socials, nextjs }: Props) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const nextjs = await fetchNextjs();
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const nextjs = await fetchNextjs();
 
-  const paths = nextjs.map((post) => ({
-    params: { _id: post._id },
-  }));
+//   const paths = nextjs.map((post: NextJS) => ({
+//     params: { _id: post._id },
+//   }));
 
-  return {
-    paths,
-    fallback: false, // false or "blocking"
-  };
-};
+//   return {
+//     paths,
+//     fallback: false, // false or "blocking"
+//   };
+// };

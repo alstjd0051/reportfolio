@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { NextJS, PageInfo, Skill, Social } from "../../components/lib/typings";
 import Header from "../../components/commons/layout/Header";
 import fetchPageInfo from "../../components/utils/fetchPageInfo";
-import { GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import fetchSocials from "../../components/utils/fetchSocials";
 import Footer from "../../components/commons/layout/Footer";
 import fetchNextjs from "../../components/utils/fetchNextjs";
@@ -79,12 +79,12 @@ const NextJSPage = ({ pageInfo, socials, nextjs, skills }: Props) => {
                       createdAt={item?.createdAt}
                       title={item.title}
                       route={`nextjs/${item._id}`}
-                      id={item._id}
                     />
                   </>
                 ))}
           </div>
         </div>
+        <div className="h-52"></div>
       </main>
     </div>
   );
@@ -92,7 +92,7 @@ const NextJSPage = ({ pageInfo, socials, nextjs, skills }: Props) => {
 
 export default NextJSPage;
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const pageInfo = await fetchPageInfo();
   const socials = await fetchSocials();
   const nextjs = await fetchNextjs();
@@ -104,6 +104,5 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       nextjs,
       skills,
     },
-    revalidate: 1000,
   };
 };
