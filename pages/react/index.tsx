@@ -72,7 +72,6 @@ const ReactPage = ({ pageInfo, skills, reactJS, socials }: Props) => {
                       createdAt={item?.createdAt}
                       title={item.title}
                       route={`react/${item._id}`}
-                      id={item._id}
                     />
                   </>
                 ))}

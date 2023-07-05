@@ -6,9 +6,10 @@ type Props = {
   title: string;
   createdAt: Date;
   route: string;
+  id?: any;
 };
 
-const BoardList = ({ title, Num, createdAt, route }: Props) => {
+const BoardList = ({ title, Num, createdAt, route, id }: Props) => {
   const router = useRouter();
   return (
     <div className="flex items-center  w-full mt-10 py-3 border-b-2 border-white/50 justify-between ">
