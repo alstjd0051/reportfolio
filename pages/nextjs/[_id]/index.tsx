@@ -2,13 +2,7 @@ import React from "react";
 import fetchPageInfo from "../../../components/utils/fetchPageInfo";
 import fetchSocials from "../../../components/utils/fetchSocials";
 import fetchNextjs from "../../../components/utils/fetchNextjs";
-import {
-  GetServerSideProps,
-  GetStaticPaths,
-  GetStaticPathsContext,
-  GetStaticProps,
-  NextApiRequest,
-} from "next";
+import { GetServerSideProps } from "next";
 import { NextJS, PageInfo, Social } from "../../../components/lib/typings";
 import Header from "../../../components/commons/layout/Header";
 import fetchNextjsId from "../../../components/utils/fetchNextjsId";
@@ -67,16 +61,3 @@ export default function NextIdPage({ pageInfo, socials, nextjs }: Props) {
     </>
   );
 }
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const nextjs = await fetchNextjs();
-
-//   const paths = nextjs.map((post: NextJS) => ({
-//     params: { _id: post._id },
-//   }));
-
-//   return {
-//     paths,
-//     fallback: false, // false or "blocking"
-//   };
-// };
