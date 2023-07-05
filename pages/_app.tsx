@@ -4,6 +4,7 @@ import { NextComponentType } from "next";
 import Script from "next/script";
 import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
+import Layout from "../components/utils/Layout";
 
 const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   Component,
@@ -67,7 +68,9 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
         />
       </Head>
       <>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
         {process.env.NODE_ENV !== "development" && <Analytics />}
       </>
     </div>
