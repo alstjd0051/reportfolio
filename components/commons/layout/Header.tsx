@@ -5,8 +5,13 @@ import Link from "next/link";
 import { PageInfo, Skill, Social } from "../../lib/typings";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { HomeIcon, PencilIcon } from "@heroicons/react/24/solid";
+import {
+  ArrowLeftOnRectangleIcon,
+  ArrowRightOnRectangleIcon,
+  HomeIcon,
+} from "@heroicons/react/24/solid";
 import { SiBloglovin } from "react-icons/si";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 type Props = {
   socials?: Social[];
@@ -21,11 +26,11 @@ const Header = ({ socials, pageInfo, contact, Home, skill }: Props) => {
   const router = useRouter();
   const [hover, setHover] = useState<boolean>(false);
   const [tooltip, setTooltip] = useState(false);
+  const { data: session } = useSession();
 
   const onCLickTooltip = () => {
     setTooltip(!tooltip);
   };
-
   return (
     <>
       <Head>
@@ -88,31 +93,54 @@ const Header = ({ socials, pageInfo, contact, Home, skill }: Props) => {
             </>
           )}
         </motion.div>
-        <div
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className="flex items-center justify-between hover:delay-500 transition  "
-        >
-          {contact && (
-            <Link href="#contact">
-              <motion.div
-                initial={{ x: 500, opacity: 0, scale: 0.5 }}
-                animate={{ x: 0, opacity: 1, scale: 1 }}
-                transition={{ duration: 1.5 }}
-                className="flex  items-center text-gray-300 cursor-pointer mx-2 duration-700 "
+        <div className="flex items-center gap-3">
+          {session ? (
+            <div className="flex items-center gap-3">
+              <img
+                src={session.user?.image!}
+                alt="ProfileImg"
+                className="w-9 rounded-full hidden sm:block"
+              />
+              <ArrowLeftOnRectangleIcon
+                className="w-7 fill-white cursor-pointer "
+                onClick={() => signOut()}
+              />
+
+              <div
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+                className="flex items-center justify-between hover:delay-500 transition  "
               >
-                {/* Nav */}
-                <SocialIcon
-                  className="cursor-pointer"
-                  network="email"
-                  fgColor="gray"
-                  bgColor="transparent"
-                />
-                {hover && (
-                  <p className={`text-sm text-gray-400 `}>Contect Me</p>
+                {contact && (
+                  <Link href="#contact">
+                    <motion.div
+                      initial={{ x: 500, opacity: 0, scale: 0.5 }}
+                      animate={{ x: 0, opacity: 1, scale: 1 }}
+                      transition={{ duration: 1.5 }}
+                      className="flex  items-center text-gray-300 cursor-pointer mx-2 duration-700 "
+                    >
+                      {/* Nav */}
+                      <SocialIcon
+                        className="cursor-pointer"
+                        network="email"
+                        fgColor="gray"
+                        bgColor="transparent"
+                      />
+                      {hover && (
+                        <p className={`text-sm text-gray-400 `}>Contect Me</p>
+                      )}
+                    </motion.div>
+                  </Link>
                 )}
-              </motion.div>
-            </Link>
+              </div>
+            </div>
+          ) : (
+            <div className="bg-transparent ">
+              <ArrowRightOnRectangleIcon
+                className="cursor-pointer w-7  "
+                onClick={() => signIn()}
+              />
+            </div>
           )}
         </div>
       </header>

@@ -21,6 +21,10 @@
     );
     z-index: -1;
   }
+
+  .page {
+    @apply bg-white z-10 min-h-screen py-16;
+  }
 }
 
 @layer components {

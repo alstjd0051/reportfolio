@@ -5,6 +5,7 @@ import Script from "next/script";
 import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
 import Layout from "../components/utils/Layout";
+import { SessionProvider } from "next-auth/react";
 
 const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   Component,
@@ -67,12 +68,12 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
           content="i1u4yIbhC41SOpFzuW4UTjueqO6j69ZxyTTNMZs-x-g"
         />
       </Head>
-      <>
+      <SessionProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-        {process.env.NODE_ENV !== "development" && <Analytics />}
-      </>
+      </SessionProvider>
+      {process.env.NODE_ENV !== "development" && <Analytics />}
     </div>
   );
 };

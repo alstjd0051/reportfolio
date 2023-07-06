@@ -4,19 +4,22 @@ import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { urlFor } from "../../../sanity";
 import { PageInfo } from "../../lib/typings";
 import BackGroundCircles from "../BackGroundCircles";
-import { motion } from "framer-motion";
-import { TagIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   pageInfo: PageInfo;
+  session?: boolean;
 };
 
-const HeroUI = ({ pageInfo }: Props) => {
+const HeroUI = ({ pageInfo, session }: Props) => {
   const [text, count] = useTypewriter({
     words: [`Hi, My Name's`, `${pageInfo?.name}`, "Front-End", "Sommelier"],
     loop: true,
     delaySpeed: 50,
   });
+
+  const nonSession = () => {
+    return alert("Required Login");
+  };
 
   return (
     <div className="h-screen flex flex-col space-y-16 items-center justify-center text-center overflow-hidden relative ">
@@ -34,7 +37,7 @@ const HeroUI = ({ pageInfo }: Props) => {
           <span className="mr-3 sm:text-2xl md:text-6xl">{text}</span>
           <Cursor cursorColor="#F5DF4D" />
         </h1>
-        <div className="pt-5 hidden lg:flex ">
+        <div className="pt-5 hidden lg:flex gap-10 items-center justify-center ">
           <Link href="#about">
             <p className="heroButton">About</p>
           </Link>
@@ -47,9 +50,17 @@ const HeroUI = ({ pageInfo }: Props) => {
           <Link href="#projects">
             <p className="heroButton">Projects</p>
           </Link>
-          <Link href="#contact">
-            <p className="heroButton">Contact</p>
-          </Link>
+          {!session ? (
+            <Link href="#contact">
+              <p onClick={nonSession} className="heroButton">
+                Contact
+              </p>
+            </Link>
+          ) : (
+            <Link href="#contact">
+              <p className="heroButton">Contact</p>
+            </Link>
+          )}
         </div>
       </div>
     </div>

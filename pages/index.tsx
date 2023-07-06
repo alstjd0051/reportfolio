@@ -17,6 +17,7 @@ import fetchProjects from "../components/utils/fetchProjects";
 import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
 import fetchResume from "../components/utils/fetchResume";
+import { useSession } from "next-auth/react";
 
 type Props = {
   pageInfo: PageInfo;
@@ -27,6 +28,7 @@ type Props = {
 };
 
 const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
+  const { data: session } = useSession();
   return (
     <>
       <Header skill={skills} pageInfo={pageInfo} contact socials={socials} />
@@ -50,10 +52,11 @@ const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
         <Projects projects={projects} />
       </section>
 
-      {/* Contact Me */}
-      <section id="contact" className="snap-start">
-        <ContactMe pageInfo={pageInfo} />
-      </section>
+      {session && (
+        <section id="contact" className="snap-start">
+          <ContactMe pageInfo={pageInfo} />
+        </section>
+      )}
     </>
   );
 };
@@ -75,6 +78,5 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       socials,
       resume,
     },
-    revalidate: 100,
   };
 };
