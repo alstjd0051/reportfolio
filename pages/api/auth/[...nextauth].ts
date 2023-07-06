@@ -5,8 +5,8 @@ import { addUser } from "../../../components/lib/addUser";
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
-      clientId: process.env.NEXT_GOOGLE_OAUTH_ID!,
-      clientSecret: process.env.NEXT_GOOGLE_OAUTH_SECRET!,
+      clientId: process.env.NEXT_GOOGLE_OAUTH_ID || "",
+      clientSecret: process.env.NEXT_GOOGLE_OAUTH_SECRET || "",
     }),
   ],
   callbacks: {
