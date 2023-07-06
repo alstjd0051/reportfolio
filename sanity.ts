@@ -17,6 +17,7 @@ export const sanityClient = createClient({
   dataset,
   apiVersion,
   useCdn: false,
+  token: process.env.NEXT_SANITY_SECRET_TOKEN,
 });
 
 export const urlFor = (source: any) =>
