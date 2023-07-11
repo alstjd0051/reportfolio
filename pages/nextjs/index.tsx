@@ -24,6 +24,7 @@ const NextJSPage = ({ pageInfo, socials, nextjs, skills }: Props) => {
   const onClickState = () => {
     setChangedBoard(!changedBoard);
   };
+  console.log(nextjs);
   return (
     <div>
       <Header
@@ -76,7 +77,7 @@ const NextJSPage = ({ pageInfo, socials, nextjs, skills }: Props) => {
                   <>
                     <BoardList
                       key={item._id}
-                      createdAt={item?.createdAt}
+                      createdAt={item?.createdAt || item._createdAt}
                       title={item.title}
                       route={`nextjs/${item._id}`}
                     />
