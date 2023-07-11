@@ -68,7 +68,7 @@ const NextJSPage = ({ pageInfo, socials, nextjs, skills }: Props) => {
                   <ContentBox
                     title={item.title}
                     image={item.sumbnail}
-                    createdAt={item?.createdAt}
+                    createdAt={item?.createdAt || item._createdAt}
                     key={item._id}
                     route={`/nextjs/${item._id}`}
                   />
