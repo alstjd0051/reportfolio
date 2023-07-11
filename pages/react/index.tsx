@@ -18,7 +18,6 @@ type Props = {
 };
 
 const ReactPage = ({ pageInfo, skills, reactJS, socials }: Props) => {
-  console.log(reactJS);
   const [changedBoard, setChangedBoard] = useState(false);
   const onClickState = () => {
     setChangedBoard(!changedBoard);

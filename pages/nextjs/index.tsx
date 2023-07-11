@@ -24,7 +24,6 @@ const NextJSPage = ({ pageInfo, socials, nextjs, skills }: Props) => {
   const onClickState = () => {
     setChangedBoard(!changedBoard);
   };
-  console.log(nextjs);
   return (
     <div>
       <Header
