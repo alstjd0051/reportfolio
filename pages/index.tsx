@@ -52,11 +52,11 @@ const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
         <Projects projects={projects} />
       </section>
 
-      {session && (
+      {
         <section id="contact" className="snap-start">
           <ContactMe pageInfo={pageInfo} />
         </section>
-      )}
+      }
     </>
   );
 };
