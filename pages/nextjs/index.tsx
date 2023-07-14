@@ -11,6 +11,9 @@ import fetchSkills from "../../components/utils/fetchSkills";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { ListBulletIcon } from "@heroicons/react/24/solid";
 import BoardList from "../../components/commons/items/BoardList";
+import Spinner from "../../components/commons/items/Spinner";
+import useSWR from "swr";
+import axios from "axios";
 
 type Props = {
   pageInfo?: PageInfo;
@@ -19,11 +22,25 @@ type Props = {
   skills: Skill[];
 };
 
-const NextJSPage = ({ pageInfo, socials, nextjs, skills }: Props) => {
+const NextJSPage = ({ pageInfo, socials, skills }: Props) => {
+  const { data, isLoading, error } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/next/getNextjs`
+  );
+
+  const nextjs: NextJS[] = data?.nextjs;
+
   const [changedBoard, setChangedBoard] = useState(false);
   const onClickState = () => {
     setChangedBoard(!changedBoard);
   };
+
+  if (!nextjs) {
+    return (
+      <div className="flex items-center justify-center h-screen ">
+        <Spinner className="" color="red" size={25} />
+      </div>
+    );
+  }
   return (
     <div>
       <Header
@@ -72,7 +89,7 @@ const NextJSPage = ({ pageInfo, socials, nextjs, skills }: Props) => {
                     route={`/nextjs/${item._id}`}
                   />
                 ))
-              : nextjs.map((item) => (
+              : nextjs?.map((item) => (
                   <>
                     <BoardList
                       key={item._id}
