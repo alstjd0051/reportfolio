@@ -6,6 +6,7 @@ import {
 } from "framer-motion";
 import { useRouter } from "next/router";
 import React from "react";
+import { SWRConfig } from "swr";
 
 type Props = {
   children: React.ReactNode;
@@ -17,13 +18,6 @@ const variants: Variants = {
     y: 100,
     transition: {
       duration: 0.4,
-    },
-  },
-  out: {
-    x: "-100%",
-    transition: {
-      duration: 0.4,
-      delay: 0.5,
     },
   },
   in: {
@@ -66,7 +60,14 @@ const Layout = ({ children }: Props) => {
           exit={["scaleDown", "out"]}
           key={asPath}
         >
-          {children}
+          <SWRConfig
+            value={{
+              fetcher: (url: string) =>
+                fetch(url, { cache: "no-cache" }).then((res) => res.json()),
+            }}
+          >
+            {children}
+          </SWRConfig>
         </motion.div>
       </AnimatePresence>
     </div>
