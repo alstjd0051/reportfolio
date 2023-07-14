@@ -136,10 +136,9 @@ const Header = ({ socials, pageInfo, contact, Home, skill }: Props) => {
             </div>
           ) : (
             <div className="bg-transparent ">
-              <ArrowRightOnRectangleIcon
-                className="cursor-pointer w-7  "
-                onClick={() => signIn()}
-              />
+              <button className="" onClick={() => signIn()}>
+                SignIn
+              </button>
             </div>
           )}
         </div>
