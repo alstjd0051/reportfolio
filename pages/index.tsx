@@ -1,4 +1,4 @@
-import type { GetStaticProps } from "next";
+import type { GetServerSideProps, GetStaticProps } from "next";
 import About from "../components/commons/about/AboutUI";
 import ContactMe from "../components/commons/contact/Contact";
 import HeroUI from "../components/commons/Hero/HeroUI";
@@ -63,7 +63,7 @@ const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const pageInfo = await fetchPageInfo();
   const skills = await fetchSkills();
   const projects = await fetchProjects();
