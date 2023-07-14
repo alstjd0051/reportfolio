@@ -71,26 +71,24 @@ const Header = ({ socials, pageInfo, contact, Home, skill }: Props) => {
             />
           </div>
           {tooltip && (
-            <>
-              <motion.div
-                initial={{ y: -500, opacity: 0, scale: 1 }}
-                animate={{ x: 80, y: 25, opacity: 0.5, scale: 1 }}
-                className="absolute left-14 bg-white/75 flex gap-3 rounded-md text-black/60 font-bold  px-4 py-1 bottom-2 "
-              >
-                {skill?.map((skill) => {
-                  if (skill.route !== undefined || null)
-                    return (
-                      <h1
-                        className="cursor-pointer hover:text-red-600"
-                        key={skill._id}
-                        onClick={() => router.push(`${skill.route}`)}
-                      >
-                        {skill.route}
-                      </h1>
-                    );
-                })}
-              </motion.div>
-            </>
+            <motion.div
+              initial={{ y: 500, opacity: 1, scale: 3 }}
+              animate={{ x: 110, y: 50, opacity: 0.5, scale: 1 }}
+              className="absolute  bg-white/75 flex gap-3 rounded-md text-black/60 font-bold  px-4 py-1  "
+            >
+              {skill?.map((skill) => {
+                if (skill.route !== undefined || null)
+                  return (
+                    <h1
+                      className="cursor-pointer hover:text-red-600"
+                      key={skill._id}
+                      onClick={() => router.push(`${skill.route}`)}
+                    >
+                      {skill.route}
+                    </h1>
+                  );
+              })}
+            </motion.div>
           )}
         </motion.div>
         <div className="flex items-center gap-3">
