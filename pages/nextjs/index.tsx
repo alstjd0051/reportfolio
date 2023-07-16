@@ -34,7 +34,7 @@ const NextJSPage = ({ pageInfo, socials, skills }: Props) => {
     setChangedBoard(!changedBoard);
   };
 
-  if (!nextjs) {
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen ">
         <Spinner className="" color="red" size={25} />

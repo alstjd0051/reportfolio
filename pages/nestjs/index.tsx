@@ -36,6 +36,7 @@ const NestPage = ({ socials, pageInfo }: Props) => {
   );
   console.log(data);
   const nestjs: NestJS[] = data?.nestjs;
+  console.log(nestjs);
 
   return (
     <>
@@ -75,7 +76,7 @@ const NestPage = ({ socials, pageInfo }: Props) => {
                   <ContentBox
                     title={item.title}
                     image={item?.image}
-                    createdAt={item?.createdAt}
+                    createdAt={item?.createdAt ?? item._createdAt}
                     key={item._id}
                     route={`/nestjs/${item._id}`}
                   />
@@ -84,7 +85,7 @@ const NestPage = ({ socials, pageInfo }: Props) => {
                   <>
                     <BoardList
                       key={item._id}
-                      createdAt={item?.createdAt}
+                      createdAt={item?.createdAt ?? item._createdAt}
                       title={item.title}
                       route={`nestjs/${item._id}`}
                     />
