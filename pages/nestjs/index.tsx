@@ -2,38 +2,40 @@ import React, { useState } from "react";
 import Header from "../../components/commons/layout/Header";
 import { NestJS, PageInfo, Social } from "../../components/lib/typings";
 import ContentBox from "../../components/commons/items/contentBox";
-import { GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import fetchPageInfo from "../../components/utils/fetchPageInfo";
 import fetchSocials from "../../components/utils/fetchSocials";
 import fetchNestjs from "../../components/utils/nestjs/fetchNestjs";
 import { ListBulletIcon, PhotoIcon } from "@heroicons/react/24/outline";
 import BoardList from "../../components/commons/items/BoardList";
+import useSWR from "swr";
 
 type Props = {
   pageInfo: PageInfo;
   socials: Social[];
-  nestjs: NestJS[];
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const paegeInfo = await fetchPageInfo();
   const socials = await fetchSocials();
-  const nestjs = await fetchNestjs();
   return {
     props: {
       paegeInfo,
       socials,
-      nestjs,
     },
-    revalidate: 1000,
   };
 };
 
-const NestPage = ({ socials, pageInfo, nestjs }: Props) => {
+const NestPage = ({ socials, pageInfo }: Props) => {
   const [changedBoard, setChangedBoard] = useState(false);
   const onClickState = () => {
     setChangedBoard(!changedBoard);
   };
+  const { data } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/nestjs/getNestjs`
+  );
+  console.log(data);
+  const nestjs: NestJS[] = data?.nestjs;
 
   return (
     <>
@@ -78,7 +80,7 @@ const NestPage = ({ socials, pageInfo, nestjs }: Props) => {
                     route={`/nestjs/${item._id}`}
                   />
                 ))
-              : nestjs.map((item) => (
+              : nestjs?.map((item) => (
                   <>
                     <BoardList
                       key={item._id}
