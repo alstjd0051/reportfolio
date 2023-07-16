@@ -1,7 +1,7 @@
 import React from "react";
 import fetchPageInfo from "../../../components/utils/fetchPageInfo";
 import fetchSocials from "../../../components/utils/fetchSocials";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { NestJS, PageInfo, Social } from "../../../components/lib/typings";
 import Header from "../../../components/commons/layout/Header";
 import { PortableText } from "@portabletext/react";
@@ -18,7 +18,7 @@ type Props = {
   nestjs: NestJS[];
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const nestjs = await fetchNestjsId(params?._id);
   const pageInfo = await fetchPageInfo();
   const socials = await fetchSocials();
@@ -28,7 +28,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       socials,
       nestjs,
     },
-    revalidate: 10,
   };
 };
 
@@ -42,7 +41,7 @@ export default function NestIdPage({ pageInfo, socials, nestjs }: Props) {
         <div className=" w-full flex items-center ">
           {nestjs.map((item) => (
             <div className="w-full h-screen relative" key={item._id}>
-              <h1 className="flex-1  py-2 font-bold  pl-3 dark:bg-white/40 bg-black text-white/10 dark:text-white/60 items-center flex gap-3 ">
+              <div className="flex-1  py-2 font-bold  pl-3 dark:bg-white/40 bg-black text-white/10 dark:text-white/60 items-center flex gap-3 ">
                 <p
                   className="cursor-pointer"
                   onClick={() => router.push("/nestjs")}
@@ -50,7 +49,7 @@ export default function NestIdPage({ pageInfo, socials, nestjs }: Props) {
                   nestjs /
                 </p>
                 <p>{item.title}</p>
-              </h1>
+              </div>
               <div className="flex flex-col sm:mt-0 md:mt-10 flex-1 ">
                 <PortableText
                   value={item?.content}
@@ -81,16 +80,3 @@ export default function NestIdPage({ pageInfo, socials, nestjs }: Props) {
     </>
   );
 }
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const nestjs = await fetchNestjs();
-
-  const paths = nestjs.map((post) => ({
-    params: { _id: post._id },
-  }));
-
-  return {
-    paths,
-    fallback: false, // false or "blocking"
-  };
-};
