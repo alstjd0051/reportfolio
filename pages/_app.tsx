@@ -8,6 +8,8 @@ import Layout from "../components/utils/Layout";
 import { SessionProvider } from "next-auth/react";
 import { Suspense } from "react";
 import Spinner from "../components/commons/items/Spinner";
+import { useLoading } from "../components/lib/hooks/useLoading";
+import { motion } from "framer-motion";
 
 const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   Component,
@@ -71,11 +73,25 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
         />
       </Head>
       <SessionProvider>
-        <Suspense fallback={<Spinner />}>
+        <>
           <Layout>
+            {useLoading() ? (
+              <motion.div
+                className="absolute top-1/2 right-1/2"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1, rotate: 180 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              >
+                <Spinner
+                  className="absolute top-1/2  right-1/2 z-50"
+                  color="red"
+                  size={50}
+                />
+              </motion.div>
+            ) : null}
             <Component {...pageProps} />
           </Layout>
-        </Suspense>
+        </>
       </SessionProvider>
       {process.env.NODE_ENV !== "development" && <Analytics />}
     </div>
