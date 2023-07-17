@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Project } from "../../lib/typings";
 import { urlFor } from "../../../sanity";
@@ -12,6 +12,12 @@ type Props = {
 
 const Projects = ({ projects }: Props) => {
   const router = useRouter();
+  const [onhover, setOnhover] = useState(false);
+  const hoverme = () => {
+    return setOnhover(!onhover);
+  };
+  console.log(projects.slice(1).map((item) => item.title));
+  // console.log(projects.map((item) => item.title));
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,45 +29,45 @@ const Projects = ({ projects }: Props) => {
         Projects
       </h3>
       <div className="relative z-20 flex w-full snap-x snap-mandatory overflow-y-hidden overflow-x-scroll scrollbar scrollbar-track-[#939597] scrollbar-thumb-[#F5DF4D]  ">
-        {projects?.map((project, i) => (
-          <div
-            key={project._id}
-            className="flex h-screen w-screen flex-shrink-0 snap-center flex-col items-center justify-center space-y-5 p-20 md:p-44 "
-            onClick={() => router.push(project.linkToBuild)}
-          >
-            <motion.img
-              initial={{ y: -300, opacity: 0 }}
-              transition={{ duration: 1.2 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              src={urlFor(project.image).url()}
-              className="w-[70%]  sm:h-[355px] cursor-pointer  "
-            />
-            <div className="max-w-6xl space-y-10 px-0  md:px-10">
-              <h4 className="text-center text-4xl font-semibold">
-                <span className="underline decoration-[#F5DF4D]/50 ">
-                  {i + 1} page of {projects.length}{" "}
-                </span>
-                {project.title}
-              </h4>
+        {projects
+          ?.slice(1)
+          ?.map(
+            ({ _id, image, linkToBuild, title, summary, technologies }, i) => (
+              <div
+                key={_id}
+                className="flex h-screen w-screen flex-shrink-0 snap-center flex-col items-center justify-center space-y-5 p-20 md:p-44 translate-y-10 "
+                onClick={() => router.push(linkToBuild)}
+              >
+                <motion.img
+                  initial={{ y: -300, opacity: 0 }}
+                  transition={{ duration: 1.2 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  src={urlFor(image).url()}
+                  className="w-[70%]   sm:min-h-[355px] cursor-pointer  "
+                  onMouseOver={hoverme}
+                />
+                <div className="max-w-6xl space-y-10 px-0  md:px-10">
+                  <h4 className="text-center text-4xl font-semibold">
+                    {title}
+                  </h4>
 
-              <p className="text-center text-lg md:text-left">
-                {project.summary}
-              </p>
-              <div className="flex flex-row">
-                {project.technologies?.map((index) => (
-                  <div className="space-x-2 m-2 " key={index._id}>
-                    <img
-                      className="w-10 h-10 rounded-full"
-                      src={urlFor(index.image).url()}
-                      alt=""
-                    />
+                  <p className="text-center text-lg md:text-left">{summary}</p>
+                  <div className="flex flex-row">
+                    {technologies?.map((index) => (
+                      <div className="space-x-2 m-2 " key={index._id}>
+                        <img
+                          className="w-10 h-10 rounded-full"
+                          src={urlFor(index.image).url()}
+                          alt=""
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            )
+          )}
       </div>
       <div className="absolute top-[30px] left-0 h-[500px] w-full -skew-y-12 bg-[#F5DF4D]/10 " />
     </motion.div>
