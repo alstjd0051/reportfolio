@@ -50,6 +50,9 @@ export default {
         {
           type: "color",
         },
+        {
+          type: "table",
+        },
       ],
     },
     {

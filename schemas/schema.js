@@ -21,19 +21,9 @@ import html from "./html";
 import react from "./react";
 import user from "./user";
 import post from "./post";
+import contact from "./contact";
+import work from "./work";
 
-// // Then we give our schema to the builder and provide the result to Sanity
-// export default createSchema({
-//   name: "default",
-//   types: schemaTypes.concat([
-//     pageInfo,
-//     expreience,
-//     project,
-//     skill,
-//     social,
-//     resume,
-//   ]),
-// });
 export default [
   user,
   post,
@@ -51,4 +41,6 @@ export default [
   nestjs,
   html,
   react,
+  contact,
+  work,
 ];

@@ -5,6 +5,8 @@ import { visionTool } from "@sanity/vision";
 import { codeInput } from "@sanity/code-input";
 import { markdownSchema } from "sanity-plugin-markdown/next";
 import { colorInput } from "@sanity/color-input";
+import { table } from "@sanity/table";
+import { googleMapsInput } from "@sanity/google-maps-input";
 
 export default defineConfig({
   title: "portfolio2.0",
@@ -16,6 +18,10 @@ export default defineConfig({
     codeInput(),
     markdownSchema(),
     colorInput(),
+    table(),
+    googleMapsInput({
+      apiKey: "AIzaSyCngT-hem5BT5pKR93KpecrkjmIkMZL8M4",
+    }),
   ],
   tools: (prev, context) => {
     const isAdmin = context.currentUser.roles.find(

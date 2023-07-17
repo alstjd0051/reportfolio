@@ -47,5 +47,11 @@ export default {
       title: "Created at",
       type: "date",
     },
+    // {
+    //   name: "category",
+    //   title: "Category",
+    //   type: "array",
+    //   of: [{ type: "reference", to: { type: "skill" } }],
+    // },
   ],
 };
