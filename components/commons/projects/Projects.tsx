@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Project } from "../../lib/typings";
 import { urlFor } from "../../../sanity";
 import { useRouter } from "next/dist/client/router";
-import { GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import fetchProjects from "../../utils/fetchProjects";
 
 type Props = {
@@ -74,13 +74,12 @@ const Projects = ({ projects }: Props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const projects = await fetchProjects();
   return {
     props: {
       projects,
     },
-    revalidate: 100,
   };
 };
 
