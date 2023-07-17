@@ -59,7 +59,7 @@ const NextJSPage = ({ pageInfo, socials, skills }: Props) => {
                 <PhotoIcon className="cursor-pointer w-8 h-8 stroke-2 " />
                 <ListBulletIcon
                   onClick={onClickState}
-                  className="cursor-pointer w-5 h-5"
+                  className="cursor-pointer w-5 my-5 h-5"
                 />
               </>
             ) : (
@@ -68,7 +68,7 @@ const NextJSPage = ({ pageInfo, socials, skills }: Props) => {
                   onClick={onClickState}
                   className="cursor-pointer w-5 h-5"
                 />
-                <ListBulletIcon className="cursor-pointer w-8 h-8" />
+                <ListBulletIcon className="cursor-pointer my-5 stroke-2 w-8 h-8" />
               </>
             )}
           </div>

@@ -48,27 +48,29 @@ const About = ({ pageInfo, resume }: Props) => {
             value={pageInfo?.backgroundInformation}
           />
           <div className="pt-5">
-            {resume.map((item) => (
-              <div key={item._id} className="   ">
-                <div className="flex items-center gap-2 ">
-                  <Link className="  " href={item.url ? item.url : ""}>
-                    <h1 className=" hover-underline-animation hover:text-yellow-300 border-r  border-solid pr-2 text-sm  xl:text-lg  ">
-                      {item.title}
-                    </h1>
-                  </Link>
-                  <div>
-                    <p className="basis-1/4 sm:text-sm md:text-base">
-                      {item.subTitle}
+            {resume
+              .sort()
+              .map(({ title, dateEnded, dateStarted, subTitle, url }, i) => (
+                <div key={i} className="   ">
+                  <div className="flex items-center gap-2 ">
+                    <Link className="  " href={url ? url : ""}>
+                      <h1 className=" hover-underline-animation hover:text-yellow-300 border-r  border-solid pr-2 text-sm  xl:text-lg  ">
+                        {title}
+                      </h1>
+                    </Link>
+                    <div>
+                      <p className="basis-1/4 sm:text-sm md:text-base">
+                        {subTitle}
+                      </p>
+                    </div>
+                    <p className="text-red-300  sm:text-xs hidden md:block   md:text-sm 2xl:text-lg">
+                      <span>{dateStarted}</span>
+                      <span> - </span>
+                      <span>{dateEnded}</span>
                     </p>
                   </div>
-                  <p className="text-red-300  sm:text-xs hidden md:block   md:text-sm 2xl:text-lg">
-                    <span>{item.dateStarted}</span>
-                    <span> - </span>
-                    <span>{item.dateEnded}</span>
-                  </p>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>

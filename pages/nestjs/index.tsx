@@ -34,9 +34,7 @@ const NestPage = ({ socials, pageInfo }: Props) => {
   const { data } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/nestjs/getNestjs`
   );
-  console.log(data);
   const nestjs: NestJS[] = data?.nestjs;
-  console.log(nestjs);
 
   return (
     <>

@@ -6,6 +6,8 @@ import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
 import Layout from "../components/utils/Layout";
 import { SessionProvider } from "next-auth/react";
+import { Suspense } from "react";
+import Spinner from "../components/commons/items/Spinner";
 
 const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   Component,
@@ -69,9 +71,11 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
         />
       </Head>
       <SessionProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Suspense fallback={<Spinner />}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Suspense>
       </SessionProvider>
       {process.env.NODE_ENV !== "development" && <Analytics />}
     </div>

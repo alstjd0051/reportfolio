@@ -16,8 +16,6 @@ const Projects = ({ projects }: Props) => {
   const hoverme = () => {
     return setOnhover(!onhover);
   };
-  console.log(projects.slice(1).map((item) => item.title));
-  // console.log(projects.map((item) => item.title));
   return (
     <motion.div
       initial={{ opacity: 0 }}
