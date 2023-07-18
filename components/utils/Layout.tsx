@@ -5,8 +5,10 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { Suspense } from "react";
 import { SWRConfig } from "swr";
+import Loading from "../loading";
+import Spinner from "../commons/items/Spinner";
 
 type Props = {
   children: React.ReactNode;
@@ -66,7 +68,15 @@ const Layout = ({ children }: Props) => {
                 fetch(url, { cache: "no-cache" }).then((res) => res.json()),
             }}
           >
-            {children}
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center ">
+                  Loading...
+                </div>
+              }
+            >
+              {children}
+            </Suspense>
           </SWRConfig>
         </motion.div>
       </AnimatePresence>
