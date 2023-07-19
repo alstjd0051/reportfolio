@@ -68,15 +68,7 @@ const Layout = ({ children }: Props) => {
                 fetch(url, { cache: "no-cache" }).then((res) => res.json()),
             }}
           >
-            <Suspense
-              fallback={
-                <div className="flex items-center justify-center ">
-                  Loading...
-                </div>
-              }
-            >
-              {children}
-            </Suspense>
+            <>{children}</>
           </SWRConfig>
         </motion.div>
       </AnimatePresence>

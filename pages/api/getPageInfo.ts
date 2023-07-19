@@ -4,7 +4,9 @@ import { PageInfo } from "../../components/lib/typings";
 import { sanityClient } from "../../sanity";
 
 const query = groq`
-    *[_type == "pageInfo"][0]
+    *[_type == "pageInfo"][0]{
+      ...
+    }
 `;
 
 type Data = {
