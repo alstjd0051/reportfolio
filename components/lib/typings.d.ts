@@ -22,6 +22,7 @@ interface Image {
 export interface Code extends Dcode {
   language?: string;
   code: string | string[];
+  _type: string;
 }
 
 // interface Code {
@@ -159,4 +160,10 @@ export interface ReactJS extends SanityBody {
   sumbnail?: Image;
   content: Block[];
   createdAt: Date;
+}
+
+export interface Content extends SanityBody {
+  title: string;
+  code: Code[];
+  id: string;
 }
