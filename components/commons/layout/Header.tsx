@@ -134,9 +134,23 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
             </div>
           ) : (
             <div className="bg-transparent ">
-              <button className="" onClick={() => signIn()}>
+              <motion.button
+                whileHover={{
+                  scale: 1.2,
+                  rotate: "-360deg",
+                  x: -50,
+                  y: 30,
+                  transition: {
+                    duration: 0.8,
+                    delay: 0.2,
+                    ease: [0, 0.71, 0.2, 0.01],
+                  },
+                }}
+                className=""
+                onClick={() => signIn()}
+              >
                 SignIn
-              </button>
+              </motion.button>
             </div>
           )}
         </div>
