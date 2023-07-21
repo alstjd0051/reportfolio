@@ -6,19 +6,19 @@ import ContentCard from "../items/ContentCard";
 
 const BlogContent = () => {
   const { data } = useSWR<Content[]>("/api/content");
-  console.log(data);
+  console.log(data?.map((item) => item.content));
   return (
     <div className="h-screen relative ">
       <div className="flex gap-5 items-center h-full justify-center  ">
         <div className="max-w-3xl md:block hidden">
           <div id="container">
-            {data?.map(({ id, code, title, _createdAt }, i) => (
-              <div id="item" key={i}>
+            {data?.map(({ id, title, _createdAt, content }, i) => (
+              <div id="item " key={i}>
                 <ContentCard
-                  code={code}
                   title={title}
                   createdAt={_createdAt}
                   id={id}
+                  content={content}
                 />
               </div>
             ))}

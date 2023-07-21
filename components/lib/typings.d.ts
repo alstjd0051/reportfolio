@@ -133,6 +133,7 @@ interface Block {
   children: Span[];
   markDefs: any[];
   style: any;
+  highlightedLines: any;
 }
 
 interface Span {
@@ -166,4 +167,5 @@ export interface Content extends SanityBody {
   title: string;
   code: Code[];
   id: string;
+  content: Block[];
 }

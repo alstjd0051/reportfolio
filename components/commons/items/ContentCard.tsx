@@ -1,16 +1,16 @@
 import React from "react";
-import { Code } from "../../lib/typings";
 import { PortableText } from "@portabletext/react";
-import { RichTextComponents } from "./RichTextComponents";
+import { CustomRichTextComponents } from "./CustomRichTextComponents";
 
 type Props = {
-  code: Code[];
   id: string;
   title: string;
   createdAt: string;
+  content: any[];
 };
 
-const ContentCard = ({ code, id, title, createdAt }: Props) => {
+const ContentCard = ({ id, title, createdAt, content }: Props) => {
+  console.log(content);
   return (
     <div
       className="text-black overflow-y-scroll rounded-lg min-h-[20rem] bg-white w-[20rem] shadow-2xl shadow-white/40 flex flex-col justify-between px-5 "
@@ -19,8 +19,8 @@ const ContentCard = ({ code, id, title, createdAt }: Props) => {
       <div className="flex gap-3">
         <h1 className="font-bold  text-xl pt-5">{title}</h1>
       </div>
-      <div className="whitespace-pre-line overflow-y-scroll pt-5">
-        <PortableText value={code} components={RichTextComponents} />
+      <div className="whitespace-pre-line flex-col overflow-y-scroll pt-5">
+        <PortableText value={content} components={CustomRichTextComponents} />
       </div>
       <div className="text-end">{new Date(createdAt).toLocaleDateString()}</div>
     </div>

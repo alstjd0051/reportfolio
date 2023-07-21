@@ -6,7 +6,7 @@ import { urlFor } from "../../../sanity";
 import { motion } from "framer-motion";
 import Refractor from "react-refractor";
 
-export const RichTextComponents = {
+export const CustomRichTextComponents = {
   types: {
     image: ({ value }: any) => {
       return (
@@ -23,7 +23,6 @@ export const RichTextComponents = {
       return (
         <>
           <SyntaxHighlighter
-            style={atelierSeasideDark}
             language={value.language}
             customStyle={{ whiteSpace: "pre-wrap" }}
           >

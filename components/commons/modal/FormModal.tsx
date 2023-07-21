@@ -20,14 +20,14 @@ const FormModal = ({ onClickFormModal }: Props) => {
      ${formData.name}(${formData.email})님 안녕하세요. ${formData.message}이시군요 의견을 보내주셔서 감사합니다. `);
 
   return (
-    <div className="absolute w-5/6 h-3/4 rounded-xl z-50 flex flex-col   bg-[rgba(0,0,0,0.9)] p-3 m-auto space-y-10 ">
+    <div className="absolute w-5/6 h-3/4 overflow-hidden rounded-xl z-50 flex flex-col   bg-[rgba(0,0,0,0.9)] p-3 m-auto space-y-10 ">
       <XMarkIcon
         onClick={onClickFormModal}
         className="cursor-pointer w-10 h-10 mx-3"
       />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col space-y-3 mx-auto "
+        className="flex flex-col space-y-3  mx-auto "
       >
         <div className="flex space-x-2 ">
           <input
@@ -56,7 +56,7 @@ const FormModal = ({ onClickFormModal }: Props) => {
         />
         <button
           type="submit"
-          className="bg-[#F5DF4D] py-5 px-10 rounded-md text-[#DE833A] font-bold text-lg "
+          className="bg-[#F5DF4D] max-w-5xl py-5 px-10 rounded-md text-[#DE833A] font-bold text-lg "
         >
           Submit
         </button>
