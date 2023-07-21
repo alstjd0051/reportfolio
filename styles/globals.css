@@ -61,7 +61,8 @@
     transform-origin: bottom left;
   }
   #container {
-    @apply flex overflow-x-scroll p-6 snap-x scroll-p-2 rounded-lg gap-3;
+    scroll-snap-type: x mandatory;
+    @apply flex overflow-x-scroll p-6  scroll-p-2 rounded-lg gap-3;
   }
   #item {
     flex: 0 0 3%;
