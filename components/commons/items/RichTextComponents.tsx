@@ -21,15 +21,13 @@ export const RichTextComponents = {
     code: ({ value }: any) => {
       return (
         <>
-          <div className="text-clip">
-            <SyntaxHighlighter
-              PreTag={"div"}
-              style={atelierSeasideDark}
-              language={value.language}
-            >
-              {value.code}
-            </SyntaxHighlighter>
-          </div>
+          <SyntaxHighlighter
+            style={atelierSeasideDark}
+            language={value.language}
+            customStyle={{ whiteSpace: "pre-wrap" }}
+          >
+            {value.code}
+          </SyntaxHighlighter>
         </>
       );
     },
