@@ -1,4 +1,4 @@
-import type { GetServerSideProps, GetStaticProps } from "next";
+import type { GetStaticProps } from "next";
 import About from "../components/commons/about/AboutUI";
 import ContactMe from "../components/commons/contact/Contact";
 import HeroUI from "../components/commons/Hero/HeroUI";
@@ -17,6 +17,7 @@ import fetchProjects from "../components/utils/fetchProjects";
 import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
 import fetchResume from "../components/utils/fetchResume";
+import BlogContent from "../components/commons/blog/BlogContent";
 
 type Props = {
   pageInfo: PageInfo;
@@ -48,6 +49,9 @@ const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
       {/* Projects */}
       <section id="projects" className="snap-center">
         <Projects projects={projects} />
+      </section>
+      <section id="blog" className="snap-center">
+        <BlogContent />
       </section>
 
       {
