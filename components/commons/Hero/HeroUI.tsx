@@ -4,7 +4,6 @@ import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { urlFor } from "../../../sanity";
 import { PageInfo } from "../../lib/typings";
 import BackGroundCircles from "../BackGroundCircles";
-import BgModel from "../../unit/threejs/model";
 
 type Props = {
   pageInfo: PageInfo;
@@ -24,10 +23,6 @@ const HeroUI = ({ pageInfo, session }: Props) => {
 
   return (
     <section className="h-screen flex flex-col space-y-16 items-center justify-center text-center overflow-hidden relative ">
-      <div className="">
-        <BgModel />
-      </div>
-
       <BackGroundCircles />
 
       <img
