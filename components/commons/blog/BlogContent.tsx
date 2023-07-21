@@ -12,9 +12,14 @@ const BlogContent = () => {
       <div className="flex gap-5 items-center h-full justify-center  ">
         <div className="max-w-3xl md:block hidden">
           <div id="container">
-            {data?.map(({ id, code, title }, i) => (
+            {data?.map(({ id, code, title, _createdAt }, i) => (
               <div id="item" key={i}>
-                <ContentCard code={code} title={title} id={id} />
+                <ContentCard
+                  code={code}
+                  title={title}
+                  createdAt={_createdAt}
+                  id={id}
+                />
               </div>
             ))}
           </div>
