@@ -51,17 +51,10 @@ const HeroUI = ({ pageInfo, session }: Props) => {
           <Link href="#projects">
             <p className="heroButton">Projects</p>
           </Link>
-          {!session ? (
-            <Link href="#contact">
-              <p onClick={nonSession} className="heroButton">
-                Contact
-              </p>
-            </Link>
-          ) : (
-            <Link href="#contact">
-              <p className="heroButton">Contact</p>
-            </Link>
-          )}
+
+          <Link href="#contact">
+            <p className="heroButton">Contact</p>
+          </Link>
         </div>
       </div>
     </section>
