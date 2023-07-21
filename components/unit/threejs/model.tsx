@@ -21,7 +21,6 @@ const BgModel = (props: Props) => {
         662.3416875749203,
         437.31341829291944
       );
-      console.log(camera.position);
       const controls = new OrbitControls(camera, renderer.domElement);
       const loader = new GLTFLoader();
       const light = new THREE.DirectionalLight(0xffffff, 1.7);
@@ -42,8 +41,8 @@ const BgModel = (props: Props) => {
     }
   }, [canvasRef]);
   return (
-    <div className="absolute z-50 right-3 bottom-44">
-      <canvas ref={canvasRef} id="canvas" />
+    <div className="absolute z-50 right-3 bottom-0 ">
+      <canvas ref={canvasRef} id="canvas" className="w-auto" />
     </div>
   );
 };
