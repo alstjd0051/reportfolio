@@ -10,7 +10,6 @@ type Props = {
 };
 
 const ContentCard = ({ id, title, createdAt, content }: Props) => {
-  console.log(content);
   return (
     <div
       className="text-black overflow-y-scroll rounded-lg min-h-[20rem] bg-white w-[20rem] shadow-2xl shadow-white/40 flex flex-col justify-between px-5 "

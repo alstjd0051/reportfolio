@@ -6,7 +6,7 @@ import ContentCard from "../items/ContentCard";
 
 const BlogContent = () => {
   const { data } = useSWR<Content[]>("/api/content");
-  console.log(data?.map((item) => item.content));
+  // console.log(data?.map((item) => item.content));
   return (
     <div className="h-screen relative ">
       <div className="flex gap-5 items-center h-full justify-center  ">

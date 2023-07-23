@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
+import {
+  PhoneIcon,
+  EnvelopeIcon,
+  DocumentIcon,
+} from "@heroicons/react/24/solid";
 import { BiUpArrow } from "react-icons/bi";
 import Link from "next/link";
 import MapModal from "../modal/MapModal";
@@ -7,6 +11,10 @@ import FormModal from "../modal/FormModal";
 import { PageInfo } from "../../lib/typings";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../items/RichTextComponents";
+import MyResume from "../items/MyResume";
+import { motion } from "framer-motion";
+import { newspaper } from "../../lib/framer/animationList";
+import { useTypewriter } from "react-simple-typewriter";
 
 type Props = {
   pageInfo: PageInfo;
@@ -14,6 +22,15 @@ type Props = {
 
 const ContactMe = ({ pageInfo }: Props) => {
   const [OpenForm, setOpenForm] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [text, count] = useTypewriter({
+    words: [`Hi, My Name's`, `${pageInfo?.name}`, "Front-End", "Sommelier"],
+    loop: true,
+    delaySpeed: 50,
+  });
+  const onClickResumeModal = () => {
+    setModalOpen(!modalOpen);
+  };
 
   const onClickFormModal = () => {
     setOpenForm(!OpenForm);
@@ -60,7 +77,29 @@ const ContactMe = ({ pageInfo }: Props) => {
             <EnvelopeIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
             <p className="text-2xl cursor-pointer">{pageInfo.email}</p>
           </div>
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="flex items-center space-x-5 justify-center"
+          >
+            <DocumentIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
+            <p className="text-2xl cursor-pointer" onClick={onClickResumeModal}>
+              SHOW PDF
+            </p>
+          </motion.div>
         </div>
+
+        {modalOpen && (
+          <motion.div
+            variants={newspaper}
+            initial="hidden"
+            exit={"exit"}
+            animate="visible"
+            className="absolute  top-1/4 right-1/4   "
+          >
+            <MyResume onClick={onClickResumeModal} />
+          </motion.div>
+        )}
       </div>
       <div className="absolute right-16 md:right-20 bottom-28  ">
         <Link href={"#about"}>

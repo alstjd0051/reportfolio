@@ -169,3 +169,15 @@ export interface Content extends SanityBody {
   id: string;
   content: Block[];
 }
+
+export interface Contact {
+  fileUrl: string;
+  comments: Comments[];
+}
+
+interface Comments {
+  author: string;
+  comment: string;
+  email: string;
+  message: string;
+}
