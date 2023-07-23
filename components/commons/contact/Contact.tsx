@@ -13,8 +13,6 @@ import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../items/RichTextComponents";
 import MyResume from "../items/MyResume";
 import { motion } from "framer-motion";
-import { newspaper } from "../../lib/framer/animationList";
-import { useTypewriter } from "react-simple-typewriter";
 
 type Props = {
   pageInfo: PageInfo;
@@ -23,11 +21,7 @@ type Props = {
 const ContactMe = ({ pageInfo }: Props) => {
   const [OpenForm, setOpenForm] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [text, count] = useTypewriter({
-    words: [`Hi, My Name's`, `${pageInfo?.name}`, "Front-End", "Sommelier"],
-    loop: true,
-    delaySpeed: 50,
-  });
+
   const onClickResumeModal = () => {
     setModalOpen(!modalOpen);
   };
@@ -51,7 +45,7 @@ const ContactMe = ({ pageInfo }: Props) => {
         Contact
       </h3>
       <div className="flex flex-col sm:space-y-0 md:space-y-10 ">
-        <div className=" sm:text-4xl font-semibold text-center">
+        <div className=" sm:text-4xl h-10 font-semibold text-center">
           <PortableText
             components={RichTextComponents}
             value={pageInfo.footerComments}
@@ -90,15 +84,9 @@ const ContactMe = ({ pageInfo }: Props) => {
         </div>
 
         {modalOpen && (
-          <motion.div
-            variants={newspaper}
-            initial="hidden"
-            exit={"exit"}
-            animate="visible"
-            className="absolute  top-1/4 right-1/4   "
-          >
+          <div className="absolute  top-1/4 right-1/4   ">
             <MyResume onClick={onClickResumeModal} />
-          </motion.div>
+          </div>
         )}
       </div>
       <div className="absolute right-16 md:right-20 bottom-28  ">
