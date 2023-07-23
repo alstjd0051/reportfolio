@@ -25,10 +25,6 @@ const BlogContent = () => {
           </div>
         </div>
       </div>
-
-      <div className="hidden md:block">
-        <BgModel />
-      </div>
     </div>
   );
 };
