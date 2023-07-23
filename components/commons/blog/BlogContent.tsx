@@ -1,6 +1,5 @@
 import React from "react";
 import useSWR from "swr";
-import BgModel from "../../unit/threejs/model";
 import { Content } from "../../lib/typings";
 import ContentCard from "../items/ContentCard";
 
