@@ -6,8 +6,6 @@ import {
 } from "@heroicons/react/24/solid";
 import { BiUpArrow } from "react-icons/bi";
 import Link from "next/link";
-import MapModal from "../modal/MapModal";
-import FormModal from "../modal/FormModal";
 import { PageInfo } from "../../lib/typings";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../items/RichTextComponents";
@@ -16,6 +14,7 @@ import dynamic from "next/dynamic";
 
 const MyResume = dynamic(() => import("../items/MyResume"), {
   loading: () => <p>Loading...</p>,
+  ssr: false,
 });
 type Props = {
   pageInfo: PageInfo;
