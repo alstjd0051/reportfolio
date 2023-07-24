@@ -27,6 +27,7 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
   const [hover, setHover] = useState<boolean>(false);
   const [tooltip, setTooltip] = useState(false);
   const { data: session } = useSession();
+  console.log(skill?.map((item) => item.route));
 
   const onCLickTooltip = () => {
     setTooltip(!tooltip);
@@ -76,7 +77,7 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
               animate={{ x: 110, y: 50, opacity: 0.5, scale: 1 }}
               className="absolute  bg-white/75 flex gap-3 rounded-md text-black/60 font-bold  px-4 py-1  "
             >
-              {skill?.map((skill) => {
+              {/* {skill?.map((skill) => {
                 if (skill.route !== undefined || null)
                   return (
                     <h1
@@ -87,7 +88,8 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
                       {skill.route}
                     </h1>
                   );
-              })}
+              })} */}
+              <h1>making blog...</h1>
             </motion.div>
           )}
         </motion.div>
