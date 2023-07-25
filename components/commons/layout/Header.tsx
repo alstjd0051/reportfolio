@@ -27,7 +27,6 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
   const [hover, setHover] = useState<boolean>(false);
   const [tooltip, setTooltip] = useState(false);
   const { data: session } = useSession();
-  console.log(skill?.map((item) => item.route));
 
   const onCLickTooltip = () => {
     setTooltip(!tooltip);
@@ -89,7 +88,9 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
                     </h1>
                   );
               })} */}
-              <h1>making blog...</h1>
+              <Link target="_blank" href={"https://www.tylerblog.store/"}>
+                making blog...
+              </Link>
             </motion.div>
           )}
         </motion.div>
