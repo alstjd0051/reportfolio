@@ -65,13 +65,13 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
                 />
               </div>
             ))}
+          </div>
+          {/* Blog */}
+          {/* {tooltip && (
             <SiBloglovin
               onClick={onCLickTooltip}
               className="w-8 h-8  cursor-pointer fill-gray-600 hover:fill-gray-300  "
             />
-          </div>
-          {/* Blog */}
-          {/* {tooltip && (
             <motion.div
               initial={{ y: 500, opacity: 1, scale: 3 }}
               animate={{ x: 110, y: 50, opacity: 0.5, scale: 1 }}
