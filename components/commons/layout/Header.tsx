@@ -70,29 +70,18 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
               className="w-8 h-8  cursor-pointer fill-gray-600 hover:fill-gray-300  "
             />
           </div>
-          {tooltip && (
+          {/* Blog */}
+          {/* {tooltip && (
             <motion.div
               initial={{ y: 500, opacity: 1, scale: 3 }}
               animate={{ x: 110, y: 50, opacity: 0.5, scale: 1 }}
               className="absolute  bg-white/75 flex gap-3 rounded-md text-black/60 font-bold  px-4 py-1  "
             >
-              {/* {skill?.map((skill) => {
-                if (skill.route !== undefined || null)
-                  return (
-                    <h1
-                      className="cursor-pointer hover:text-red-600"
-                      key={skill._id}
-                      onClick={() => router.push(`${skill.route}`)}
-                    >
-                      {skill.route}
-                    </h1>
-                  );
-              })} */}
               <Link target="_blank" href={"https://www.tylerblog.store/"}>
                 making blog...
               </Link>
             </motion.div>
-          )}
+          )} */}
         </motion.div>
         <div className="flex items-center gap-3">
           {session ? (
