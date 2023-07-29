@@ -17,7 +17,14 @@ import fetchProjects from "../components/utils/fetchProjects";
 import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
 import fetchResume from "../components/utils/fetchResume";
-import BlogContent from "../components/commons/blog/BlogContent";
+import dynamic from "next/dynamic";
+
+const GameComponent = dynamic(
+  () => import("../components/commons/game/gameContainer"),
+  {
+    ssr: false,
+  }
+);
 
 type Props = {
   pageInfo: PageInfo;
@@ -56,6 +63,10 @@ const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
           <ContactMe pageInfo={pageInfo} />
         </section>
       }
+
+      <section id="game">
+        <GameComponent />
+      </section>
     </>
   );
 };

@@ -55,6 +55,9 @@ const HeroUI = ({ pageInfo, session }: Props) => {
           <Link href="#contact">
             <p className="heroButton">Contact</p>
           </Link>
+          <Link href="#game">
+            <p className="heroButton">{`game`.toLocaleUpperCase()}</p>
+          </Link>
         </div>
       </div>
     </section>
