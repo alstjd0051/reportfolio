@@ -4,7 +4,7 @@ import React from "react";
 
 const GameComponent = () => {
   return (
-    <div className="h-screen">
+    <div className="h-screen truncate flex items-center justify-center">
       <iframe
         src={"/js-tetris/index.html"}
         className="w-full h-full overflow-y-auto"
