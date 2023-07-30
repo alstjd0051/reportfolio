@@ -5,12 +5,7 @@ import Link from "next/link";
 import { PageInfo, Skill, Social } from "../../lib/typings";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import {
-  ArrowLeftOnRectangleIcon,
-  ArrowRightOnRectangleIcon,
-  HomeIcon,
-} from "@heroicons/react/24/solid";
-import { SiBloglovin } from "react-icons/si";
+import { ArrowLeftOnRectangleIcon, HomeIcon } from "@heroicons/react/24/solid";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 type Props = {
@@ -25,12 +20,8 @@ type Props = {
 const Header = ({ socials, contact, Home, skill }: Props) => {
   const router = useRouter();
   const [hover, setHover] = useState<boolean>(false);
-  const [tooltip, setTooltip] = useState(false);
   const { data: session } = useSession();
 
-  const onCLickTooltip = () => {
-    setTooltip(!tooltip);
-  };
   return (
     <>
       <Head>
