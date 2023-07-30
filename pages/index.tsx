@@ -29,12 +29,12 @@ const GameComponent = dynamic(
 type Props = {
   pageInfo: PageInfo;
   skills: Skill[];
-  projects: Project[];
+
   socials: Social[];
   resume: Resume[];
 };
 
-const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
+const Home = ({ pageInfo, skills, socials, resume }: Props) => {
   return (
     <>
       <Header skill={skills} pageInfo={pageInfo} contact socials={socials} />
@@ -55,7 +55,7 @@ const Home = ({ pageInfo, projects, skills, socials, resume }: Props) => {
 
       {/* Projects */}
       <section id="projects" className="snap-center">
-        <Projects projects={projects} />
+        <Projects />
       </section>
 
       {
@@ -76,7 +76,7 @@ export default Home;
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo = await fetchPageInfo();
   const skills = await fetchSkills();
-  const projects = await fetchProjects();
+
   const socials = await fetchSocials();
   const resume = await fetchResume();
 
@@ -84,7 +84,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     props: {
       pageInfo,
       skills,
-      projects,
+
       socials,
       resume,
     },
