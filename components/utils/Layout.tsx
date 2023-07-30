@@ -7,8 +7,6 @@ import {
 import { useRouter } from "next/router";
 import React, { Suspense } from "react";
 import { SWRConfig } from "swr";
-import Loading from "../loading";
-import Spinner from "../commons/items/Spinner";
 
 type Props = {
   children: React.ReactNode;
