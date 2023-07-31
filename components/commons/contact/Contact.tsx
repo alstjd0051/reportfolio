@@ -16,12 +16,21 @@ const MyResume = dynamic(() => import("../items/MyResume"), {
   loading: () => <p>Loading...</p>,
   ssr: false,
 });
+const SendModal = dynamic(() => import("../modal/SendModal"), {
+  loading: () => <p>Loading...</p>,
+  ssr: false,
+});
 type Props = {
   pageInfo: PageInfo;
 };
 
 const ContactMe = ({ pageInfo }: Props) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [openSendModal, setOpenSendModal] = useState(false);
+
+  const onClickSendModal = () => {
+    setOpenSendModal(!openSendModal);
+  };
 
   const onClickResumeModal = () => {
     setModalOpen(!modalOpen);
@@ -29,7 +38,7 @@ const ContactMe = ({ pageInfo }: Props) => {
 
   return (
     <div className="h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly items-center mx-auto  ">
-      <h3 className="hidden lg:absolute top-24 uppercase tracking-[20px] text-gray-500 md:text-2xl ">
+      <h3 className="hidden md:block absolute top-24 uppercase tracking-[20px] text-gray-500 md:text-2xl ">
         Contact
       </h3>
       <div className="flex flex-col sm:space-y-0 md:space-y-10 ">
@@ -52,7 +61,10 @@ const ContactMe = ({ pageInfo }: Props) => {
                 .replace(/\-{1,2}$/g, "")}
             </p>
           </div>
-          <div className="flex items-center space-x-5 justify-center">
+          <div
+            className="flex items-center space-x-5 justify-center cursor-pointer "
+            onClick={onClickSendModal}
+          >
             <EnvelopeIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
             <p className="text-2xl">{pageInfo.email}</p>
           </div>
@@ -67,14 +79,19 @@ const ContactMe = ({ pageInfo }: Props) => {
             </p>
           </motion.div>
         </div>
+        {openSendModal && (
+          <div className="fixed top-1/4 right-1/4 ">
+            <SendModal onClose={onClickSendModal} />
+          </div>
+        )}
 
         {modalOpen && (
-          <div className="absolute  top-1/4 right-1/4   ">
+          <div className="absolute p-5 rounded-lg top-1/4 right-1/4   ">
             <MyResume onClick={onClickResumeModal} />
           </div>
         )}
       </div>
-      <div className="absolute right-16 md:right-20 bottom-28  ">
+      <div className="absolute  right-16 md:right-20 bottom-28  ">
         <Link href={"#about"}>
           <BiUpArrow className="cursor-pointer" />
         </Link>

@@ -181,3 +181,9 @@ interface Comments {
   email: string;
   message: string;
 }
+
+export interface PostContact {
+  author: string;
+  email: string;
+  comments: string;
+}
