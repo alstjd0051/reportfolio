@@ -13,7 +13,6 @@ type Props = {
 
 const Projects = () => {
   const { data: projects } = useSWR<Project[]>("/api/getProjects");
-  console.log(projects);
 
   const router = useRouter();
   const [onhover, setOnhover] = useState(false);
