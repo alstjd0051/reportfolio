@@ -27,6 +27,7 @@ type Props = {
 const ContactMe = ({ pageInfo }: Props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [openSendModal, setOpenSendModal] = useState(false);
+  const [hover, setHover] = useState<boolean>(false);
 
   const onClickSendModal = () => {
     setOpenSendModal(!openSendModal);
@@ -64,9 +65,17 @@ const ContactMe = ({ pageInfo }: Props) => {
           <div
             className="flex items-center space-x-5 justify-center cursor-pointer "
             onClick={onClickSendModal}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
           >
-            <EnvelopeIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
-            <p className="text-2xl">{pageInfo.email}</p>
+            <EnvelopeIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse  " />
+            <p
+              className={`text-2xl ${
+                hover && " text-red-600 duration-1000 transition ease-out"
+              }`}
+            >
+              {hover ? "SendMe" : pageInfo.email}
+            </p>
           </div>
           <motion.div
             whileHover={{ scale: 1.1 }}
