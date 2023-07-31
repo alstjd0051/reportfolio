@@ -1,9 +1,7 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import axios from "axios";
 import React, { useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import Modal from "react-modal";
-import { CreateSend, sanityClient } from "../../../sanity";
+import { CreateSend } from "../../../sanity";
 import { PostContact } from "../../lib/typings";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -19,7 +17,6 @@ const SendModal = ({ onClose }: Props) => {
     formState: { errors },
   } = useForm<PostContact>({ mode: "onChange" });
   const [isSaving, setIsSaving] = useState(false);
-  const [success, setSuccess] = useState();
   const errorNotify = () =>
     toast.error(
       errors.author?.message ||
@@ -38,7 +35,9 @@ const SendModal = ({ onClose }: Props) => {
       toast.success(`${author}님 메시지가 성공적으로 보내졌습니다.`, {
         position: "bottom-left",
       });
-      onClose();
+      setTimeout(() => {
+        onClose();
+      }, 2000);
     } catch (error) {
       () => toast.error(`${error}`);
     }
@@ -46,7 +45,7 @@ const SendModal = ({ onClose }: Props) => {
   return (
     <>
       <div className="relative bg-white text-black  px-16 pt-14 pb-5 rounded-lg z-50 mx-auto">
-        <div className="absolute right-5 top-5" onClick={() => onClose}>
+        <div className="absolute right-5 top-5" onClick={onClose}>
           <XMarkIcon className="w-10 h-10 cursor-pointer" />
         </div>
         <form
