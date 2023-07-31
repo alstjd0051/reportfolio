@@ -44,17 +44,17 @@ const SendModal = ({ onClose }: Props) => {
   };
   return (
     <>
-      <div className="relative bg-white text-black  px-16 pt-14 pb-5 rounded-lg z-50 mx-auto">
+      <div className="relative px-2 py-3 w-full bg-white text-black md:px-8 md:py-7 lg:px-16 lg:pt-14 pb-5 rounded-lg z-50 mx-auto">
         <div className="absolute right-5 top-5" onClick={onClose}>
-          <XMarkIcon className="w-10 h-10 cursor-pointer" />
+          <XMarkIcon className=" w-5 h-5  lg:w-10 lg:h-10 cursor-pointer" />
         </div>
         <form
-          className="flex  flex-col items-center justify-center w-full h-full gap-y-10"
+          className="flex flex-col items-center justify-center w-full h-full gap-y-10"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="flex items-center gap-x-5">
-            <div>
-              <label>Name</label>
+            <div className="flex flex-col">
+              <p className="text-start">Name</p>
               <Controller
                 name="author"
                 rules={{
@@ -68,7 +68,7 @@ const SendModal = ({ onClose }: Props) => {
                 defaultValue=""
                 render={({ field }) => (
                   <input
-                    className={`border ml-5 rounded-lg p-3 ${
+                    className={`border  rounded-lg w-32 md:w-full h-4 md:h-full px-3  py-3 md:px-6 ${
                       errors.author?.message && "border-red-500 border-2 "
                     } `}
                     {...field}
@@ -76,8 +76,8 @@ const SendModal = ({ onClose }: Props) => {
                 )}
               />
             </div>
-            <div>
-              <label>Email</label>
+            <div className="flex flex-col">
+              <label className="text-start">Email</label>
               <Controller
                 name="email"
                 control={control}
@@ -95,7 +95,7 @@ const SendModal = ({ onClose }: Props) => {
                 render={({ field }) => (
                   <input
                     type="email"
-                    className={`border ml-5 rounded-lg p-3 ${
+                    className={`border  rounded-lg w-32 md:w-full h-4 md:h-full px-3  py-3 md:px-6 ${
                       errors.email?.message && "border-red-500 border-2"
                     }`}
                     {...field}
