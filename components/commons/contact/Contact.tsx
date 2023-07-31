@@ -71,10 +71,11 @@ const ContactMe = ({ pageInfo }: Props) => {
             <EnvelopeIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse  " />
             <p
               className={`text-2xl ${
-                hover && " text-red-600 duration-1000 transition ease-out"
+                hover &&
+                " text-red-600 text-7xl font-bold duration-1000 transition ease-out"
               }`}
             >
-              {hover ? "SendMe" : pageInfo.email}
+              {hover ? "Send Me" : pageInfo.email}
             </p>
           </div>
           <motion.div
