@@ -43,7 +43,7 @@ const ContactMe = ({ pageInfo }: Props) => {
         Contact
       </h3>
       <div className="flex flex-col sm:space-y-0 md:space-y-10 ">
-        <div className=" sm:text-4xl h-10 font-semibold text-center">
+        <div className="sm:text-4xl  h-10  text-center">
           <PortableText
             components={RichTextComponents}
             value={pageInfo.footerComments}
@@ -72,7 +72,7 @@ const ContactMe = ({ pageInfo }: Props) => {
             <p
               className={`text-2xl ${
                 hover &&
-                " text-red-600 text-7xl font-bold duration-1000 transition ease-out"
+                " text-red-600 text-4xl lg:text-7xl font-bold duration-1000 transition ease-out"
               }`}
             >
               {hover ? "Send Me" : pageInfo.email}
@@ -81,9 +81,9 @@ const ContactMe = ({ pageInfo }: Props) => {
           <motion.div
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="flex items-center space-x-5 justify-center"
+            className="lg:flex items-center space-x-5 hidden  justify-center"
           >
-            <DocumentIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
+            <DocumentIcon className="text-[#F5DF4D]  lg:block h-7 w-7 animate-pulse " />
             <p className="text-2xl cursor-pointer" onClick={onClickResumeModal}>
               SHOW PDF
             </p>
@@ -96,7 +96,7 @@ const ContactMe = ({ pageInfo }: Props) => {
         )}
 
         {modalOpen && (
-          <div className="absolute p-5 rounded-lg top-1/4 right-1/4   ">
+          <div className="absolute hidden lg:block p-5 rounded-lg top-1/4 right-1/4   ">
             <MyResume onClick={onClickResumeModal} />
           </div>
         )}
