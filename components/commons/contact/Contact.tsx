@@ -52,7 +52,9 @@ const ContactMe = ({ pageInfo }: Props) => {
 
         <div className="space-y-10 pt-10">
           <div
-            onClick={() => (document.location.href = "tel:01095679971")}
+            onClick={() =>
+              (document.location.href = `tel:${pageInfo.phoneNumber}"`)
+            }
             className="flex items-center space-x-5 justify-center"
           >
             <PhoneIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
@@ -96,7 +98,7 @@ const ContactMe = ({ pageInfo }: Props) => {
         )}
 
         {modalOpen && (
-          <div className="absolute hidden lg:block p-5 rounded-lg top-1/4 right-1/4   ">
+          <div className="absolute hidden lg:block p-5 rounded-lg top-1/4 left-1/4   ">
             <MyResume onClick={onClickResumeModal} />
           </div>
         )}
