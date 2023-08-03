@@ -19,10 +19,13 @@ import fetchSocials from "../components/utils/fetchSocials";
 import fetchResume from "../components/utils/fetchResume";
 import dynamic from "next/dynamic";
 
+const Loading = <div>Loading...</div>;
+
 const GameComponent = dynamic(
   () => import("../components/commons/game/gameContainer"),
   {
     ssr: false,
+    loading: () => Loading,
   }
 );
 
@@ -37,7 +40,10 @@ type Props = {
 const Home = ({ pageInfo, skills, socials, resume }: Props) => {
   return (
     <>
-      <Header skill={skills} pageInfo={pageInfo} contact socials={socials} />
+      <>
+        <Header skill={skills} pageInfo={pageInfo} contact socials={socials} />
+      </>
+
       {/* Hero */}
       <section id="hero" className="snap-start">
         <HeroUI pageInfo={pageInfo} />
