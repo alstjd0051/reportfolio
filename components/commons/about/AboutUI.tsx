@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../items/RichTextComponents";
+import { Cursor, useTypewriter } from "react-simple-typewriter";
 
 type Props = {
   pageInfo: PageInfo;
@@ -14,6 +15,11 @@ type Props = {
 
 const About = ({ pageInfo, resume }: Props) => {
   const router = useRouter();
+  const [text, count] = useTypewriter({
+    words: [`${pageInfo.role}`, "Sommelier"],
+    loop: true,
+    delaySpeed: 50,
+  });
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -37,12 +43,11 @@ const About = ({ pageInfo, resume }: Props) => {
       <div className="space-y-10 px-0  ">
         <h4 className="lg:text-4xl sm:text-2xl font-semibold ">
           안녕하세요 저는 {pageInfo?.name} 입니다.
-          <br /> 저는
-          <span className="underline  decoration-[#F5DF4D] underline-offset-[10px] ">
-            {pageInfo.role} 개발자입니다.
-          </span>
         </h4>
-        <div className="flex flex-col gap-3 ">
+        <p className="underline lg:text-4xl text-2xl font-semibold   decoration-[#F5DF4D] underline-offset-[10px] h-10 ">
+          {text}
+        </p>
+        <div className="flex flex-col">
           <PortableText
             components={RichTextComponents}
             value={pageInfo?.backgroundInformation}

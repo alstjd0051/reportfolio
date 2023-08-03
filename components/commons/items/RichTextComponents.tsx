@@ -48,7 +48,7 @@ export const RichTextComponents = {
   },
   block: {
     normal: ({ children }: any) => (
-      <p className={`text-sm py-1 md:text-base font-bold`}>{children}</p>
+      <p className={`text-sm leading-3 md:text-base font-normal`}>{children}</p>
     ),
 
     h1: ({ children }: any) => (
