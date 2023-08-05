@@ -5,6 +5,13 @@
 @layer base {
   @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap");
 
+  section {
+    @apply relative;
+  }
+
+  header {
+    @apply sticky top-5;
+  }
   .effect::after {
     content: "";
     display: block;

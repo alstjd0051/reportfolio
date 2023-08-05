@@ -92,7 +92,7 @@ const ContactMe = ({ pageInfo }: Props) => {
           </motion.div>
         </div>
         {openSendModal && (
-          <div className="fixed top-1/4 right-1/4 ">
+          <div className="absolute top-1/4 right-1/4 ">
             <SendModal onClose={onClickSendModal} />
           </div>
         )}
