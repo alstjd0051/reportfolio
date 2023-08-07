@@ -6,6 +6,8 @@ import { useRouter } from "next/dist/client/router";
 import { GetServerSideProps } from "next";
 import fetchProjects from "../../utils/fetchProjects";
 import useSWR from "swr";
+import { PortableText } from "@portabletext/react";
+import { RichTextComponents } from "../items/RichTextComponents";
 
 type Props = {
   projects: Project[];
@@ -19,6 +21,7 @@ const Projects = () => {
   const hoverme = () => {
     return setOnhover(!onhover);
   };
+  console.log(projects);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -50,7 +53,12 @@ const Projects = () => {
                     {title}
                   </h4>
 
-                  <p className="text-center text-lg md:text-left">{summary}</p>
+                  <p className="text-center text-lg md:text-left">
+                    <PortableText
+                      value={summary}
+                      components={RichTextComponents}
+                    />
+                  </p>
                   <div className="flex flex-row">
                     {technologies?.map((index) => (
                       <div className="space-x-2 m-2 " key={index._id}>
