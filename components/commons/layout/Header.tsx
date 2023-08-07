@@ -7,6 +7,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { ArrowLeftOnRectangleIcon, HomeIcon } from "@heroicons/react/24/solid";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { GetServerSideProps } from "next";
+import fetchSocials from "../../utils/fetchSocials";
 
 type Props = {
   socials?: Social[];
@@ -29,7 +31,7 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </Head>
-      <header className="sticky top-0 py-7 px-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
+      <header className="py-7 px-5  flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
         <motion.div
           initial={{ x: -500, opacity: 0, scale: 0.5 }}
           animate={{ x: 0, opacity: 1, scale: 1 }}
@@ -45,12 +47,12 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
             </div>
           )}
           <div className="flex items-center gap-5">
-            {socials?.map((social) => (
-              <div key={social._id} className="">
+            {socials?.map(({ title, url }, i) => (
+              <div key={i} className="">
                 <SocialIcon
                   fgColor="gray"
                   bgColor="transparent"
-                  url={social.url}
+                  url={url}
                   target={"_blank"}
                   className="hover:fill-gray-300"
                 />
@@ -143,3 +145,12 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
 };
 
 export default Header;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const social = await fetchSocials();
+  return {
+    props: {
+      social,
+    },
+  };
+};
