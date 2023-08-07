@@ -25,11 +25,11 @@ const PDFViewer = ({ fileUrl, onClick }: Props) => {
 
   return (
     <div
-      className={`relative overflow-auto  max-w-7xl h-96`}
+      className={`relative overflow-auto max-w-7xl h-96`}
       onContextMenu={(e) => e.preventDefault()}
     >
       <Document
-        className={"overflow-hidden"}
+        className={"overflow-hidden relative"}
         file={`${fileUrl.toString()}`}
         onLoadSuccess={onDocumentLoadSuccess}
       >
@@ -39,7 +39,7 @@ const PDFViewer = ({ fileUrl, onClick }: Props) => {
           pageNumber={pageNumber}
           renderTextLayer={false}
         />
-        <div className="absolute top-0 left-0 flex items-center gap-2">
+        <div className="absolute top-2 left-2 flex items-center gap-2">
           <button className="cursor-pointer" onClick={onClick}>
             <XMarkIcon className="w-7 h-7 text-black" />
           </button>
@@ -48,7 +48,7 @@ const PDFViewer = ({ fileUrl, onClick }: Props) => {
           </Link>
         </div>
 
-        <div className="absolute top-0 right-0 gap-3 flex items-center">
+        <div className="absolute top-2 right-3 gap-3 flex items-center">
           <p className=" text-black text-sm ">
             Page {pageNumber} of {numPages}
           </p>

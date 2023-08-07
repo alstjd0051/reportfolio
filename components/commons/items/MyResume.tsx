@@ -17,7 +17,7 @@ const MyResume = ({ onClick }: Props) => {
   }
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden rounded-lg ">
       <PDFViewer onClick={onClick} fileUrl={`${data?.fileUrl}`} />
     </div>
   );

@@ -11,7 +11,7 @@ type Props = {
 
 const ContentCard = ({ id, title, createdAt, content }: Props) => {
   return (
-    <div className="text-black overflow-y-scroll rounded-lg min-h-[20rem] bg-white w-[20rem] shadow-2xl shadow-white/40 flex flex-col justify-between px-5 ">
+    <div className="text-black overflow-y-scroll rounded-lg min-h-[20rem] bg-white w-[20rem] shadow-2xl shadow-white/40 flex flex-col justify-between px-5">
       <div className="flex gap-3">
         <h1 className="font-bold  text-xl pt-5">{title}</h1>
       </div>

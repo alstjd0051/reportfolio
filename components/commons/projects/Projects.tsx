@@ -53,7 +53,7 @@ const Projects = () => {
                     {title}
                   </h4>
 
-                  <p className="text-center text-lg md:text-left">
+                  <p className="text-center text-lg md:text-left w-[27rem] text-ellipsis ">
                     <PortableText
                       value={summary}
                       components={RichTextComponents}
