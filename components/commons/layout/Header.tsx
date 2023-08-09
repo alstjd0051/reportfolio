@@ -9,6 +9,7 @@ import { ArrowLeftOnRectangleIcon, HomeIcon } from "@heroicons/react/24/solid";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { GetServerSideProps } from "next";
 import fetchSocials from "../../utils/fetchSocials";
+import useOpenModal from "../../lib/store";
 
 type Props = {
   socials?: Social[];
@@ -23,13 +24,18 @@ const Header = ({ socials, contact, Home, skill }: Props) => {
   const router = useRouter();
   const [hover, setHover] = useState<boolean>(false);
   const { data: session } = useSession();
+  const openModal = useOpenModal();
 
   return (
     <>
       <Head>
         <title key="title">Tyler - PortFolio</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <meta property="og:title" content="Tyler Blog" />
+        <meta property="og:description" content="송민성 포트폴리오" />
+        <meta name="og:url" content="https://www.tylersong.shop/" />
+
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <header className="py-7 px-5  flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
         <motion.div
