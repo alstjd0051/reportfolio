@@ -13,7 +13,7 @@ import {
   Social,
 } from "../components/lib/typings";
 import fetchPageInfo from "../components/utils/fetchPageInfo";
-import fetchProjects from "../components/utils/fetchProjects";
+
 import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
 import fetchResume from "../components/utils/fetchResume";
@@ -45,7 +45,7 @@ const Home = ({ pageInfo, skills, socials, resume }: Props) => {
       </>
 
       {/* Hero */}
-      <section id="hero" className="snap-start">
+      <section id="hero" className="snap-start sm">
         <HeroUI pageInfo={pageInfo} />
       </section>
 
@@ -70,7 +70,7 @@ const Home = ({ pageInfo, skills, socials, resume }: Props) => {
         </section>
       }
 
-      <section id="game">
+      <section id="game" className="hidden md:block">
         <GameComponent />
       </section>
     </>
