@@ -8,6 +8,7 @@ import fetchProjects from "../../utils/fetchProjects";
 import useSWR from "swr";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../items/RichTextComponents";
+import { ProjectPortable } from "../items/ProjectPortable";
 
 type Props = {
   projects: Project[];
@@ -21,7 +22,7 @@ const Projects = () => {
   const hoverme = () => {
     return setOnhover(!onhover);
   };
-  console.log(projects);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -53,12 +54,12 @@ const Projects = () => {
                     {title}
                   </h4>
 
-                  <p className="text-center text-lg md:text-left w-[27rem] text-ellipsis ">
+                  <div className=" md:text-left w-[27rem] text-ellipsis   ">
                     <PortableText
                       value={summary}
-                      components={RichTextComponents}
+                      components={ProjectPortable}
                     />
-                  </p>
+                  </div>
                   <div className="flex flex-row">
                     {technologies?.map((index) => (
                       <div className="space-x-2 m-2 " key={index._id}>
