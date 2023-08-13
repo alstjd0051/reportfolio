@@ -7,6 +7,9 @@ import { useRouter } from "next/router";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../items/RichTextComponents";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import { GetServerSideProps } from "next";
+import fetchPageInfo from "../../utils/fetchPageInfo";
+import fetchResume from "../../utils/fetchResume";
 
 type Props = {
   pageInfo: PageInfo;
@@ -16,7 +19,7 @@ type Props = {
 const About = ({ pageInfo, resume }: Props) => {
   const router = useRouter();
   const [text, count] = useTypewriter({
-    words: [`${pageInfo.role}`, "Sommelier"],
+    words: [`${pageInfo?.role}`, "Sommelier"],
     loop: true,
     delaySpeed: 50,
   });
@@ -81,6 +84,18 @@ const About = ({ pageInfo, resume }: Props) => {
       </div>
     </motion.div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const pageInfo = await fetchPageInfo();
+  const resume = await fetchResume();
+
+  return {
+    props: {
+      pageInfo,
+      resume,
+    },
+  };
 };
 
 export default About;

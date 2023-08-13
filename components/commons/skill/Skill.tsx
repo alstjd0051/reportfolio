@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Skill } from "../../lib/typings";
 import { urlFor } from "../../../sanity";
@@ -19,7 +19,7 @@ const Skill = ({ directionLeft, skill }: Props) => {
         transition={{ duration: 1 }}
         whileInView={{ opacity: 1, x: 0 }}
         src={urlFor(skill.image).url()}
-        className="rounded-full border border-gray-500 object-cover w-8 h-8 md:w-24 md:h-24 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
+        className="rounded-full border border-gray-500 object-cover w-8 h-8 md:w-24 md:h-24 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out image"
       />
       <motion.div
         initial={{ x: directionLeft ? -200 : 200, opacity: 0 }}

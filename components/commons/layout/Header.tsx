@@ -6,7 +6,7 @@ import { PageInfo, Skill, Social } from "../../lib/typings";
 import { useRouter } from "next/router";
 import { ArrowLeftOnRectangleIcon, HomeIcon } from "@heroicons/react/24/solid";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { GetServerSideProps } from "next";
+
 import useSWR from "swr";
 import { SiBloglovin } from "react-icons/si";
 

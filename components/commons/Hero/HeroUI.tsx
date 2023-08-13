@@ -22,7 +22,7 @@ const HeroUI = ({ pageInfo, session }: Props) => {
   };
 
   return (
-    <section className="h-screen flex flex-col space-y-16 items-center justify-center text-center overflow-hidden relative ">
+    <section className="h-screen flex flex-col space-y-16 translate-y-20 items-center justify-center text-center overflow-hidden relative ">
       <BackGroundCircles />
 
       <img
@@ -42,9 +42,6 @@ const HeroUI = ({ pageInfo, session }: Props) => {
           <Link href="#about">
             <p className="heroButton">About</p>
           </Link>
-          {/* <Link href="#experience">
-            <p className="heroButton">SideProject</p>
-          </Link> */}
           <Link href="#skills">
             <p className="heroButton">Skills</p>
           </Link>
