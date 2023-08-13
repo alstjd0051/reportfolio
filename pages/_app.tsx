@@ -10,6 +10,7 @@ import { Suspense } from "react";
 import Spinner from "../components/commons/items/Spinner";
 import { useLoading } from "../components/lib/hooks/useLoading";
 import { motion } from "framer-motion";
+import NaverModal from "../components/commons/modal/NaverModal";
 
 const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
   Component,
@@ -89,6 +90,7 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
                 />
               </motion.div>
             ) : null}
+            <NaverModal />
             <Component {...pageProps} />
           </Layout>
         </>

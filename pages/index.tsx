@@ -18,6 +18,7 @@ import fetchSkills from "../components/utils/fetchSkills";
 import fetchSocials from "../components/utils/fetchSocials";
 import fetchResume from "../components/utils/fetchResume";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 
 const Loading = <div>Loading...</div>;
 
@@ -33,16 +34,21 @@ type Props = {
   pageInfo: PageInfo;
   skills: Skill[];
 
-  socials: Social[];
   resume: Resume[];
 };
 
-const Home = ({ pageInfo, skills, socials, resume }: Props) => {
+const Home = ({ pageInfo, skills, resume }: Props) => {
   return (
     <>
-      <>
-        <Header skill={skills} pageInfo={pageInfo} contact socials={socials} />
-      </>
+      <Head>
+        <title key="title">Tyler - PortFolio</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <meta property="og:title" content="Tyler Blog" />
+        <meta property="og:description" content="송민성 포트폴리오" />
+        <meta name="og:url" content="https://www.tylersong.shop/" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <></>
 
       {/* Hero */}
       <section id="hero" className="snap-start sm">
@@ -83,7 +89,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo = await fetchPageInfo();
   const skills = await fetchSkills();
 
-  const socials = await fetchSocials();
   const resume = await fetchResume();
 
   return {
@@ -91,7 +96,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       pageInfo,
       skills,
 
-      socials,
       resume,
     },
     revalidate: 1000,

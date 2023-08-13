@@ -7,6 +7,8 @@ import {
 import { useRouter } from "next/router";
 import React, { Suspense } from "react";
 import { SWRConfig } from "swr";
+import MainModal from "../commons/modal/MainModal";
+import Header from "../commons/layout/Header";
 
 type Props = {
   children: React.ReactNode;
@@ -53,6 +55,7 @@ const Layout = ({ children }: Props) => {
   return (
     <div className="overflow-hidden effect">
       <AnimatePresence initial={false} mode={"popLayout"}>
+        <Header />
         <motion.div
           variants={!shouldReduceMotion ? variants : undefined}
           initial="in"
@@ -63,7 +66,7 @@ const Layout = ({ children }: Props) => {
           <SWRConfig
             value={{
               fetcher: (url: string) =>
-                fetch(url, { cache: "no-cache" }).then((res) => res.json()),
+                fetch(url, { cache: "no-store" }).then((res) => res.json()),
             }}
           >
             <>{children}</>
