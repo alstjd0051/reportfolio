@@ -7,8 +7,6 @@ import { useRouter } from "next/router";
 import { ArrowLeftOnRectangleIcon, HomeIcon } from "@heroicons/react/24/solid";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { GetServerSideProps } from "next";
-import fetchSocials from "../../utils/fetchSocials";
-import useOpenModal from "../../lib/store";
 import useSWR from "swr";
 import { SiBloglovin } from "react-icons/si";
 
@@ -25,7 +23,7 @@ const Header = ({ contact, Home }: Props) => {
   const router = useRouter();
   const [hover, setHover] = useState<boolean>(false);
   const { data: session } = useSession();
-  const openModal = useOpenModal();
+
   const { data } = useSWR(`${"http://localhost:3000"}/api/getSocials`, (url) =>
     fetch(url, { cache: "no-store" }).then((res) => res.json())
   );
