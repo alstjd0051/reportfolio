@@ -24,8 +24,9 @@ const Header = ({ contact, Home }: Props) => {
   const [hover, setHover] = useState<boolean>(false);
   const { data: session } = useSession();
 
-  const { data } = useSWR(`${"http://localhost:3000"}/api/getSocials`, (url) =>
-    fetch(url, { cache: "no-store" }).then((res) => res.json())
+  const { data } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/getSocials`,
+    (url) => fetch(url, { cache: "no-store" }).then((res) => res.json())
   );
 
   const socials: Social[] = data?.socials;
