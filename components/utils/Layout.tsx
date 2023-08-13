@@ -1,14 +1,17 @@
 import {
   AnimatePresence,
-  motion,
   type Variants,
   useReducedMotion,
 } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
+
 import { useRouter } from "next/router";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { SWRConfig } from "swr";
 import MainModal from "../commons/modal/MainModal";
 import Header from "../commons/layout/Header";
+import Link from "next/link";
+import { BiUpArrow } from "react-icons/bi";
 
 type Props = {
   children: React.ReactNode;
@@ -51,6 +54,7 @@ const variants: Variants = {
 const Layout = ({ children }: Props) => {
   const { asPath } = useRouter();
   const shouldReduceMotion = useReducedMotion();
+  const scrollRef = useRef(null);
 
   return (
     <div className="overflow-hidden effect">
@@ -73,6 +77,9 @@ const Layout = ({ children }: Props) => {
           </SWRConfig>
         </motion.div>
       </AnimatePresence>
+      <Link href={"#hero"} ref={scrollRef} className="cursor-pointer z-50">
+        <BiUpArrow className="fixed cursor-pointer right-[10%] bottom-[10%] z-50 rounded-full" />
+      </Link>
     </div>
   );
 };
