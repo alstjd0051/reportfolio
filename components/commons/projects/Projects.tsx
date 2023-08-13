@@ -15,7 +15,9 @@ type Props = {
 };
 
 const Projects = () => {
-  const { data: projects } = useSWR<Project[]>("/api/getProjects");
+  const { data: projects } = useSWR<Project[]>("/api/getProjects", {
+    refreshInterval: 1000,
+  });
 
   const router = useRouter();
   const [onhover, setOnhover] = useState(false);
