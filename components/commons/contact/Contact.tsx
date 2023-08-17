@@ -4,8 +4,7 @@ import {
   EnvelopeIcon,
   DocumentIcon,
 } from "@heroicons/react/24/solid";
-import { BiUpArrow } from "react-icons/bi";
-import Link from "next/link";
+
 import { PageInfo } from "../../lib/typings";
 import { PortableText } from "@portabletext/react";
 import { RichTextComponents } from "../items/RichTextComponents";
@@ -102,11 +101,6 @@ const ContactMe = ({ pageInfo }: Props) => {
             <MyResume onClick={onClickResumeModal} />
           </div>
         )}
-      </div>
-      <div className="absolute  right-16 md:right-20 bottom-28  ">
-        <Link href={"#about"}>
-          <BiUpArrow className="cursor-pointer" />
-        </Link>
       </div>
     </div>
   );
