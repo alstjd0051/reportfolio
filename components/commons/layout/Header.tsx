@@ -32,7 +32,7 @@ const Header = ({ contact, Home }: Props) => {
   const socials: Social[] = data?.socials;
 
   return (
-    <header className="py-7 px-5 fixed w-full  flex items-center  justify-between  z-20 xl:items-center">
+    <header className="py-7 px-[10vw] fixed w-full   flex items-center  justify-between  z-20 xl:items-center">
       <motion.div
         initial={{ x: -500, opacity: 0, scale: 0.5 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}
