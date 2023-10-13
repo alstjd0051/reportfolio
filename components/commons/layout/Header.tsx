@@ -59,13 +59,6 @@ const Header = ({ contact, Home }: Props) => {
               />
             </div>
           ))}
-          <Link href={"http://tylerblog.store/"} target={"_blank"}>
-            <SiBloglovin
-              size={30}
-              className="hover:fill-gray-300 fill-gray-600 cursor-pointer"
-              title="Blog"
-            />
-          </Link>
         </div>
       </motion.div>
       <div className="flex items-center gap-3">
