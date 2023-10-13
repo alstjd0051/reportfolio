@@ -19,6 +19,7 @@ import fetchSocials from "../components/utils/fetchSocials";
 import fetchResume from "../components/utils/fetchResume";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import NotFound from "./404";
 
 const Loading = <div>Loading...</div>;
 
@@ -38,6 +39,8 @@ type Props = {
 };
 
 const Home = ({ pageInfo, skills, resume }: Props) => {
+  return NotFound();
+
   return (
     <>
       <Head>
