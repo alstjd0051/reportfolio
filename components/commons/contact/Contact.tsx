@@ -59,7 +59,7 @@ const ContactMe = ({ pageInfo }: Props) => {
             <PhoneIcon className="text-[#F5DF4D] h-7 w-7 animate-pulse " />
             <p className="text-2xl cursor-pointer ">
               {pageInfo.phoneNumber
-                .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+                ?.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
                 .replace(/\-{1,2}$/g, "")}
             </p>
           </div>
